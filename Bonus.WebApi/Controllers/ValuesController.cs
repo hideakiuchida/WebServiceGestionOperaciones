@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bonus.WebApi.ActionFilters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,7 +8,7 @@ using System.Web.Http;
 
 namespace Bonus.WebApi.Controllers
 {
-    [Authorize]
+    [AuthorizationRequired]
     public class ValuesController : ApiController
     {
         // GET api/values
