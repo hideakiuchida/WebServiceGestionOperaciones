@@ -31,22 +31,6 @@ namespace Bonus.WebApi
             //Component initialization via MEF
             ComponentLoader.LoadContainer(container, ".\\bin", "Bonus.WebApiServices.dll");
             ComponentLoader.LoadContainer(container, ".\\bin", "Bonus.BusinessServices.dll");
-            //ComponentLoader.LoadContainer(container, ".\\bin", "Bonus.DataModel.dll");
-            /*UnitOfWork unitOfWork = new UnitOfWork();
-            string token = Guid.NewGuid().ToString();
-            DateTime issuedOn = DateTime.Now;
-            DateTime expiredOn = DateTime.Now.AddSeconds(
-                                              10000);
-            var tokendomain = new Tokens
-            {
-                UserId = 12,
-                AuthToken = token,
-                IssuedOn = issuedOn,
-                ExpiresOn = expiredOn
-            };
-
-            unitOfWork.TokenRepository.Insert(tokendomain);
-            unitOfWork.Save();*/
         }
     }
 }
