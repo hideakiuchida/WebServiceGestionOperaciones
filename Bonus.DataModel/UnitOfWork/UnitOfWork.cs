@@ -14,36 +14,22 @@ namespace Bonus.DataModel.UnitOfWork
     {
         #region Private member variables...
 
-        //private readonly WebApiDbEntities _context = null;
-        private GenericRepository<User> _userRepository;
-        private GenericRepository<Products> _productRepository;
+        private readonly WebApiDbEntities _context = null;
+        private GenericRepository<User> _userRepository;  
         private GenericRepository<Tokens> _tokenRepository;
         #endregion
 
         public UnitOfWork()
         {
-            //_context = new WebApiDbEntities();
+            _context = new WebApiDbEntities();
         }
 
         #region Public Repository Creation properties...
 
         /// <summary>
-        /// Get/Set Property for product repository.
-        /// </summary>
-       /* public GenericRepository<Products> ProductRepository
-        {
-            get
-            {
-                if (this._productRepository == null)
-                    this._productRepository = new GenericRepository<Products>(_context);
-                return _productRepository;
-            }
-        }*/
-
-        /// <summary>
         /// Get/Set Property for user repository.
         /// </summary>
-        /*public GenericRepository<User> UserRepository
+        public GenericRepository<User> UserRepository
         {
             get
             {
@@ -52,11 +38,11 @@ namespace Bonus.DataModel.UnitOfWork
                 return _userRepository;
             }
         }
-        */
+        
         /// <summary>
         /// Get/Set Property for token repository.
         /// </summary>
-        /*public GenericRepository<Tokens> TokenRepository
+        public GenericRepository<Tokens> TokenRepository
         {
             get
             {
@@ -64,7 +50,7 @@ namespace Bonus.DataModel.UnitOfWork
                     this._tokenRepository = new GenericRepository<Tokens>(_context);
                 return _tokenRepository;
             }
-        }*/
+        }
         #endregion
 
         #region Public member methods...
@@ -75,7 +61,7 @@ namespace Bonus.DataModel.UnitOfWork
         {
             try
             {
-                //_context.SaveChanges();
+                _context.SaveChanges();
             }
             catch (DbEntityValidationException e)
             {

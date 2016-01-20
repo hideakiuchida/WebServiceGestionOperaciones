@@ -89,7 +89,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="ComponentLoader.cs" />
     <Compile Include="IComponent.cs" />
     <Compile Include="IRegisterComponent.cs" />
