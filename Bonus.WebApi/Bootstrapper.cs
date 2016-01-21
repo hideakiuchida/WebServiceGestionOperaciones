@@ -29,7 +29,7 @@ namespace Bonus.WebApi
         public static void RegisterTypes(IUnityContainer container)
         {
             //Component initialization via MEF
-            ComponentLoader.LoadContainer(container, ".\\bin", "Bonus.WebApiServices.dll");
+            ComponentLoader.LoadContainer(container, ".\\bin", "Bonus.WebApi.dll");
             ComponentLoader.LoadContainer(container, ".\\bin", "Bonus.BusinessServices.dll");
         }
     }
