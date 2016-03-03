@@ -13,6 +13,11 @@ namespace Bonus.BusinessServices.DependecyResolver
             registerComponent.RegisterType<IUserServices, UserServices>();
             registerComponent.RegisterType<ITokenServices, TokenServices>();
 
+            registerComponent.RegisterType<ILoginServices, LoginServices>();
+            registerComponent.RegisterType<IDepartamentoServices, DepartamentoServices>();
+            registerComponent.RegisterType<IDistritoServices, DistritoServices>();
+            registerComponent.RegisterType<IDocumentoServices, DocumentoServices>();
+            registerComponent.RegisterType<IProvinciaServices, ProvinciaServices>();
         }
     }
 }

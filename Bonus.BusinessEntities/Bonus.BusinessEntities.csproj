@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\DepartamentoEntity.cs" />
+    <Compile Include="DTO\DistritoEntity.cs" />
+    <Compile Include="DTO\DocumentoEntity.cs" />
+    <Compile Include="DTO\ProvinciaEntity.cs" />
     <Compile Include="DTO\TokenEntity.cs" />
     <Compile Include="DTO\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
