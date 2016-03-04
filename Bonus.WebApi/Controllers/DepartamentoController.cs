@@ -33,11 +33,5 @@ namespace Bonus.WebApi.Controllers
             return _services.ObtenerDepartamentos();
         }
 
-        [Route("ObtenerDepartamentos2")]
-        [HttpGet]
-        public List<DepartamentoEntity> ObtenerDepartamentos2()
-        {
-            return _services.ObtenerDepartamentos();
-        }
     }
 }
