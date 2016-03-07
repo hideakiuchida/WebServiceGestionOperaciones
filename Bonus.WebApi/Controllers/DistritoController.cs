@@ -1,10 +1,12 @@
 ﻿using Bonus.BusinessEntities.DTO;
 using Bonus.BusinessServices.Interfaces;
+using Bonus.WebApi.ActionFilters;
 using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Bonus.WebApi.Controllers
 {
+    [AuthorizationRequired]
     public class DistritoController : ApiController
     {
         #region Private variable.

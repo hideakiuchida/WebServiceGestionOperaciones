@@ -1,5 +1,6 @@
 ﻿using Bonus.BusinessEntities.DTO;
 using Bonus.BusinessServices.Interfaces;
+using Bonus.WebApi.ActionFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace Bonus.WebApi.Controllers
 {
+    [AuthorizationRequired]
     public class DocumentoController : ApiController
     {
         #region Private variable.

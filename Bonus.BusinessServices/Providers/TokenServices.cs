@@ -29,7 +29,7 @@ namespace Bonus.BusinessServices.Providers
                                               Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
             string msgError = "";
             WsBonusInsertarToken.wsinstokenSoapPortClient ws = new WsBonusInsertarToken.wsinstokenSoapPortClient();
-            short respuesta = ws.Execute(userId.ToString(), token, issuedOn, issuedOn, out msgError);
+            short respuesta = ws.Execute(userId.ToString(), token, issuedOn, expiredOn, out msgError);
 
             var tokenModel = new TokenEntity()
             {
