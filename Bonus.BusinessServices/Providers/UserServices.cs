@@ -26,10 +26,19 @@ namespace Bonus.BusinessServices.Providers
         /// <returns></returns>
         public int Authenticate(string userName, string password)
         {
-            var user = _unitOfWork.UserRepository.Get(u => u.UserName == userName && u.Password == password);
-            if (user != null && user.UserId > 0)
-            {
-                return user.UserId;
+            string msgError = "";
+            WsBonusLogin.wslogusugxSoapPortClient ws = new WsBonusLogin.wslogusugxSoapPortClient();
+            int codError = ws.Execute(userName, password, out msgError);
+            /*
+            0: Éxito
+            1: Usuario en blanco
+            2: Clave en blanco
+            3: Usuario no existe
+            4: Usuario no pertenece al grupo autorizado
+            5: Clave incorrecta
+            */
+            if (codError == 0) {
+                return 1;
             }
             return 0;
         }

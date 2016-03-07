@@ -10,10 +10,10 @@ namespace Bonus.BusinessServices.DependecyResolver
     {
         public void SetUp(IRegisterComponent registerComponent)
         {
+            //Basic Authentication Services
             registerComponent.RegisterType<IUserServices, UserServices>();
             registerComponent.RegisterType<ITokenServices, TokenServices>();
-
-            registerComponent.RegisterType<ILoginServices, LoginServices>();
+            //General Services
             registerComponent.RegisterType<IDepartamentoServices, DepartamentoServices>();
             registerComponent.RegisterType<IDistritoServices, DistritoServices>();
             registerComponent.RegisterType<IDocumentoServices, DocumentoServices>();

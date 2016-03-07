@@ -48,7 +48,6 @@
     <Compile Include="Interfaces\IDepartamentoServices.cs" />
     <Compile Include="Interfaces\IDistritoServices.cs" />
     <Compile Include="Interfaces\IDocumentoServices.cs" />
-    <Compile Include="Interfaces\ILoginServices.cs" />
     <Compile Include="Interfaces\IProvinciaServices.cs" />
     <Compile Include="Interfaces\ITokenServices.cs" />
     <Compile Include="Interfaces\IUserServices.cs" />
@@ -56,10 +55,29 @@
     <Compile Include="Providers\DepartamentoServices.cs" />
     <Compile Include="Providers\DistritoServices.cs" />
     <Compile Include="Providers\DocumentoServices.cs" />
-    <Compile Include="Providers\LoginServices.cs" />
     <Compile Include="Providers\ProvinciaServices.cs" />
     <Compile Include="Providers\TokenServices.cs" />
     <Compile Include="Providers\UserServices.cs" />
+    <Compile Include="Service References\WsBonusActualizarToken\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusEliminarTokenPorUsuario\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusEliminarToken\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusObtenerToken\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WsBonusDepartamentos\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,6 +89,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\WsBonusDocumentos\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusInsertarToken\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -105,6 +128,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Service References\WsBonusActualizarToken\Bonus.BusinessServices.WsBonusActualizarToken.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusActualizarToken\wsacttoken.wsdl" />
+    <None Include="Service References\WsBonusEliminarTokenPorUsuario\Bonus.BusinessServices.WsBonusEliminarTokenPorUsuario.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusEliminarTokenPorUsuario\wselitokus.wsdl" />
+    <None Include="Service References\WsBonusEliminarToken\Bonus.BusinessServices.WsBonusEliminarToken.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusEliminarToken\wselitoken.wsdl" />
+    <None Include="Service References\WsBonusObtenerToken\Bonus.BusinessServices.WsBonusObtenerToken.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusObtenerToken\wsobttoken.wsdl" />
     <None Include="Service References\WsBonusDepartamentos\Bonus.BusinessServices.WsBonusDepartamentos.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -126,6 +165,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusDocumentos\wslistipdo.wsdl" />
+    <None Include="Service References\WsBonusInsertarToken\Bonus.BusinessServices.WsBonusInsertarToken.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusInsertarToken\wsinstoken.wsdl" />
     <None Include="Service References\WsBonusLogin\Bonus.BusinessServices.WsBonusLogin.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -139,9 +182,14 @@
     <None Include="Service References\WsBonusProvincias\wslispro.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WsBonusActualizarToken\" />
+    <WCFMetadataStorage Include="Service References\WsBonusEliminarTokenPorUsuario\" />
+    <WCFMetadataStorage Include="Service References\WsBonusEliminarToken\" />
+    <WCFMetadataStorage Include="Service References\WsBonusObtenerToken\" />
     <WCFMetadataStorage Include="Service References\WsBonusDepartamentos\" />
     <WCFMetadataStorage Include="Service References\WsBonusDistritos\" />
     <WCFMetadataStorage Include="Service References\WsBonusDocumentos\" />
+    <WCFMetadataStorage Include="Service References\WsBonusInsertarToken\" />
     <WCFMetadataStorage Include="Service References\WsBonusLogin\" />
     <WCFMetadataStorage Include="Service References\WsBonusProvincias\" />
   </ItemGroup>
@@ -201,6 +249,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WsBonusDepartamentos\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusInsertarToken\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusInsertarToken\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusInsertarToken\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerToken\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerToken\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerToken\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusActualizarToken\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusActualizarToken\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusActualizarToken\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusEliminarToken\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusEliminarToken\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusEliminarToken\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusEliminarTokenPorUsuario\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusEliminarTokenPorUsuario\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusEliminarTokenPorUsuario\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

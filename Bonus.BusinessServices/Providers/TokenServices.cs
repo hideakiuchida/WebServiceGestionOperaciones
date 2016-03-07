@@ -13,21 +13,6 @@ namespace Bonus.BusinessServices.Providers
 {
     public class TokenServices : ITokenServices
     {
-        #region Private member variables.
-        private readonly UnitOfWork _unitOfWork;
-        #endregion
-
-        #region Public constructor.
-        /// <summary>
-        /// Public constructor.
-        /// </summary>
-        public TokenServices(UnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
-        #endregion
-
-
         #region Public member methods.
 
         /// <summary>
@@ -42,16 +27,10 @@ namespace Bonus.BusinessServices.Providers
             DateTime issuedOn = DateTime.Now;
             DateTime expiredOn = DateTime.Now.AddSeconds(
                                               Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
-            var tokendomain = new Tokens
-            {
-                UserId = userId,
-                AuthToken = token,
-                IssuedOn = issuedOn,
-                ExpiresOn = expiredOn
-            };
+            string msgError = "";
+            WsBonusInsertarToken.wsinstokenSoapPortClient ws = new WsBonusInsertarToken.wsinstokenSoapPortClient();
+            short respuesta = ws.Execute(userId.ToString(), token, issuedOn, issuedOn, out msgError);
 
-            _unitOfWork.TokenRepository.Insert(tokendomain);
-            _unitOfWork.Save();
             var tokenModel = new TokenEntity()
             {
                 UserId = userId,
@@ -70,13 +49,26 @@ namespace Bonus.BusinessServices.Providers
         /// <returns></returns>
         public bool ValidateToken(string tokenId)
         {
-            var token = _unitOfWork.TokenRepository.Get(t => t.AuthToken == tokenId && t.ExpiresOn > DateTime.Now);
-            if (token != null && !(DateTime.Now > token.ExpiresOn))
+            WsBonusObtenerToken.wsobttokenSoapPortClient ws = new WsBonusObtenerToken.wsobttokenSoapPortClient();
+            WsBonusActualizarToken.wsacttokenSoapPortClient wsActualizar = new WsBonusActualizarToken.wsacttokenSoapPortClient();
+            TokenEntity token = new TokenEntity();
+            string userId, msgError;
+            int _tokenID;
+            DateTime issuedOn;
+            DateTime expiredOn;
+
+            short respuesta = ws.Execute(tokenId, DateTime.Now, out msgError, out _tokenID, out userId, out issuedOn, out expiredOn);
+            TokenEntity tokenEntity = new TokenEntity();
+            tokenEntity.TokenId = _tokenID;
+            tokenEntity.UserId = int.Parse(userId);
+            tokenEntity.IssuedOn = issuedOn;
+            tokenEntity.ExpiresOn = expiredOn;
+
+            if (tokenEntity != null && !(DateTime.Now > tokenEntity.ExpiresOn))
             {
-                token.ExpiresOn = token.ExpiresOn.AddSeconds(
+                tokenEntity.ExpiresOn = tokenEntity.ExpiresOn.AddSeconds(
                                               Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
-                _unitOfWork.TokenRepository.Update(token);
-                _unitOfWork.Save();
+                short respuestaActualizar = wsActualizar.Execute(tokenEntity.AuthToken, tokenEntity.ExpiresOn, out msgError);
                 return true;
             }
             return false;
@@ -88,9 +80,11 @@ namespace Bonus.BusinessServices.Providers
         /// <param name="tokenId">true for successful delete</param>
         public bool Kill(string tokenId)
         {
-            _unitOfWork.TokenRepository.Delete(x => x.AuthToken == tokenId);
-            _unitOfWork.Save();
-            var isNotDeleted = _unitOfWork.TokenRepository.GetMany(x => x.AuthToken == tokenId).Any();
+            WsBonusEliminarToken.wselitokenSoapPortClient ws = new WsBonusEliminarToken.wselitokenSoapPortClient();
+            string msgError;
+            ws.Execute(tokenId, out msgError);
+
+            var isNotDeleted = true; // _unitOfWork.TokenRepository.GetMany(x => x.AuthToken == tokenId).Any();
             if (isNotDeleted) { return false; }
             return true;
         }
@@ -102,10 +96,13 @@ namespace Bonus.BusinessServices.Providers
         /// <returns>true for successful delete</returns>
         public bool DeleteByUserId(int userId)
         {
-            _unitOfWork.TokenRepository.Delete(x => x.UserId == userId);
-            _unitOfWork.Save();
+            WsBonusEliminarTokenPorUsuario.wselitokusSoapPortClient ws = new WsBonusEliminarTokenPorUsuario.wselitokusSoapPortClient();
+            string msgError;
+            ws.Execute(userId.ToString(), out msgError);
+            /*_unitOfWork.TokenRepository.Delete(x => x.UserId == userId);
+            _unitOfWork.Save();*/
 
-            var isNotDeleted = _unitOfWork.TokenRepository.GetMany(x => x.UserId == userId).Any();
+            var isNotDeleted = true;// _unitOfWork.TokenRepository.GetMany(x => x.UserId == userId).Any();
             return !isNotDeleted;
         }
 
