@@ -27,19 +27,31 @@ namespace Bonus.BusinessServices.Providers
             DateTime issuedOn = DateTime.Now;
             DateTime expiredOn = DateTime.Now.AddSeconds(
                                               Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
+            /*
+            0: Éxito
+            1: UserId en blanco
+            2: AuthToken en blanco
+            3: IssuedOn en blanco
+            4: ExpiresOn en blanco
+            5: TokenId duplicada
+            */
             string msgError = "";
             WsBonusInsertarToken.wsinstokenSoapPortClient ws = new WsBonusInsertarToken.wsinstokenSoapPortClient();
             short respuesta = ws.Execute(userId.ToString(), token, issuedOn, expiredOn, out msgError);
 
-            var tokenModel = new TokenEntity()
-            {
-                UserId = userId,
-                IssuedOn = issuedOn,
-                ExpiresOn = expiredOn,
-                AuthToken = token
-            };
+            if(respuesta == 0)
+            { 
+                var tokenModel = new TokenEntity()
+                {
+                    UserId = userId,
+                    IssuedOn = issuedOn,
+                    ExpiresOn = expiredOn,
+                    AuthToken = token
+                };
 
-            return tokenModel;
+                return tokenModel;
+            }
+            return null;
         }
 
         /// <summary>
@@ -54,23 +66,43 @@ namespace Bonus.BusinessServices.Providers
             TokenEntity token = new TokenEntity();
             string userId, msgError;
             int _tokenID;
-            DateTime issuedOn;
-            DateTime expiredOn;
+            string issuedOn;
+            string expiredOn;
 
+            /*
+                0: Éxito
+                1: AuthToken en blanco
+                2: CurrentDate en blanco
+                3: No hay registros
+            */
             short respuesta = ws.Execute(tokenId, DateTime.Now, out msgError, out _tokenID, out userId, out issuedOn, out expiredOn);
-            TokenEntity tokenEntity = new TokenEntity();
-            tokenEntity.TokenId = _tokenID;
-            tokenEntity.UserId = int.Parse(userId);
-            tokenEntity.IssuedOn = issuedOn;
-            tokenEntity.ExpiresOn = expiredOn;
 
-            if (tokenEntity != null && !(DateTime.Now > tokenEntity.ExpiresOn))
+            if (respuesta == 0)
             {
-                tokenEntity.ExpiresOn = tokenEntity.ExpiresOn.AddSeconds(
-                                              Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
-                short respuestaActualizar = wsActualizar.Execute(tokenEntity.AuthToken, tokenEntity.ExpiresOn, out msgError);
-                return true;
+                TokenEntity tokenEntity = new TokenEntity();
+                tokenEntity.AuthToken = tokenId;
+                tokenEntity.TokenId = _tokenID;
+                tokenEntity.UserId = int.Parse(userId);
+                /**/
+                tokenEntity.IssuedOn = DateTime.Parse(issuedOn);
+                tokenEntity.ExpiresOn = DateTime.Parse(expiredOn);
+
+                if (tokenEntity != null && !(DateTime.Now > tokenEntity.ExpiresOn))
+                {
+                    tokenEntity.ExpiresOn = tokenEntity.ExpiresOn.AddSeconds(
+                                                  Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
+                    /*
+                    0: Éxito
+                    1: AuthToken en blanco
+                    2: ExpiresOn en blanco
+                    3: No se encontró AuthToken ingresado
+                    */
+                    short respuestaActualizar = wsActualizar.Execute(tokenEntity.AuthToken, tokenEntity.ExpiresOn, out msgError);
+                    if(respuestaActualizar==0)
+                        return true;
+                }
             }
+
             return false;
         }
 
@@ -80,13 +112,23 @@ namespace Bonus.BusinessServices.Providers
         /// <param name="tokenId">true for successful delete</param>
         public bool Kill(string tokenId)
         {
+            /*
+            Mapeo de errores:
+            0: Éxito
+            1: AuthToken en blanco
+            2: No se encontró AuthToken ingresado
+            */
             WsBonusEliminarToken.wselitokenSoapPortClient ws = new WsBonusEliminarToken.wselitokenSoapPortClient();
+            WsBonusObtenerCountToken.wsobtcotokSoapPortClient wsCount = new WsBonusObtenerCountToken.wsobtcotokSoapPortClient();
             string msgError;
-            ws.Execute(tokenId, out msgError);
+            short codError;
+            short respuesta = ws.Execute(tokenId, out msgError);
+            if (respuesta == 0)
+                respuesta = wsCount.Execute(tokenId, out codError, out msgError);
+            else
+                return false;
 
-            var isNotDeleted = true; // _unitOfWork.TokenRepository.GetMany(x => x.AuthToken == tokenId).Any();
-            if (isNotDeleted) { return false; }
-            return true;
+            return (respuesta == 0) ? true : false;
         }
 
         /// <summary>
@@ -96,14 +138,22 @@ namespace Bonus.BusinessServices.Providers
         /// <returns>true for successful delete</returns>
         public bool DeleteByUserId(int userId)
         {
+            /*
+            0: Éxito
+            1: UserId en blanco
+            2: No se encontró UserId ingresado
+            */
             WsBonusEliminarTokenPorUsuario.wselitokusSoapPortClient ws = new WsBonusEliminarTokenPorUsuario.wselitokusSoapPortClient();
+            WsBonusObtenerCountTokenPorUsuario.wsobtctousSoapPortClient wsCount = new WsBonusObtenerCountTokenPorUsuario.wsobtctousSoapPortClient();
             string msgError;
-            ws.Execute(userId.ToString(), out msgError);
-            /*_unitOfWork.TokenRepository.Delete(x => x.UserId == userId);
-            _unitOfWork.Save();*/
+            short codError;
+            short respuesta = ws.Execute(userId.ToString(), out msgError);
+            if (respuesta == 0)
+                respuesta = wsCount.Execute(userId.ToString(), out codError, out msgError);
+            else
+                return false;
 
-            var isNotDeleted = true;// _unitOfWork.TokenRepository.GetMany(x => x.UserId == userId).Any();
-            return !isNotDeleted;
+            return (respuesta == 0) ? true : false;
         }
 
         #endregion

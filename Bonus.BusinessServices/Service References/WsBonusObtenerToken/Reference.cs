@@ -91,22 +91,22 @@ namespace Bonus.BusinessServices.WsBonusObtenerToken {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
         public string Userid;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public System.DateTime Issuedon;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Oissuedon;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-        public System.DateTime Expireson;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Oexpireson;
         
         public ExecuteResponseBody() {
         }
         
-        public ExecuteResponseBody(short Coderror, string Msjerror, int Tokenid, string Userid, System.DateTime Issuedon, System.DateTime Expireson) {
+        public ExecuteResponseBody(short Coderror, string Msjerror, int Tokenid, string Userid, string Oissuedon, string Oexpireson) {
             this.Coderror = Coderror;
             this.Msjerror = Msjerror;
             this.Tokenid = Tokenid;
             this.Userid = Userid;
-            this.Issuedon = Issuedon;
-            this.Expireson = Expireson;
+            this.Oissuedon = Oissuedon;
+            this.Oexpireson = Oexpireson;
         }
     }
     
@@ -142,7 +142,7 @@ namespace Bonus.BusinessServices.WsBonusObtenerToken {
             return base.Channel.Execute(request);
         }
         
-        public short Execute(string Authtoken, System.DateTime Currentdate, out string Msjerror, out int Tokenid, out string Userid, out System.DateTime Issuedon, out System.DateTime Expireson) {
+        public short Execute(string Authtoken, System.DateTime Currentdate, out string Msjerror, out int Tokenid, out string Userid, out string Oissuedon, out string Oexpireson) {
             Bonus.BusinessServices.WsBonusObtenerToken.ExecuteRequest inValue = new Bonus.BusinessServices.WsBonusObtenerToken.ExecuteRequest();
             inValue.Body = new Bonus.BusinessServices.WsBonusObtenerToken.ExecuteRequestBody();
             inValue.Body.Authtoken = Authtoken;
@@ -151,8 +151,8 @@ namespace Bonus.BusinessServices.WsBonusObtenerToken {
             Msjerror = retVal.Body.Msjerror;
             Tokenid = retVal.Body.Tokenid;
             Userid = retVal.Body.Userid;
-            Issuedon = retVal.Body.Issuedon;
-            Expireson = retVal.Body.Expireson;
+            Oissuedon = retVal.Body.Oissuedon;
+            Oexpireson = retVal.Body.Oexpireson;
             return retVal.Body.Coderror;
         }
         

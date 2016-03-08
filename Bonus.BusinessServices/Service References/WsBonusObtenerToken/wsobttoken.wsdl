@@ -17,8 +17,8 @@
             <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Tokenid" type="xsd:int" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Userid" type="xsd:string" />
-            <xsd:element minOccurs="1" maxOccurs="1" name="Issuedon" type="xsd:dateTime" />
-            <xsd:element minOccurs="1" maxOccurs="1" name="Expireson" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Oissuedon" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Oexpireson" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>

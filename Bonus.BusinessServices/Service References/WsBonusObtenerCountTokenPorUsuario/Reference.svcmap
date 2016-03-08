@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f16ecd2d-0665-428d-b106-ad1e16bf2edb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5ad9743f-4ab2-42d0-a473-52ac7c60d11d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://200.62.147.188:8080/app/servlet/awsacttoken?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://200.62.147.188:8080/app/servlet/awsobtctous?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wsacttoken.wsdl" MetadataType="Wsdl" ID="34f69da1-75a9-4281-a6d3-68a8ac805477" SourceId="1" SourceUrl="http://200.62.147.188:8080/app/servlet/awsacttoken?wsdl" />
+    <MetadataFile FileName="wsobtctous.wsdl" MetadataType="Wsdl" ID="0befc0fb-b674-4309-922c-83b3ab500fd1" SourceId="1" SourceUrl="http://200.62.147.188:8080/app/servlet/awsobtctous?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
