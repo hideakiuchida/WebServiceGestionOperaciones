@@ -1,5 +1,6 @@
 ﻿using Bonus.BusinessEntities.DTO;
 using Bonus.BusinessServices.Interfaces;
+using Bonus.Common.Enums;
 using Bonus.DataModel;
 using Bonus.DataModel.UnitOfWork;
 using System;
@@ -27,15 +28,8 @@ namespace Bonus.BusinessServices.Providers
             DateTime issuedOn = DateTime.Now;
             DateTime expiredOn = DateTime.Now.AddSeconds(
                                               Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
-            /*
-            0: Éxito
-            1: UserId en blanco
-            2: AuthToken en blanco
-            3: IssuedOn en blanco
-            4: ExpiresOn en blanco
-            5: TokenId duplicada
-            */
             string msgError = "";
+           
             WsBonusInsertarToken.wsinstokenSoapPortClient ws = new WsBonusInsertarToken.wsinstokenSoapPortClient();
             short respuesta = ws.Execute(userId.ToString(), token, issuedOn, expiredOn, out msgError);
 
@@ -69,12 +63,6 @@ namespace Bonus.BusinessServices.Providers
             string issuedOn;
             string expiredOn;
 
-            /*
-                0: Éxito
-                1: AuthToken en blanco
-                2: CurrentDate en blanco
-                3: No hay registros
-            */
             short respuesta = ws.Execute(tokenId, DateTime.Now, out msgError, out _tokenID, out userId, out issuedOn, out expiredOn);
 
             if (respuesta == 0)
@@ -91,12 +79,7 @@ namespace Bonus.BusinessServices.Providers
                 {
                     tokenEntity.ExpiresOn = tokenEntity.ExpiresOn.AddSeconds(
                                                   Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
-                    /*
-                    0: Éxito
-                    1: AuthToken en blanco
-                    2: ExpiresOn en blanco
-                    3: No se encontró AuthToken ingresado
-                    */
+
                     short respuestaActualizar = wsActualizar.Execute(tokenEntity.AuthToken, tokenEntity.ExpiresOn, out msgError);
                     if(respuestaActualizar==0)
                         return true;
