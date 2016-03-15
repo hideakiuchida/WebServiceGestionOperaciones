@@ -312,8 +312,7 @@ namespace Bonus.BusinessServices.WsBonusObtenerDatosClientes {
         public string Prssex;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=10)]
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
-        public System.DateTime Prsfecnac;
+        public string Oprsfecnac;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=11)]
         public string Texto1;
@@ -377,7 +376,7 @@ namespace Bonus.BusinessServices.WsBonusObtenerDatosClientes {
                     short Tipdoccod, 
                     string Prsnrodoc, 
                     string Prssex, 
-                    System.DateTime Prsfecnac, 
+                    string Oprsfecnac, 
                     string Texto1, 
                     string Texto2, 
                     string Texto3, 
@@ -403,7 +402,7 @@ namespace Bonus.BusinessServices.WsBonusObtenerDatosClientes {
             this.Tipdoccod = Tipdoccod;
             this.Prsnrodoc = Prsnrodoc;
             this.Prssex = Prssex;
-            this.Prsfecnac = Prsfecnac;
+            this.Oprsfecnac = Oprsfecnac;
             this.Texto1 = Texto1;
             this.Texto2 = Texto2;
             this.Texto3 = Texto3;
@@ -465,7 +464,7 @@ namespace Bonus.BusinessServices.WsBonusObtenerDatosClientes {
                     out short Tipdoccod, 
                     out string Prsnrodoc, 
                     out string Prssex, 
-                    out System.DateTime Prsfecnac, 
+                    out string Oprsfecnac, 
                     out string Texto1, 
                     out string Texto2, 
                     out string Texto3, 
@@ -493,7 +492,7 @@ namespace Bonus.BusinessServices.WsBonusObtenerDatosClientes {
             Tipdoccod = retVal.Tipdoccod;
             Prsnrodoc = retVal.Prsnrodoc;
             Prssex = retVal.Prssex;
-            Prsfecnac = retVal.Prsfecnac;
+            Oprsfecnac = retVal.Oprsfecnac;
             Texto1 = retVal.Texto1;
             Texto2 = retVal.Texto2;
             Texto3 = retVal.Texto3;

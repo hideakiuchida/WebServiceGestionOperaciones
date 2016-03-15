@@ -63,7 +63,7 @@
             <xsd:element minOccurs="1" maxOccurs="1" name="Tipdoccod" type="xsd:short" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsnrodoc" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prssex" type="xsd:string" />
-            <xsd:element minOccurs="1" maxOccurs="1" name="Prsfecnac" type="xsd:date" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Oprsfecnac" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Texto1" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Texto2" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Texto3" type="xsd:string" />

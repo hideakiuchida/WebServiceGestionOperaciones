@@ -45,8 +45,7 @@ namespace Bonus.BusinessServices.Providers
 
            string PrsApePat, PrsApeMat, PrsPriNom, PrsSegNom, PrsTerNom, PrsNroDoc, PrsSex, Texto1, Texto2, Texto3, Texto4, Texto5, Direccion;
            short TipDocCod;
-           DateTime PrsFecNac;
-           string Referencia, DptoCod, ProvCod, DistCod, FlgTieVeh, FlgTieHij;
+           string PrsFecNac, Referencia, DptoCod, ProvCod, DistCod, FlgTieVeh, FlgTieHij;
 
            int respuesta = ws.Execute(PrsCod, out msgError, out PrsApePat, out PrsApeMat, out PrsPriNom, out PrsSegNom, out PrsTerNom,
                out TipDocCod, out PrsNroDoc, out PrsSex, out PrsFecNac, out Texto1, out Texto2, out Texto3, out Texto4,
@@ -61,16 +60,15 @@ namespace Bonus.BusinessServices.Providers
             if (respuesta == 0)
             {
                 cliente.PrsApePat = PrsApePat;
-
+                cliente.PrsNroDoc = PrsNroDoc;
                 cliente.PrsApePat = PrsApePat;
                 cliente.PrsApeMat = PrsApeMat;
                 cliente.PrsPriNom = PrsPriNom;
                 cliente.PrsSegNom = PrsSegNom;
                 cliente.PrsTerNom = PrsTerNom;
                 cliente.TipDocCod = TipDocCod;
-                cliente.PrsFecNac = PrsNroDoc;
                 cliente.PrsSex = PrsSex;
-                cliente.PrsFecNac = PrsFecNac.ToString();
+                cliente.PrsFecNac = PrsFecNac;
                 cliente.Texto1 = Texto1;
                 cliente.Texto2 = Texto2;
                 cliente.Texto3 = Texto3;
