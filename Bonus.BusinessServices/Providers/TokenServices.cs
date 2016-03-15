@@ -2,6 +2,7 @@
 using Bonus.BusinessServices.Interfaces;
 using System;
 using System.Configuration;
+using System.Globalization;
 
 namespace Bonus.BusinessServices.Providers
 {
@@ -64,9 +65,24 @@ namespace Bonus.BusinessServices.Providers
                 tokenEntity.AuthToken = tokenId;
                 tokenEntity.TokenId = _tokenID;
                 tokenEntity.UserId = int.Parse(userId);
-                /**/
-                tokenEntity.IssuedOn = DateTime.Parse(issuedOn);
-                tokenEntity.ExpiresOn = DateTime.Parse(expiredOn);
+
+                var formats = new[] {
+                  "yyyy.MM.dd HH:mm:ss",
+                  "yyyy-MM-dd HH:mm:ss",
+                  "yyyy/MM/dd HH:mm:ss",
+                  "yyyy.MM.dd hh:mm:ss",
+                  "yyyy-MM-dd hh:mm:ss",
+                  "yyyy/MM/dd hh:mm:ss",
+                  "dd.MM.yyyy HH:mm:ss",
+                  "dd-MM-yyyy HH:mm:ss",
+                  "dd/MM/yyyy HH:mm:ss",
+                  "dd.MM.yyyy hh:mm:ss",
+                  "dd-MM-yyyy hh:mm:ss",
+                  "dd/MM/yyyy hh:mm:ss"
+                };
+
+                tokenEntity.IssuedOn = DateTime.ParseExact(issuedOn, formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+                tokenEntity.ExpiresOn = DateTime.ParseExact(expiredOn, formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
 
                 if (tokenEntity != null && !(DateTime.Now > tokenEntity.ExpiresOn))
                 {
