@@ -10,7 +10,7 @@ namespace Bonus.BusinessServices.Providers
 {
     public class ClienteServices : IClienteServices
     {
-        public bool ExisteCliente(short tipodoccod, string prsnrodoc)
+        public string ExisteCliente(short tipodoccod, string prsnrodoc)
         {
             WsBonusExisteClienteBonus.wsexicliboSoapPortClient ws = new WsBonusExisteClienteBonus.wsexicliboSoapPortClient();
 
@@ -28,9 +28,9 @@ namespace Bonus.BusinessServices.Providers
             int respuesta = ws.Execute(tipodoccod, prsnrodoc, out msgError, out prsCod);
             if (respuesta == 0)
             {
-                return true;
+                return prsCod;
             }
-            return false;
+            return null;
         }
 
         public ClienteEntity ObtenerCliente(string PrsCod)

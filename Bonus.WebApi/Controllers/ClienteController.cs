@@ -37,7 +37,7 @@ namespace Bonus.WebApi.Controllers
 
         [Route("ExisteCliente")]
         [HttpGet]
-        public bool ExisteCliente(int tipoDocCod, string prsNroDoc)
+        public string ExisteCliente(int tipoDocCod, string prsNroDoc)
         {
             return _services.ExisteCliente(Convert.ToInt16(tipoDocCod), prsNroDoc);
         }
