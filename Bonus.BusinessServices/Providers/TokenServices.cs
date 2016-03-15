@@ -1,14 +1,7 @@
 ﻿using Bonus.BusinessEntities.DTO;
 using Bonus.BusinessServices.Interfaces;
-using Bonus.Common.Enums;
-using Bonus.DataModel;
-using Bonus.DataModel.UnitOfWork;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bonus.BusinessServices.Providers
 {

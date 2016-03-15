@@ -12,7 +12,7 @@ namespace Bonus.BusinessServices.Providers
     {
         public bool ExisteCliente(short tipodoccod, string prsnrodoc)
         {
-            WsBonusExisteClienteBonus.wsexicliboSoapPortClient ws = new WsBonusExisteClienteBonus.wsexicliboSoapPortClient;
+            WsBonusExisteClienteBonus.wsexicliboSoapPortClient ws = new WsBonusExisteClienteBonus.wsexicliboSoapPortClient();
 
             string msgError = "";
             string prsCod;
