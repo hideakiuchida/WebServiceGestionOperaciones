@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="DTO\CarritoEntity.cs" />
     <Compile Include="DTO\ClienteEntity.cs" />
+    <Compile Include="DTO\CuentaEntity.cs" />
     <Compile Include="DTO\DepartamentoEntity.cs" />
     <Compile Include="DTO\DistritoEntity.cs" />
     <Compile Include="DTO\DocumentoEntity.cs" />
+    <Compile Include="DTO\MovFideEntity.cs" />
     <Compile Include="DTO\ProvinciaEntity.cs" />
     <Compile Include="DTO\TokenEntity.cs" />
     <Compile Include="DTO\UserEntity.cs" />

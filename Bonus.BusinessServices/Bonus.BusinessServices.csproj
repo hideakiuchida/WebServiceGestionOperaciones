@@ -65,6 +65,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\WsBonusInfoCuenta\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusMovFidelizacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WsBonusObtenerCountTokenPorUsuario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,6 +168,20 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusExisteClienteBonus\wsexiclibo.wsdl" />
+    <None Include="Service References\WsBonusInfoCuenta\Bonus.BusinessServices.WsBonusInfoCuenta.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusInfoCuenta\Bonus.BusinessServices.WsBonusInfoCuenta.LisctaptoLisctaptoItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusInfoCuenta\wslisctapt.wsdl" />
+    <None Include="Service References\WsBonusMovFidelizacion\Bonus.BusinessServices.WsBonusMovFidelizacion.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusMovFidelizacion\Bonus.BusinessServices.WsBonusMovFidelizacion.UltMovPtoUltMovPtoItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusMovFidelizacion\wsultmovpt.wsdl" />
     <None Include="Service References\WsBonusObtenerCountTokenPorUsuario\Bonus.BusinessServices.WsBonusObtenerCountTokenPorUsuario.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -234,6 +258,8 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WsBonusExisteClienteBonus\" />
+    <WCFMetadataStorage Include="Service References\WsBonusInfoCuenta\" />
+    <WCFMetadataStorage Include="Service References\WsBonusMovFidelizacion\" />
     <WCFMetadataStorage Include="Service References\WsBonusObtenerCountTokenPorUsuario\" />
     <WCFMetadataStorage Include="Service References\WsBonusActualizarToken\" />
     <WCFMetadataStorage Include="Service References\WsBonusEliminarTokenPorUsuario\" />
@@ -412,6 +438,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WsBonusObtenerDatosClientes\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusMovFidelizacion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusMovFidelizacion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusMovFidelizacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusInfoCuenta\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusInfoCuenta\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusInfoCuenta\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

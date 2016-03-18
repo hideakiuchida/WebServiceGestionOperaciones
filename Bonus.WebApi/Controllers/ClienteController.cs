@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace Bonus.WebApi.Controllers
 {
-    [AuthorizationRequired]
+    //[AuthorizationRequired]
     public class ClienteController : ApiController
     {
         #region Private variable.
@@ -40,6 +40,20 @@ namespace Bonus.WebApi.Controllers
         public string ExisteCliente(int tipoDocCod, string prsNroDoc)
         {
             return _services.ExisteCliente(Convert.ToInt16(tipoDocCod), prsNroDoc);
+        }
+    
+        [Route("ObtenerMovFidelizacion")]
+        [HttpGet]
+        public MovFideEntity ObtenerMovFidelizacion(string ctaPrsCod, int ctaCod)
+        {
+            return _services.ObtenerMovFidelizacion(ctaPrsCod, ctaCod);
+        }
+
+        [Route("ObtenerCuentas")]
+        [HttpGet]
+        public IEnumerable<CuentaEntity> ObtenerCuentas(string ctaPrsCod)
+        {
+            return _services.ObtenerCuentas(ctaPrsCod);
         }
     }
 }

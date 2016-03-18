@@ -33,7 +33,7 @@ namespace Bonus.BusinessServices.Providers
             return null;
         }
 
-        public ClienteEntity ObtenerCliente(string PrsCod)
+        public ClienteEntity ObtenerCliente(string prsCod)
         {
            WsBonusObtenerDatosClientes.wsdevdatcoSoapPortClient ws = new WsBonusObtenerDatosClientes.wsdevdatcoSoapPortClient();
 
@@ -47,7 +47,7 @@ namespace Bonus.BusinessServices.Providers
            short TipDocCod;
            string PrsFecNac, Referencia, DptoCod, ProvCod, DistCod, FlgTieVeh, FlgTieHij;
 
-           int respuesta = ws.Execute(PrsCod, out msgError, out PrsApePat, out PrsApeMat, out PrsPriNom, out PrsSegNom, out PrsTerNom,
+           int respuesta = ws.Execute(prsCod, out msgError, out PrsApePat, out PrsApeMat, out PrsPriNom, out PrsSegNom, out PrsTerNom,
                out TipDocCod, out PrsNroDoc, out PrsSex, out PrsFecNac, out Texto1, out Texto2, out Texto3, out Texto4,
                out Texto5, out carritoCo, out carritoTe, out Direccion, out Referencia, out DptoCod, out ProvCod, out DistCod, out FlgTieVeh,
                out FlgTieHij, out carritoHij);
@@ -124,6 +124,76 @@ namespace Bonus.BusinessServices.Providers
                 cliente.carritosHij = _carritoHij;
             }
             return cliente;
+        }
+
+        public IEnumerable<CuentaEntity> ObtenerCuentas(string ctaPrsCod)
+        {
+            WsBonusInfoCuenta.wslisctaptSoapPortClient ws = new WsBonusInfoCuenta.wslisctaptSoapPortClient();
+            WsBonusInfoCuenta.LisctaptoLisctaptoItem[] carritoCta;
+            List<CuentaEntity> cuentaEntity = new List<CuentaEntity>();
+            string msgError;
+            int respuesta = ws.Execute(ctaPrsCod, out msgError, out carritoCta);
+            /*
+            0: Éxito
+            1: Código de persona nula
+            2: Código de cuenta nula
+            3: Código de persona no existe
+
+            */
+            if (respuesta == 0)
+            {
+                
+                foreach (var item in carritoCta)
+                {
+                    CuentaEntity cuenta = new CuentaEntity();
+                    cuenta.CtaCod = item.CtaCod;
+                    cuenta.CtaAsoNom = item.CtaAsoNom;
+                    cuenta.CtaPrsCod = item.CtaPrsCod;
+                    cuenta.CtaPrsNom = item.CtaPrsNom;
+                    cuenta.CtaSalCon = item.CtaSalCon;
+                    cuenta.CtaSalDsp = item.CtaSalDsp;
+                    cuenta.CtaSalVig = item.CtaSalVig;
+                    cuentaEntity.Add(cuenta);
+                }
+            }
+            return cuentaEntity;
+
+        }
+
+        public MovFideEntity ObtenerMovFidelizacion(string ctaPrsCod, int ctaCod)
+        {
+            WsBonusMovFidelizacion.wsultmovptSoapPortClient ws = new WsBonusMovFidelizacion.wsultmovptSoapPortClient();
+            WsBonusMovFidelizacion.UltMovPtoUltMovPtoItem[] _movFid;
+            string msgError;
+            int nroTra;
+            int respuesta = ws.Execute(ctaPrsCod, Convert.ToInt16(ctaCod), out msgError, out nroTra, out _movFid);
+            MovFideEntity movFideEntity = new MovFideEntity();
+            /*
+            0: Éxito
+            1: Código de persona nula
+            2: Código de persona no existe
+
+            */
+            if (respuesta == 0)
+            {
+                movFideEntity.NroTrn = nroTra;
+                List<Transaccion> _transacciones = new List<Transaccion>();
+                foreach (var item in _movFid)
+                {
+                    Transaccion transaccion = new Transaccion();
+                    transaccion.Descrip = item.Descrip;
+                    transaccion.EsCanje = item.EsCanje;
+                    transaccion.FchAsig = item.FchAsig;
+                    transaccion.FchHor = item.FchHor;
+                    transaccion.FchProc = item.FchProc;
+                    transaccion.HorProc = item.HorProc;
+                    transaccion.PtosAsig = item.PtosAsig;
+                    transaccion.PtosCanj = item.PtosCanj;
+                    _transacciones.Add(transaccion);
+                }
+                movFideEntity.Transacciones = _transacciones;
+            }
+            return movFideEntity;
         }
     }
 }
