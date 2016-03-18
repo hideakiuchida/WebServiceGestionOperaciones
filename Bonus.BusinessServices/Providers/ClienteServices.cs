@@ -152,6 +152,10 @@ namespace Bonus.BusinessServices.Providers
                     cuenta.CtaSalCon = item.CtaSalCon;
                     cuenta.CtaSalDsp = item.CtaSalDsp;
                     cuenta.CtaSalVig = item.CtaSalVig;
+                    cuenta.PCtaAsoCod = item.PCtaAsoCod;
+                    cuenta.PCtaAutCnj = item.PCtaAutCnj;
+                    cuenta.PCtaTip = item.PCtaTip;
+                    cuenta.TipPunCod = item.TipPunCod;
                     cuentaEntity.Add(cuenta);
                 }
             }
