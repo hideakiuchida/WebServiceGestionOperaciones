@@ -134,11 +134,10 @@ namespace Bonus.BusinessServices.Providers
             string msgError;
             int respuesta = ws.Execute(ctaPrsCod, out msgError, out carritoCta);
             /*
-            0: Éxito
-            1: Código de persona nula
-            2: Código de cuenta nula
-            3: Código de persona no existe
-
+                0: Éxito
+                1: Código de persona nula
+                2: Código de cuenta nula
+                3: Código de persona no existe
             */
             if (respuesta == 0)
             {
