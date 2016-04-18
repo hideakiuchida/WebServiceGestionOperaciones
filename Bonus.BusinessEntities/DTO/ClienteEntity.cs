@@ -32,5 +32,7 @@ namespace Bonus.BusinessEntities.DTO
         public string FlgTieVeh { get; set; }
         public string FlgTieHij { get; set; }
         public List<CarritoHij> carritosHij { get; set; }
+        //This field ResultCode exist for manage Errors
+        public int? ResultCode { get; set; }
     }
 }

@@ -6,6 +6,9 @@ namespace Bonus.BusinessEntities.DTO
     {
         public int NroTrn { get; set; }
         public List<Transaccion> Transacciones { get; set; }
+
+        //This field ResultCode exist for manage Errors
+        public int? ResultCode { get; set; }
     }
 
     public class Transaccion
@@ -18,5 +21,8 @@ namespace Bonus.BusinessEntities.DTO
         public double? PtosAsig { get; set; }
         public double? PtosCanj { get; set; }
         public string EsCanje { get; set; }
+
+        //This field ResultCode exist for manage Errors
+        public int? ResultCode { get; set; }
     }
 }

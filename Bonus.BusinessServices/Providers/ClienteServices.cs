@@ -30,7 +30,7 @@ namespace Bonus.BusinessServices.Providers
             {
                 return prsCod;
             }
-            return null;
+            return respuesta.ToString();
         }
 
         public ClienteEntity ObtenerCliente(string prsCod)
