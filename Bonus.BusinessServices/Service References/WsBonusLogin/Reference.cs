@@ -85,12 +85,20 @@ namespace Bonus.BusinessServices.WsBonusLogin {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public string Msjerror;
         
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public long Codpro;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Usunom;
+        
         public ExecuteResponseBody() {
         }
         
-        public ExecuteResponseBody(short Coderror, string Msjerror) {
+        public ExecuteResponseBody(short Coderror, string Msjerror, long Codpro, string Usunom) {
             this.Coderror = Coderror;
             this.Msjerror = Msjerror;
+            this.Codpro = Codpro;
+            this.Usunom = Usunom;
         }
     }
     
@@ -126,13 +134,15 @@ namespace Bonus.BusinessServices.WsBonusLogin {
             return base.Channel.Execute(request);
         }
         
-        public short Execute(string Usucod, string Usucla, out string Msjerror) {
+        public short Execute(string Usucod, string Usucla, out string Msjerror, out long Codpro, out string Usunom) {
             Bonus.BusinessServices.WsBonusLogin.ExecuteRequest inValue = new Bonus.BusinessServices.WsBonusLogin.ExecuteRequest();
             inValue.Body = new Bonus.BusinessServices.WsBonusLogin.ExecuteRequestBody();
             inValue.Body.Usucod = Usucod;
             inValue.Body.Usucla = Usucla;
             Bonus.BusinessServices.WsBonusLogin.ExecuteResponse retVal = ((Bonus.BusinessServices.WsBonusLogin.wslogusugxSoapPort)(this)).Execute(inValue);
             Msjerror = retVal.Body.Msjerror;
+            Codpro = retVal.Body.Codpro;
+            Usunom = retVal.Body.Usunom;
             return retVal.Body.Coderror;
         }
         

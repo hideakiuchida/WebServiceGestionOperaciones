@@ -50,6 +50,7 @@
     <Compile Include="DTO\ProvinciaEntity.cs" />
     <Compile Include="DTO\TokenEntity.cs" />
     <Compile Include="DTO\UserEntity.cs" />
+    <Compile Include="DTO\UsuarioEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

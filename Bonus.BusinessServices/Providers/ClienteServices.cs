@@ -74,7 +74,7 @@ namespace Bonus.BusinessServices.Providers
                 cliente.Texto3 = Texto3;
                 cliente.Texto4 = Texto4;
                 cliente.Texto5 = Texto5;
-                
+
                 List<CarritoCoEntity> _carritoCo = new List<CarritoCoEntity>();
                 foreach (var item in carritoCo)
                 {
@@ -123,6 +123,10 @@ namespace Bonus.BusinessServices.Providers
                 }
                 cliente.carritosHij = _carritoHij;
             }
+            else {
+                cliente.ResultCode = respuesta;
+            }
+
             return cliente;
         }
 
@@ -141,7 +145,7 @@ namespace Bonus.BusinessServices.Providers
             */
             if (respuesta == 0)
             {
-                
+
                 foreach (var item in carritoCta)
                 {
                     CuentaEntity cuenta = new CuentaEntity();
@@ -158,6 +162,9 @@ namespace Bonus.BusinessServices.Providers
                     cuenta.TipPunCod = item.TipPunCod;
                     cuentaEntity.Add(cuenta);
                 }
+            }
+            else {
+                cuentaEntity[0].ResultCode = respuesta;
             }
             return cuentaEntity;
 
@@ -195,6 +202,9 @@ namespace Bonus.BusinessServices.Providers
                     _transacciones.Add(transaccion);
                 }
                 movFideEntity.Transacciones = _transacciones;
+            }
+            else {
+                movFideEntity.ResultCode = respuesta;
             }
             return movFideEntity;
         }

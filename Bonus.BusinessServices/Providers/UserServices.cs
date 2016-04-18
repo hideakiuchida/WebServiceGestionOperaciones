@@ -1,4 +1,5 @@
-﻿using Bonus.BusinessServices.Interfaces;
+﻿using Bonus.BusinessEntities.DTO;
+using Bonus.BusinessServices.Interfaces;
 using Bonus.DataModel.UnitOfWork;
 
 namespace Bonus.BusinessServices.Providers
@@ -33,12 +34,21 @@ namespace Bonus.BusinessServices.Providers
         /// <param name="userName"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public int Authenticate(string userName, string password)
+        public UsuarioEntity Authenticate(string userName, string password)
         {
             string msgError = "";
+            long codPro;
+            string usuNom;
             WsBonusLogin.wslogusugxSoapPortClient ws = new WsBonusLogin.wslogusugxSoapPortClient();
-            int codError = ws.Execute(userName, password, out msgError);           
-            return codError;
+            int codError = ws.Execute(userName, password, out msgError, out codPro, out usuNom);
+            UsuarioEntity usuario = new UsuarioEntity();
+            usuario.CodError = codError;
+            if (codError == 0)
+            {
+                usuario.CodPro = codPro;
+                usuario.NomUsu = usuNom;
+            }
+            return usuario;
         }
     }
 }

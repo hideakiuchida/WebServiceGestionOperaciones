@@ -23,7 +23,14 @@ namespace Bonus.WebApi.Filters
         /// ■ ■ ■ ■ ■ Get/Set for ResultCode for Bonus ■ ■ ■ ■ ■
         /// </summary>
         public int ResultCode { get; set; }
-
+        /// <summary>
+        /// ■ ■ ■ ■ ■ Get/Set for CodPro for Bonus ■ ■ ■ ■ ■
+        /// </summary>
+        public long? CodPro { get; set; }
+        /// <summary>
+        /// ■ ■ ■ ■ ■ Get/Set for UsuNom for Bonus ■ ■ ■ ■ ■
+        /// </summary>
+        public string UsuNom { get; set; }
         /// <summary>
         /// Basic Authentication Identity Constructor
         /// </summary>
