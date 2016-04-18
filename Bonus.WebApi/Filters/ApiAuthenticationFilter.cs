@@ -38,12 +38,15 @@ namespace Bonus.WebApi.Filters
                                .DependencyResolver.GetService(typeof(IUserServices)) as IUserServices;
             if (provider != null)
             {
-                var userId = provider.Authenticate(username, password);
+                var resultCode = provider.Authenticate(username, password);
+                var userId = resultCode == 0 ? 1 : 0;
+                var basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
+                if (basicAuthenticationIdentity != null)
+                    basicAuthenticationIdentity.ResultCode = resultCode;
+                    
                 if (userId > 0)
                 {
-                    var basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
-                    if (basicAuthenticationIdentity != null)
-                        basicAuthenticationIdentity.UserId = userId;
+                    basicAuthenticationIdentity.UserId = userId;
                     return true;
                 }
             }

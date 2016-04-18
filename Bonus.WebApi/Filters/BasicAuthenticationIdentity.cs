@@ -19,6 +19,10 @@ namespace Bonus.WebApi.Filters
         /// Get/Set for UserId
         /// </summary>
         public int UserId { get; set; }
+        /// <summary>
+        /// ■ ■ ■ ■ ■ Get/Set for ResultCode for Bonus ■ ■ ■ ■ ■
+        /// </summary>
+        public int ResultCode { get; set; }
 
         /// <summary>
         /// Basic Authentication Identity Constructor

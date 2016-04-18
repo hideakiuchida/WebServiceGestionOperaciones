@@ -20,6 +20,15 @@ namespace Bonus.BusinessServices.Providers
 
         /// <summary>
         /// Public method to authenticate user by user name and password.
+        ///
+        ///    0: Éxito
+        ///    1: Usuario en blanco
+        ///    2: Clave en blanco
+        ///    3: Usuario no existe
+        ///    4: Usuario no pertenece al grupo autorizado
+        ///    5: Clave incorrecta
+        ///    6: Usuario no tiene código de promotor
+        ///  
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="password"></param>
@@ -28,19 +37,8 @@ namespace Bonus.BusinessServices.Providers
         {
             string msgError = "";
             WsBonusLogin.wslogusugxSoapPortClient ws = new WsBonusLogin.wslogusugxSoapPortClient();
-            int codError = ws.Execute(userName, password, out msgError);
-            /*
-            0: Éxito
-            1: Usuario en blanco
-            2: Clave en blanco
-            3: Usuario no existe
-            4: Usuario no pertenece al grupo autorizado
-            5: Clave incorrecta
-            */
-            if (codError == 0) {
-                return 1;
-            }
-            return 0;
+            int codError = ws.Execute(userName, password, out msgError);           
+            return codError;
         }
     }
 }

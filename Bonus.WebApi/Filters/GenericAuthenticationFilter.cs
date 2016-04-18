@@ -98,6 +98,12 @@ namespace Bonus.WebApi.Filters
             var dnsHost = filterContext.Request.RequestUri.DnsSafeHost;
             filterContext.Response = filterContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
             filterContext.Response.Headers.Add("WWW-Authenticate", string.Format("Basic realm=\"{0}\"", dnsHost));
+            var basicAuthenticationIdentity = System.Threading.Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
+            if (basicAuthenticationIdentity != null)
+            {
+                var resultCode = basicAuthenticationIdentity.ResultCode;
+                filterContext.Response.Headers.Add("ResultCode", resultCode.ToString());
+            }
         }
     }
 }
