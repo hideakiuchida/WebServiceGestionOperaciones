@@ -104,6 +104,7 @@ namespace Bonus.WebApi.Filters
             {
                 var resultCode = basicAuthenticationIdentity.ResultCode;
                 filterContext.Response.Headers.Add("ResultCode", resultCode.ToString());
+                filterContext.Response.Headers.Add("Access-Control-Expose-Headers", "ResultCode");
             }
         }
     }
