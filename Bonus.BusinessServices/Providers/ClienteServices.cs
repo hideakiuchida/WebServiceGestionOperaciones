@@ -164,7 +164,9 @@ namespace Bonus.BusinessServices.Providers
                 }
             }
             else {
-                cuentaEntity[0].ResultCode = respuesta;
+                CuentaEntity cuenta = new CuentaEntity();
+                cuenta.ResultCode = respuesta;
+                cuentaEntity.Add(cuenta);
             }
             return cuentaEntity;
 
