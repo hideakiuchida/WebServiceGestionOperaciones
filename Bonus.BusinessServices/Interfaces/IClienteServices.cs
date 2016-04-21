@@ -9,6 +9,6 @@ namespace Bonus.BusinessServices.Interfaces
         string ExisteCliente(short tipodoccod, string prsnrodoc);
         ClienteEntity ObtenerCliente(string prsCod);
         MovFideEntity ObtenerMovFidelizacion(string ctaPrsCod, int ctaCod);
-        IEnumerable<CuentaEntity> ObtenerCuentas(string ctaPrsCod);
+        CuentaInfoEntity ObtenerCuentas(string ctaPrsCod);
     }
 }

@@ -15,6 +15,7 @@
           <xsd:element name="PCtaAsoCod" type="xsd:string" />
           <xsd:element name="CtaAsoNom" type="xsd:string" />
           <xsd:element name="PCtaTip" type="xsd:string" />
+          <xsd:element name="PCtaTipNom" type="xsd:string" />
           <xsd:element name="PCtaAutCnj" type="xsd:string" />
           <xsd:element name="TipPunCod" type="xsd:short" />
           <xsd:element name="CtaSalVig" type="xsd:double" />
@@ -35,6 +36,9 @@
             <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Carritocta" type="tns1:Lisctapto" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prstipdcod" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsnrodoc" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsnomape" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>

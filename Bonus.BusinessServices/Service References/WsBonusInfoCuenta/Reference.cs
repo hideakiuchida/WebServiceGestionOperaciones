@@ -44,6 +44,8 @@ namespace Bonus.BusinessServices.WsBonusInfoCuenta {
         
         private string pCtaTipField;
         
+        private string pCtaTipNomField;
+        
         private string pCtaAutCnjField;
         
         private short tipPunCodField;
@@ -117,6 +119,17 @@ namespace Bonus.BusinessServices.WsBonusInfoCuenta {
             set {
                 this.pCtaTipField = value;
                 this.RaisePropertyChanged("PCtaTip");
+            }
+        }
+        
+        /// <remarks/>
+        public string PCtaTipNom {
+            get {
+                return this.pCtaTipNomField;
+            }
+            set {
+                this.pCtaTipNomField = value;
+                this.RaisePropertyChanged("PCtaTipNom");
             }
         }
         
@@ -216,13 +229,25 @@ namespace Bonus.BusinessServices.WsBonusInfoCuenta {
         [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
         public Bonus.BusinessServices.WsBonusInfoCuenta.LisctaptoLisctaptoItem[] Carritocta;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=3)]
+        public short Prstipdcod;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=4)]
+        public string Prsnrodoc;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=5)]
+        public string Prsnomape;
+        
         public ExecuteResponse() {
         }
         
-        public ExecuteResponse(short Coderror, string Msjerror, Bonus.BusinessServices.WsBonusInfoCuenta.LisctaptoLisctaptoItem[] Carritocta) {
+        public ExecuteResponse(short Coderror, string Msjerror, Bonus.BusinessServices.WsBonusInfoCuenta.LisctaptoLisctaptoItem[] Carritocta, short Prstipdcod, string Prsnrodoc, string Prsnomape) {
             this.Coderror = Coderror;
             this.Msjerror = Msjerror;
             this.Carritocta = Carritocta;
+            this.Prstipdcod = Prstipdcod;
+            this.Prsnrodoc = Prsnrodoc;
+            this.Prsnomape = Prsnomape;
         }
     }
     
@@ -258,12 +283,15 @@ namespace Bonus.BusinessServices.WsBonusInfoCuenta {
             return base.Channel.Execute(request);
         }
         
-        public short Execute(string Ctaprscod, out string Msjerror, out Bonus.BusinessServices.WsBonusInfoCuenta.LisctaptoLisctaptoItem[] Carritocta) {
+        public short Execute(string Ctaprscod, out string Msjerror, out Bonus.BusinessServices.WsBonusInfoCuenta.LisctaptoLisctaptoItem[] Carritocta, out short Prstipdcod, out string Prsnrodoc, out string Prsnomape) {
             Bonus.BusinessServices.WsBonusInfoCuenta.ExecuteRequest inValue = new Bonus.BusinessServices.WsBonusInfoCuenta.ExecuteRequest();
             inValue.Ctaprscod = Ctaprscod;
             Bonus.BusinessServices.WsBonusInfoCuenta.ExecuteResponse retVal = ((Bonus.BusinessServices.WsBonusInfoCuenta.wslisctaptSoapPort)(this)).Execute(inValue);
             Msjerror = retVal.Msjerror;
             Carritocta = retVal.Carritocta;
+            Prstipdcod = retVal.Prstipdcod;
+            Prsnrodoc = retVal.Prsnrodoc;
+            Prsnomape = retVal.Prsnomape;
             return retVal.Coderror;
         }
         

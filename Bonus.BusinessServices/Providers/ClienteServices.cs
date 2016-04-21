@@ -130,13 +130,16 @@ namespace Bonus.BusinessServices.Providers
             return cliente;
         }
 
-        public IEnumerable<CuentaEntity> ObtenerCuentas(string ctaPrsCod)
+        public CuentaInfoEntity ObtenerCuentas(string ctaPrsCod)
         {
             WsBonusInfoCuenta.wslisctaptSoapPortClient ws = new WsBonusInfoCuenta.wslisctaptSoapPortClient();
             WsBonusInfoCuenta.LisctaptoLisctaptoItem[] carritoCta;
+            
+            string msgError, PrsNroDoc, PrsNomApe;
+            short PrsTipdCod;
+            int respuesta = ws.Execute(ctaPrsCod, out msgError, out carritoCta, out PrsTipdCod, out PrsNroDoc, out PrsNomApe);
+            CuentaInfoEntity cuentaInfo = new CuentaInfoEntity();
             List<CuentaEntity> cuentaEntity = new List<CuentaEntity>();
-            string msgError;
-            int respuesta = ws.Execute(ctaPrsCod, out msgError, out carritoCta);
             /*
                 0: Éxito
                 1: Código de persona nula
@@ -162,13 +165,15 @@ namespace Bonus.BusinessServices.Providers
                     cuenta.TipPunCod = item.TipPunCod;
                     cuentaEntity.Add(cuenta);
                 }
+                cuentaInfo.CuentaEntities = cuentaEntity;
+                cuentaInfo.PrsNomApe = PrsNomApe;
+                cuentaInfo.PrsNroDoc = PrsNroDoc;
+                cuentaInfo.PrsTipdCod = PrsTipdCod;
             }
             else {
-                CuentaEntity cuenta = new CuentaEntity();
-                cuenta.ResultCode = respuesta;
-                cuentaEntity.Add(cuenta);
+                cuentaInfo.ResultCode = respuesta;
             }
-            return cuentaEntity;
+            return cuentaInfo;
 
         }
 

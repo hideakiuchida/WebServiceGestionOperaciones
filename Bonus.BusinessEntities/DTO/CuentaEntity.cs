@@ -14,8 +14,5 @@
         public double? CtaSalVig { get; set; }
         public double? CtaSalCon { get; set; }
         public double? CtaSalDsp { get; set; }
-
-        //This field ResultCode exist for manage Errors
-        public int? ResultCode { get; set; }
     }
 }

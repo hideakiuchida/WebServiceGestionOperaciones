@@ -51,7 +51,7 @@ namespace Bonus.WebApi.Controllers
 
         [Route("ObtenerCuentas")]
         [HttpGet]
-        public IEnumerable<CuentaEntity> ObtenerCuentas(string ctaPrsCod)
+        public CuentaInfoEntity ObtenerCuentas(string ctaPrsCod)
         {
             return _services.ObtenerCuentas(ctaPrsCod);
         }
