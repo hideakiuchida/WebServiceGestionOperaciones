@@ -9,6 +9,7 @@
         public string CtaAsoNom { get; set; }
         public string PCtaTip { get; set; }
         public string PCtaAutCnj { get; set; }
+        public string PCtaTipNom { get; set; }
 
         public int? TipPunCod { get; set; }
         public double? CtaSalVig { get; set; }

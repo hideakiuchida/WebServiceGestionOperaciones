@@ -163,6 +163,7 @@ namespace Bonus.BusinessServices.Providers
                     cuenta.PCtaAutCnj = item.PCtaAutCnj;
                     cuenta.PCtaTip = item.PCtaTip;
                     cuenta.TipPunCod = item.TipPunCod;
+                    cuenta.PCtaTipNom = item.PCtaTipNom;
                     cuentaEntity.Add(cuenta);
                 }
                 cuentaInfo.CuentaEntities = cuentaEntity;
