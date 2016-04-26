@@ -31,4 +31,17 @@ namespace Bonus.BusinessEntities.DTO
         public int PrsHijEda { get; set; }
         public string PrsHijSex { get; set; }
     }
+
+    public class CarritoMen
+    {
+        public int MenSec { get; set; }
+        public string MenDes { get; set; }      
+    }
+
+    public class TipoCuentaEntity
+    {
+        public IEnumerable<CarritoMen> CarritoMen { get; set;}
+        public int ExistePrs { get; set; }
+        public int? ResultCode { get; set; }
+    }
 }

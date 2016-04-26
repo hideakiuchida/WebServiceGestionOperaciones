@@ -130,6 +130,7 @@ namespace Bonus.BusinessServices.Providers
             return cliente;
         }
 
+       
         public CuentaInfoEntity ObtenerCuentas(string ctaPrsCod)
         {
             WsBonusInfoCuenta.wslisctaptSoapPortClient ws = new WsBonusInfoCuenta.wslisctaptSoapPortClient();
@@ -215,6 +216,92 @@ namespace Bonus.BusinessServices.Providers
                 movFideEntity.ResultCode = respuesta;
             }
             return movFideEntity;
+        }
+
+        public CuentaInfoEntity ObtenerClienteCuentas(string ctaPrsCod)
+        {
+            WsBonusConsultaClientesCuentas.wsselctaSoapPortClient ws = new WsBonusConsultaClientesCuentas.wsselctaSoapPortClient();
+            WsBonusConsultaClientesCuentas.LisctaLisctaItem[] carritoCta;
+
+            string msgError, PrsNomApe;
+            short cantidadCta;
+
+            int respuesta = ws.Execute(ctaPrsCod, out msgError, out cantidadCta, out carritoCta, out PrsNomApe);
+
+
+            CuentaInfoEntity cuentaInfo = new CuentaInfoEntity();
+            List<CuentaEntity> cuentaEntity = new List<CuentaEntity>();
+            /*
+               0: Éxito
+               1: Código de persona nula
+               2: Código de persona no existe
+            */
+            if (respuesta == 0)
+            {
+
+                foreach (var item in carritoCta)
+                {
+                    CuentaEntity cuenta = new CuentaEntity();
+                    cuenta.CtaCod = item.CtaCod;
+                    cuenta.CtaAsoNom = item.CtaAsoNom;
+                    cuenta.CtaPrsCod = item.CtaPrsCod;
+                    cuenta.CtaPrsNom = item.CtaPrsNom;
+                    cuenta.PCtaAsoCod = item.PCtaAsoCod;
+                    cuenta.PCtaAutCnj = item.PCtaAutCnj;
+                    cuenta.PCtaTip = item.PCtaTip;
+                    cuenta.PCtaTipNom = item.PCtaTipNom;
+                    cuentaEntity.Add(cuenta);
+                }
+                cuentaInfo.CuentaEntities = cuentaEntity;
+                cuentaInfo.PrsNomApe = PrsNomApe;
+                cuentaInfo.CantidadCta = cantidadCta;
+            }
+            else
+            {
+                cuentaInfo.ResultCode = respuesta;
+            }
+            return cuentaInfo;
+        }
+
+        public TipoCuentaEntity ObtenerTipoCuenta(int cantidadCta, string ctaPrsCod, int ctaCod, string pCtaAsoCod, string pCtaTip, string pCtaAutCnj)
+        {
+            WsBonusTipoCuenta.wsmenafiSoapPortClient ws = new WsBonusTipoCuenta.wsmenafiSoapPortClient();
+            WsBonusTipoCuenta.LismenafiLismenafiItem[] carritoMen;
+            TipoCuentaEntity tipoCuenta = new TipoCuentaEntity();
+            sbyte existePrs;
+            string msgError;
+
+            int respuesta = ws.Execute(Convert.ToInt16(cantidadCta), ctaPrsCod, Convert.ToInt16(ctaCod), pCtaAsoCod, pCtaTip, pCtaAutCnj,
+                                        out msgError, out carritoMen, out existePrs);
+
+            /*
+                0: Éxito
+                1: Código de titular nula
+                2: Código de cuenta nula
+                3: Código de asociado nula
+                4: Tipo de cuenta nulo
+                5: Flag de autorizacion nula
+            */
+            if (respuesta == 0)
+            {
+                
+                List<CarritoMen> carritos = new List<CarritoMen>();
+                 foreach (var item in carritoMen)
+                {
+                    CarritoMen _carritoMen = new CarritoMen();
+                    _carritoMen.MenDes = item.mendes;
+                    _carritoMen.MenSec = item.mensec;
+                    carritos.Add(_carritoMen);
+                }
+                tipoCuenta.CarritoMen = carritos;
+                tipoCuenta.ExistePrs = Convert.ToInt32(existePrs);
+            }
+            else
+            {
+                tipoCuenta.ResultCode = respuesta;
+            }
+
+            return tipoCuenta;
         }
     }
 }

@@ -55,5 +55,19 @@ namespace Bonus.WebApi.Controllers
         {
             return _services.ObtenerCuentas(ctaPrsCod);
         }
+
+        [Route("ObtenerClienteCuentas")]
+        [HttpGet]
+        public CuentaInfoEntity ObtenerClienteCuentas(string ctaPrsCod)
+        {
+            return _services.ObtenerClienteCuentas(ctaPrsCod);
+        }
+
+        [Route("ObtenerTipoCuenta")]
+        [HttpGet]
+        public TipoCuentaEntity ObtenerTipoCuenta(int cantidadCta, string ctaPrsCod, int ctaCod, string pCtaAsoCod, string pCtaTip, string pCtaAutCnj)
+        {
+            return _services.ObtenerTipoCuenta(cantidadCta, ctaPrsCod, ctaCod, pCtaAsoCod, pCtaTip, pCtaAutCnj);
+        }
     }
 }
