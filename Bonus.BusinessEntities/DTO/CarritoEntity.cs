@@ -8,19 +8,27 @@ namespace Bonus.BusinessEntities.DTO
 {
     public class CarritoCoEntity
     {
+        //Codigo de correo 
         public string PrsMaiCod { get; set; }
+        //correo 
         public string PrsMai { get; set; }
+        //Codigo error 
         public string PrsFlgMErr { get; set; }
     }
 
     public class CarritoTeEntity
     {
+        //Codigo de Telefono
         public string PrsTlfCod { get; set; }
+        //Prefijo telefono
         public int PrsPreTlf { get; set; }
+        //Numero  Telefono
         public string PrsNroTlf { get; set; }
         public int PrsAnxTlf { get; set; }
         public string PrsFlgMov { get; set; }
+        //Red privada
         public string PrsRedPrv { get; set; }
+        //Tipo Telefono
         public int TlfRefCod { get; set; }
         public int OtfCod { get; set; }
         public string PrsFlgTErr { get; set; }
@@ -28,7 +36,9 @@ namespace Bonus.BusinessEntities.DTO
 
     public class CarritoHij
     {
+        //Edad Hijo
         public int PrsHijEda { get; set; }
+        //Sexo Hijo
         public string PrsHijSex { get; set; }
     }
 

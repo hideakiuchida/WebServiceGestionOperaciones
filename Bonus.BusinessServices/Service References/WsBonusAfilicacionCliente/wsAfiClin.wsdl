@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="AppBonus" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="AppBonus" xmlns:tns1="AppBonus" name="wsAfiClin" targetNamespace="AppBonus" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="AppBonus">
+      <xsd:element name="wsAfiClin.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Tipopc" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Userid" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Idcodemp" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ptccod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Pcnjcod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Tipdatcli" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prscod_in" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ctaprscod_in" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ctacod_in" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Pctaasocod_in" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Tipdoccod" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsnrodoc" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsapepat" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsapemat" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsprinom" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prssegnom" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsternom" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prssex" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Estcivcod" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Oprsfecnac" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Nacprs" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Dattel" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prspretlf_1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prspretlf_2" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prspretlf_3" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsflgmov_1" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsflgmov_2" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsflgmov_3" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsnrotlf_1" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsnrotlf_2" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsnrotlf_3" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsredprv_1" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsredprv_2" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsredprv_3" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Datcor" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsmai_1" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsmai_2" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsmai_3" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Direccion" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Referencia" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Dptocod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Provcod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Distcod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Dirncooy" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Dirncoox" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ocupacion" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Centrolabores" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Organismopublico" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Cargopep" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Flgtieveh" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Flgtiehij" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_1" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_2" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_3" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_1" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_2" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_3" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Tarcod" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Modpag" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Nrotrns" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Codprom" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsfirma" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsfirma2" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Taralias" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Taranno" type="xsd:short" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="wsAfiClin.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="wsAfiClin.ExecuteSoapIn">
+    <part name="parameters" element="tns1:wsAfiClin.Execute" />
+  </message>
+  <message name="wsAfiClin.ExecuteSoapOut">
+    <part name="parameters" element="tns1:wsAfiClin.ExecuteResponse" />
+  </message>
+  <portType name="wsAfiClinSoapPort">
+    <operation name="Execute">
+      <input message="tns1:wsAfiClin.ExecuteSoapIn" />
+      <output message="tns1:wsAfiClin.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="wsAfiClinSoapBinding" type="tns1:wsAfiClinSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="AppBonusaction/AWSAFICLIN.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsAfiClin">
+    <port name="wsAfiClinSoapPort" binding="tns1:wsAfiClinSoapBinding">
+      <soap:address location="http://200.62.147.155:8080/bonus_des/servlet/awsaficlin" />
+    </port>
+  </service>
+</definitions>

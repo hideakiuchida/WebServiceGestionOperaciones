@@ -10,13 +10,36 @@ namespace Bonus.BusinessServices.Providers
 {
     public class ClienteServices : IClienteServices
     {
-        public string ExisteCliente(short tipodoccod, string prsnrodoc)
+
+        public int AfiliarClientes(int tipDoc, string userId, long idCodEmp, string ptcCod, string pCnjCod, int tipoDatCli, 
+            string prsCodIn, string ctaPrsCodIn, int ctaCodIn, string pCtaAsoCodIn, int tipoDocCod, string prsNroDoc, string prsApePat, 
+            string prsApeMat, string prsPriNom, string prsSegNom, string prsTerNom, string prsSex, int estCivCod, string oPrsFecNac, string nacPrs, 
+            int datTel, int prsPreTlf1, int prsPreTlf2, int prsPreTlf3, int prsFlgMov1, int prsFlgMov2, int prsFlgMov3, int prsNroTlf1, int prsNroTlf2, 
+            int prsNroTlf3, string prsRedPrv1, string prsRedPrv2, string prsRedPrv3, int datCor, string prsMai1, string prsMai2, string prsMai3, 
+            string direccion, string referencia, string dptoCod, string probCod, string distCod, string dirnCooY, string dirCooX, string ocupacion, 
+            string centroLabores, string organismoPublico, string cargoPEP, string flgTieVeh, string flgTIeHij, int prsEdadHijo1, int prsEdadHijo2, int prsEdadHijo3, 
+            string prsHijSex1, string prsHijSex2, string prsHijSex3, int tarCod, int modPag, int nroTrns, int codProm, string prsFirma, string prsFirma2, string tarAlias, string tarAnno)
+        {
+            WsBonusAfilicacionCliente.wsAfiClinSoapPortClient ws = new WsBonusAfilicacionCliente.wsAfiClinSoapPortClient();
+            string msgError;
+            int respuesta = ws.Execute(Convert.ToSByte(tipDoc), userId, idCodEmp, ptcCod, pCnjCod, Convert.ToSByte(tipoDatCli), prsCodIn, ctaPrsCodIn,
+                (short) ctaCodIn, pCtaAsoCodIn, (short) tipoDocCod, prsNroDoc, prsApePat, prsApeMat, prsPriNom, prsSegNom, prsTerNom, prsSex,
+                Convert.ToSByte(estCivCod), oPrsFecNac, nacPrs, Convert.ToSByte(datTel), prsPreTlf1, prsPreTlf2, prsPreTlf3, Convert.ToSByte(prsFlgMov1), Convert.ToSByte(prsFlgMov2), Convert.ToSByte(prsFlgMov3),
+                prsNroTlf1, prsNroTlf2, prsNroTlf3, prsRedPrv1, prsRedPrv2, prsRedPrv3, Convert.ToSByte(datCor), prsMai1, prsMai2, prsMai3,
+                direccion, referencia, dptoCod, null, distCod, dirCooX, dirCooX, ocupacion, centroLabores, organismoPublico,
+                cargoPEP, flgTieVeh, flgTIeHij, Convert.ToSByte(prsEdadHijo1), Convert.ToSByte(prsEdadHijo2), Convert.ToSByte(prsEdadHijo3), 
+                prsHijSex1, prsHijSex2, prsHijSex3, tarCod, Convert.ToSByte(modPag), nroTrns, codProm, prsFirma, prsFirma2, tarAlias, Convert.ToSByte(tarAnno), out msgError);
+            return respuesta;
+        }
+
+
+        public ClienteEntity ExisteCliente(short tipodoccod, string prsnrodoc)
         {
             WsBonusExisteClienteBonus.wsexicliboSoapPortClient ws = new WsBonusExisteClienteBonus.wsexicliboSoapPortClient();
 
             string msgError = "";
             string prsCod;
-
+            sbyte tipDatCli;
             /*
                 0: Éxito
                 1: Código de tipo de documento nulo
@@ -25,14 +48,20 @@ namespace Bonus.BusinessServices.Providers
                 4: Código de persona nula
                 5: No existe cliente bonus
             */
-            int respuesta = ws.Execute(tipodoccod, prsnrodoc, out msgError, out prsCod);
+            int respuesta = ws.Execute(tipodoccod, prsnrodoc, out msgError, out prsCod, out tipDatCli);
+            ClienteEntity cliente = new ClienteEntity();
             if (respuesta == 0)
             {
-                return prsCod;
+                cliente.PrsCod = prsCod;
+                cliente.TipoDatCli = tipDatCli;
             }
-            return respuesta.ToString();
+            else
+            {
+                cliente.ResultCode = respuesta;
+            }
+            return cliente;
         }
-
+        /*
         public ClienteEntity ObtenerCliente(string prsCod)
         {
            WsBonusObtenerDatosClientes.wsdevdatcoSoapPortClient ws = new WsBonusObtenerDatosClientes.wsdevdatcoSoapPortClient();
@@ -51,12 +80,6 @@ namespace Bonus.BusinessServices.Providers
                out TipDocCod, out PrsNroDoc, out PrsSex, out PrsFecNac, out Texto1, out Texto2, out Texto3, out Texto4,
                out Texto5, out carritoCo, out carritoTe, out Direccion, out Referencia, out DptoCod, out ProvCod, out DistCod, out FlgTieVeh,
                out FlgTieHij, out carritoHij);
-
-            /*
-                0: Éxito
-                1: Código de persona nula
-                2: Código de persona no existe
-            */
             if (respuesta == 0)
             {
                 cliente.PrsApePat = PrsApePat;
@@ -128,9 +151,16 @@ namespace Bonus.BusinessServices.Providers
             }
 
             return cliente;
+        }*/
+
+        public int ValidarCodigoPromocional(int codProm)
+        {
+            WsBonusCodigoPromocional.wsvalpromSoapPortClient ws = new WsBonusCodigoPromocional.wsvalpromSoapPortClient();
+            string msgError;
+            int respuesta = ws.Execute(codProm, out msgError);
+            return respuesta;
         }
 
-       
         public CuentaInfoEntity ObtenerCuentas(string ctaPrsCod)
         {
             WsBonusInfoCuenta.wslisctaptSoapPortClient ws = new WsBonusInfoCuenta.wslisctaptSoapPortClient();
@@ -179,6 +209,107 @@ namespace Bonus.BusinessServices.Providers
 
         }
 
+        public ClienteEntity ObtenerCliente(string prsCod)
+        {
+            WsBonusClientesDatos.wsdevdatcoSoapPortClient ws = new WsBonusClientesDatos.wsdevdatcoSoapPortClient();
+            
+            ClienteEntity cliente = new ClienteEntity();
+            WsBonusClientesDatos.ListelListelItem[] carritoTe;
+            WsBonusClientesDatos.LismaiLismaiItem[] carritoCo;
+            WsBonusClientesDatos.LishijLishijItem[] carritoHij;
+
+            string PrsApePat, PrsApeMat, PrsPriNom, PrsSegNom, PrsTerNom, PrsNroDoc;
+            string PrsSex, Texto1, Texto2, Texto3, Texto4, Texto5, Direccion;
+            string PrsFecNac, Referencia, DptoCod, ProvCod, DistCod, FlgTieVeh, FlgTieHij, Datcor, Dattel;
+            string Ocupacion, Centrolabores, Clientepep, Cargopep, NacPrs, msgError;
+            short TipDocCod, Coderror;
+            string respuesta = ws.Execute(prsCod, out PrsApeMat, out PrsPriNom, out PrsSegNom, out PrsTerNom,
+                            out TipDocCod, out PrsNroDoc, out PrsSex, out PrsFecNac, out NacPrs, out Texto1, 
+                            out Texto2, out Texto3, out Texto4, out Texto5, out Datcor, out carritoCo, out Dattel,
+                            out carritoTe, out Direccion, out Referencia, out DptoCod, out ProvCod, out DistCod,
+                            out Ocupacion, out Centrolabores, out Clientepep, out Cargopep, out FlgTieVeh, out FlgTieHij,
+                            out carritoHij, out Coderror, out msgError);
+            /*
+                0: Éxito
+                1: Código de persona nula
+                2: Código de persona no existe
+            */
+            if (respuesta == "0")
+            {
+                cliente.PrsNroDoc = PrsNroDoc;
+                cliente.PrsApeMat = PrsApeMat;
+                cliente.PrsPriNom = PrsPriNom;
+                cliente.PrsSegNom = PrsSegNom;
+                cliente.PrsTerNom = PrsTerNom;
+                cliente.TipDocCod = TipDocCod;
+                cliente.PrsSex = PrsSex;
+                cliente.PrsFecNac = PrsFecNac;
+                cliente.NacPrs = NacPrs;
+                cliente.Texto1 = Texto1;
+                cliente.Texto2 = Texto2;
+                cliente.Texto3 = Texto3;
+                cliente.Texto4 = Texto4;
+                cliente.Texto5 = Texto5;
+                cliente.DatCor = Convert.ToInt32(Datcor);
+
+                List<CarritoCoEntity> _carritoCo = new List<CarritoCoEntity>();
+                foreach (var item in carritoCo)
+                {
+                    CarritoCoEntity carrito = new CarritoCoEntity();
+                    carrito.PrsMaiCod = item.PrsMaiCod.ToString();
+                    carrito.PrsMai = item.PrsMai;
+                    carrito.PrsFlgMErr = item.PrsFlgMErr;
+                    _carritoCo.Add(carrito);
+                }
+                cliente.DatTel = Convert.ToInt32(Dattel);
+                cliente.carritosCo = _carritoCo;
+
+                List<CarritoTeEntity> _carritoTe = new List<CarritoTeEntity>();
+                foreach (var item in carritoTe)
+                {
+                    CarritoTeEntity carrito = new CarritoTeEntity();
+                    carrito.PrsAnxTlf = item.PrsAnxTlf;
+                    carrito.OtfCod = item.OtfCod;
+                    carrito.PrsFlgMov = item.PrsFlgMov.ToString();
+                    carrito.PrsFlgTErr = item.PrsFlgTErr;
+                    carrito.PrsNroTlf = item.PrsNroTlf.ToString();
+                    carrito.PrsPreTlf = item.PrsPreTlf;
+                    carrito.PrsRedPrv = item.PrsRedPrv;
+                    carrito.PrsTlfCod = item.PrsTlfCod.ToString();
+                    carrito.TlfRefCod = item.TlfRefCod;
+                    _carritoTe.Add(carrito);
+                }
+
+                cliente.carritosTe = _carritoTe;
+
+                cliente.Direccion = Direccion;
+                cliente.Referencia = Referencia;
+                cliente.DptoCod = DptoCod;
+                cliente.ProvCod = ProvCod;
+                cliente.DistCod = DistCod;
+                cliente.Ocupacion = Ocupacion;
+                cliente.CentroLaborales = Centrolabores;
+                cliente.OrganismoPublico = "";
+                cliente.CargoPEP = Cargopep;
+                cliente.FlgTieVeh = FlgTieVeh;
+                cliente.FlgTieHij = FlgTieHij;
+
+                List<CarritoHij> _carritoHij = new List<CarritoHij>();
+                foreach (var item in carritoHij)
+                {
+                    CarritoHij carrito = new CarritoHij();
+                    carrito.PrsHijSex = item.PrsHijSex;
+                    carrito.PrsHijEda = item.PrsHijEda;
+                    _carritoHij.Add(carrito);
+                }
+                cliente.carritosHij = _carritoHij;
+            }
+            else {
+                cliente.ResultCode = Coderror;
+            }
+            return cliente;
+        }
+
         public MovFideEntity ObtenerMovFidelizacion(string ctaPrsCod, int ctaCod)
         {
             WsBonusMovFidelizacion.wsultmovptSoapPortClient ws = new WsBonusMovFidelizacion.wsultmovptSoapPortClient();
@@ -218,90 +349,12 @@ namespace Bonus.BusinessServices.Providers
             return movFideEntity;
         }
 
-        public CuentaInfoEntity ObtenerClienteCuentas(string ctaPrsCod)
+        public int ValidarAfiliacion(string ctaPrsCod, int ctaCod, string pCtaAsoCod)
         {
-            WsBonusConsultaClientesCuentas.wsselctaSoapPortClient ws = new WsBonusConsultaClientesCuentas.wsselctaSoapPortClient();
-            WsBonusConsultaClientesCuentas.LisctaLisctaItem[] carritoCta;
-
-            string msgError, PrsNomApe;
-            short cantidadCta;
-
-            int respuesta = ws.Execute(ctaPrsCod, out msgError, out cantidadCta, out carritoCta, out PrsNomApe);
-
-
-            CuentaInfoEntity cuentaInfo = new CuentaInfoEntity();
-            List<CuentaEntity> cuentaEntity = new List<CuentaEntity>();
-            /*
-               0: Éxito
-               1: Código de persona nula
-               2: Código de persona no existe
-            */
-            if (respuesta == 0)
-            {
-
-                foreach (var item in carritoCta)
-                {
-                    CuentaEntity cuenta = new CuentaEntity();
-                    cuenta.CtaCod = item.CtaCod;
-                    cuenta.CtaAsoNom = item.CtaAsoNom;
-                    cuenta.CtaPrsCod = item.CtaPrsCod;
-                    cuenta.CtaPrsNom = item.CtaPrsNom;
-                    cuenta.PCtaAsoCod = item.PCtaAsoCod;
-                    cuenta.PCtaAutCnj = item.PCtaAutCnj;
-                    cuenta.PCtaTip = item.PCtaTip;
-                    cuenta.PCtaTipNom = item.PCtaTipNom;
-                    cuentaEntity.Add(cuenta);
-                }
-                cuentaInfo.CuentaEntities = cuentaEntity;
-                cuentaInfo.PrsNomApe = PrsNomApe;
-                cuentaInfo.CantidadCta = cantidadCta;
-            }
-            else
-            {
-                cuentaInfo.ResultCode = respuesta;
-            }
-            return cuentaInfo;
-        }
-
-        public TipoCuentaEntity ObtenerTipoCuenta(int cantidadCta, string ctaPrsCod, int ctaCod, string pCtaAsoCod, string pCtaTip, string pCtaAutCnj)
-        {
-            WsBonusTipoCuenta.wsmenafiSoapPortClient ws = new WsBonusTipoCuenta.wsmenafiSoapPortClient();
-            WsBonusTipoCuenta.LismenafiLismenafiItem[] carritoMen;
-            TipoCuentaEntity tipoCuenta = new TipoCuentaEntity();
-            sbyte existePrs;
+            WsBonusValidarAfiliacion.wsconctaadSoapPortClient ws = new WsBonusValidarAfiliacion.wsconctaadSoapPortClient();
             string msgError;
-
-            int respuesta = ws.Execute(Convert.ToInt16(cantidadCta), ctaPrsCod, Convert.ToInt16(ctaCod), pCtaAsoCod, pCtaTip, pCtaAutCnj,
-                                        out msgError, out carritoMen, out existePrs);
-
-            /*
-                0: Éxito
-                1: Código de titular nula
-                2: Código de cuenta nula
-                3: Código de asociado nula
-                4: Tipo de cuenta nulo
-                5: Flag de autorizacion nula
-            */
-            if (respuesta == 0)
-            {
-                
-                List<CarritoMen> carritos = new List<CarritoMen>();
-                 foreach (var item in carritoMen)
-                {
-                    CarritoMen _carritoMen = new CarritoMen();
-                    _carritoMen.MenDes = item.mendes;
-                    _carritoMen.MenSec = item.mensec;
-                    carritos.Add(_carritoMen);
-                }
-                tipoCuenta.CarritoMen = carritos;
-                tipoCuenta.ExistePrs = Convert.ToInt32(existePrs);
-            }
-            else
-            {
-                tipoCuenta.ResultCode = respuesta;
-            }
-
-            return tipoCuenta;
+            int respuesta = ws.Execute(ctaPrsCod, (short)ctaCod, pCtaAsoCod, out msgError);
+            return respuesta;
         }
     }
 }

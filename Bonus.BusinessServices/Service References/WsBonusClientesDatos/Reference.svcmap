@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="33afa907-4876-4a27-a351-6d61bbda9fc3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="94e746a3-570c-4065-8cc0-4512b52e8299" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://200.62.147.155:8080/bonus_des/servlet/awsexiclibo?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://200.62.147.155:8080/bonus_des/servlet/awsdevdatco?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wsexiclibo1.wsdl" MetadataType="Wsdl" ID="5c6f1837-acc3-4bb6-81ec-f68f21dc0b06" SourceId="1" SourceUrl="http://200.62.147.155:8080/bonus_des/servlet/awsexiclibo?wsdl" />
+    <MetadataFile FileName="wsdevdatco.wsdl" MetadataType="Wsdl" ID="41e7d4f7-e285-40ab-8ae6-a93e80ebe9d6" SourceId="1" SourceUrl="http://200.62.147.155:8080/bonus_des/servlet/awsdevdatco?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

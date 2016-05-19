@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="AppBonus" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="AppBonus" xmlns:tns1="AppBonus" name="wsconctaad" targetNamespace="AppBonus" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="AppBonus">
+      <xsd:element name="wsconctaad.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ctaprscod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ctacod" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Pctaasocod" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="wsconctaad.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="wsconctaad.ExecuteSoapIn">
+    <part name="parameters" element="tns1:wsconctaad.Execute" />
+  </message>
+  <message name="wsconctaad.ExecuteSoapOut">
+    <part name="parameters" element="tns1:wsconctaad.ExecuteResponse" />
+  </message>
+  <portType name="wsconctaadSoapPort">
+    <operation name="Execute">
+      <input message="tns1:wsconctaad.ExecuteSoapIn" />
+      <output message="tns1:wsconctaad.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="wsconctaadSoapBinding" type="tns1:wsconctaadSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="AppBonusaction/AWSCONCTAAD.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsconctaad">
+    <port name="wsconctaadSoapPort" binding="tns1:wsconctaadSoapBinding">
+      <soap:address location="http://200.62.147.155:8080/bonus_des/servlet/awsconctaad" />
+    </port>
+  </service>
+</definitions>

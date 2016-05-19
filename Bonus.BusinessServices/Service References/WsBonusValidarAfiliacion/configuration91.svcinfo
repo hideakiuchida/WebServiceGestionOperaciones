@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="lSpTIXFaBcQAZEPiYzcwgdnMucw=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="0niml0in+K5+6sy3wjY7V9STmIA=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="wsdevdatcoSoapBinding">
+    <bindingConfiguration bindingType="basicHttpBinding" name="wsconctaadSoapBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>wsdevdatcoSoapBinding</serializedValue>
+          <serializedValue>wsconctaadSoapBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="wsdevdatcoSoapPort" contract="WsBonusObtenerDatosClientes.wsdevdatcoSoapPort" bindingType="basicHttpBinding" address="http://200.62.147.188:8080/app/servlet/awsdevdatco" bindingConfiguration="wsdevdatcoSoapBinding">
+    <endpoint name="wsconctaadSoapPort" contract="WsBonusValidarAfiliacion.wsconctaadSoapPort" bindingType="basicHttpBinding" address="http://200.62.147.155:8080/bonus_des/servlet/awsconctaad" bindingConfiguration="wsconctaadSoapBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://200.62.147.188:8080/app/servlet/awsdevdatco</serializedValue>
+          <serializedValue>http://200.62.147.155:8080/bonus_des/servlet/awsconctaad</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -124,10 +124,10 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>wsdevdatcoSoapBinding</serializedValue>
+          <serializedValue>wsconctaadSoapBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WsBonusObtenerDatosClientes.wsdevdatcoSoapPort</serializedValue>
+          <serializedValue>WsBonusValidarAfiliacion.wsconctaadSoapPort</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -187,7 +187,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>wsdevdatcoSoapPort</serializedValue>
+          <serializedValue>wsconctaadSoapPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -53,8 +53,6 @@
       <xsd:element name="wsdevdatco.ExecuteResponse">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
-            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsapepat" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsapemat" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsprinom" type="xsd:string" />
@@ -64,21 +62,30 @@
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsnrodoc" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prssex" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Oprsfecnac" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Nacprs" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Texto1" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Texto2" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Texto3" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Texto4" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Texto5" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Datcor" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Carritoco" type="tns1:Lismai" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Dattel" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Carritote" type="tns1:Listel" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Direccion" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Referencia" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Dptocod" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Provcod" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Distcod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ocupacion" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Centrolabores" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Clientepep" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Cargopep" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Flgtieveh" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Flgtiehij" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Carritohij" type="tns1:Lishij" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -110,7 +117,7 @@
   </binding>
   <service name="wsdevdatco">
     <port name="wsdevdatcoSoapPort" binding="tns1:wsdevdatcoSoapBinding">
-      <soap:address location="http://200.62.147.188:8080/app/servlet/awsdevdatco" />
+      <soap:address location="http://200.62.147.155:8080/bonus_des/servlet/awsdevdatco" />
     </port>
   </service>
 </definitions>

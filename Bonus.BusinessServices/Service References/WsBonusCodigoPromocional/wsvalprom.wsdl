@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="AppBonus" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="AppBonus" xmlns:tns1="AppBonus" name="wsvalprom" targetNamespace="AppBonus" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="AppBonus">
+      <xsd:element name="wsvalprom.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Codprom" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="wsvalprom.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="wsvalprom.ExecuteSoapIn">
+    <part name="parameters" element="tns1:wsvalprom.Execute" />
+  </message>
+  <message name="wsvalprom.ExecuteSoapOut">
+    <part name="parameters" element="tns1:wsvalprom.ExecuteResponse" />
+  </message>
+  <portType name="wsvalpromSoapPort">
+    <operation name="Execute">
+      <input message="tns1:wsvalprom.ExecuteSoapIn" />
+      <output message="tns1:wsvalprom.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="wsvalpromSoapBinding" type="tns1:wsvalpromSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="AppBonusaction/AWSVALPROM.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsvalprom">
+    <port name="wsvalpromSoapPort" binding="tns1:wsvalpromSoapBinding">
+      <soap:address location="http://200.62.147.155:8080/bonus_des/servlet/awsvalprom" />
+    </port>
+  </service>
+</definitions>
