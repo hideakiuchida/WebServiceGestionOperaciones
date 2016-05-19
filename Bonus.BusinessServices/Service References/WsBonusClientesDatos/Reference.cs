@@ -282,111 +282,113 @@ namespace Bonus.BusinessServices.WsBonusClientesDatos {
     public partial class ExecuteResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=0)]
-        public string Prsapepat;
+        public short Coderror;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=1)]
-        public string Prsapemat;
+        public string Msjerror;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=2)]
-        public string Prsprinom;
+        public string Prsapepat;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=3)]
-        public string Prssegnom;
+        public string Prsapemat;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=4)]
-        public string Prsternom;
+        public string Prsprinom;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=5)]
-        public short Tipdoccod;
+        public string Prssegnom;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=6)]
-        public string Prsnrodoc;
+        public string Prsternom;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=7)]
-        public string Prssex;
+        public short Tipdoccod;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=8)]
-        public string Oprsfecnac;
+        public string Prsnrodoc;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=9)]
-        public string Nacprs;
+        public string Prssex;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=10)]
-        public string Texto1;
+        public string Oprsfecnac;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=11)]
-        public string Texto2;
+        public string Nacprs;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=12)]
-        public string Texto3;
+        public string Texto1;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=13)]
-        public string Texto4;
+        public string Texto2;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=14)]
-        public string Texto5;
+        public string Texto3;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=15)]
-        public string Datcor;
+        public string Texto4;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=16)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public Bonus.BusinessServices.WsBonusClientesDatos.LismaiLismaiItem[] Carritoco;
+        public string Texto5;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=17)]
-        public string Dattel;
+        public string Datcor;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=18)]
         [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public Bonus.BusinessServices.WsBonusClientesDatos.ListelListelItem[] Carritote;
+        public Bonus.BusinessServices.WsBonusClientesDatos.LismaiLismaiItem[] Carritoco;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=19)]
-        public string Direccion;
+        public string Dattel;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=20)]
-        public string Referencia;
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public Bonus.BusinessServices.WsBonusClientesDatos.ListelListelItem[] Carritote;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=21)]
-        public string Dptocod;
+        public string Direccion;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=22)]
-        public string Provcod;
+        public string Referencia;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=23)]
-        public string Distcod;
+        public string Dptocod;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=24)]
-        public string Ocupacion;
+        public string Provcod;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=25)]
-        public string Centrolabores;
+        public string Distcod;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=26)]
-        public string Clientepep;
+        public string Ocupacion;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=27)]
-        public string Cargopep;
+        public string Centrolabores;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=28)]
-        public string Flgtieveh;
+        public string Clientepep;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=29)]
-        public string Flgtiehij;
+        public string Cargopep;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=30)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public Bonus.BusinessServices.WsBonusClientesDatos.LishijLishijItem[] Carritohij;
+        public string Flgtieveh;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=31)]
-        public short Coderror;
+        public string Flgtiehij;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="AppBonus", Order=32)]
-        public string Msjerror;
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public Bonus.BusinessServices.WsBonusClientesDatos.LishijLishijItem[] Carritohij;
         
         public ExecuteResponse() {
         }
         
         public ExecuteResponse(
+                    short Coderror, 
+                    string Msjerror, 
                     string Prsapepat, 
                     string Prsapemat, 
                     string Prsprinom, 
@@ -417,9 +419,9 @@ namespace Bonus.BusinessServices.WsBonusClientesDatos {
                     string Cargopep, 
                     string Flgtieveh, 
                     string Flgtiehij, 
-                    Bonus.BusinessServices.WsBonusClientesDatos.LishijLishijItem[] Carritohij, 
-                    short Coderror, 
-                    string Msjerror) {
+                    Bonus.BusinessServices.WsBonusClientesDatos.LishijLishijItem[] Carritohij) {
+            this.Coderror = Coderror;
+            this.Msjerror = Msjerror;
             this.Prsapepat = Prsapepat;
             this.Prsapemat = Prsapemat;
             this.Prsprinom = Prsprinom;
@@ -451,8 +453,6 @@ namespace Bonus.BusinessServices.WsBonusClientesDatos {
             this.Flgtieveh = Flgtieveh;
             this.Flgtiehij = Flgtiehij;
             this.Carritohij = Carritohij;
-            this.Coderror = Coderror;
-            this.Msjerror = Msjerror;
         }
     }
     
@@ -488,8 +488,10 @@ namespace Bonus.BusinessServices.WsBonusClientesDatos {
             return base.Channel.Execute(request);
         }
         
-        public string Execute(
+        public short Execute(
                     string Prscod, 
+                    out string Msjerror, 
+                    out string Prsapepat, 
                     out string Prsapemat, 
                     out string Prsprinom, 
                     out string Prssegnom, 
@@ -519,12 +521,12 @@ namespace Bonus.BusinessServices.WsBonusClientesDatos {
                     out string Cargopep, 
                     out string Flgtieveh, 
                     out string Flgtiehij, 
-                    out Bonus.BusinessServices.WsBonusClientesDatos.LishijLishijItem[] Carritohij, 
-                    out short Coderror, 
-                    out string Msjerror) {
+                    out Bonus.BusinessServices.WsBonusClientesDatos.LishijLishijItem[] Carritohij) {
             Bonus.BusinessServices.WsBonusClientesDatos.ExecuteRequest inValue = new Bonus.BusinessServices.WsBonusClientesDatos.ExecuteRequest();
             inValue.Prscod = Prscod;
             Bonus.BusinessServices.WsBonusClientesDatos.ExecuteResponse retVal = ((Bonus.BusinessServices.WsBonusClientesDatos.wsdevdatcoSoapPort)(this)).Execute(inValue);
+            Msjerror = retVal.Msjerror;
+            Prsapepat = retVal.Prsapepat;
             Prsapemat = retVal.Prsapemat;
             Prsprinom = retVal.Prsprinom;
             Prssegnom = retVal.Prssegnom;
@@ -555,9 +557,7 @@ namespace Bonus.BusinessServices.WsBonusClientesDatos {
             Flgtieveh = retVal.Flgtieveh;
             Flgtiehij = retVal.Flgtiehij;
             Carritohij = retVal.Carritohij;
-            Coderror = retVal.Coderror;
-            Msjerror = retVal.Msjerror;
-            return retVal.Prsapepat;
+            return retVal.Coderror;
         }
         
         public System.Threading.Tasks.Task<Bonus.BusinessServices.WsBonusClientesDatos.ExecuteResponse> ExecuteAsync(Bonus.BusinessServices.WsBonusClientesDatos.ExecuteRequest request) {

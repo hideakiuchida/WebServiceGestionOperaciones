@@ -53,6 +53,8 @@
       <xsd:element name="wsdevdatco.ExecuteResponse">
         <xsd:complexType>
           <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsapepat" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsapemat" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsprinom" type="xsd:string" />
@@ -84,8 +86,6 @@
             <xsd:element minOccurs="1" maxOccurs="1" name="Flgtieveh" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Flgtiehij" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Carritohij" type="tns1:Lishij" />
-            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
-            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>

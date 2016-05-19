@@ -61,97 +61,6 @@ namespace Bonus.BusinessServices.Providers
             }
             return cliente;
         }
-        /*
-        public ClienteEntity ObtenerCliente(string prsCod)
-        {
-           WsBonusObtenerDatosClientes.wsdevdatcoSoapPortClient ws = new WsBonusObtenerDatosClientes.wsdevdatcoSoapPortClient();
-
-           string msgError = "";
-           ClienteEntity cliente = new ClienteEntity();
-           WsBonusObtenerDatosClientes.ListelListelItem[] carritoTe;
-           WsBonusObtenerDatosClientes.LismaiLismaiItem[] carritoCo;
-           WsBonusObtenerDatosClientes.LishijLishijItem[] carritoHij;
-
-           string PrsApePat, PrsApeMat, PrsPriNom, PrsSegNom, PrsTerNom, PrsNroDoc, PrsSex, Texto1, Texto2, Texto3, Texto4, Texto5, Direccion;
-           short TipDocCod;
-           string PrsFecNac, Referencia, DptoCod, ProvCod, DistCod, FlgTieVeh, FlgTieHij;
-
-           int respuesta = ws.Execute(prsCod, out msgError, out PrsApePat, out PrsApeMat, out PrsPriNom, out PrsSegNom, out PrsTerNom,
-               out TipDocCod, out PrsNroDoc, out PrsSex, out PrsFecNac, out Texto1, out Texto2, out Texto3, out Texto4,
-               out Texto5, out carritoCo, out carritoTe, out Direccion, out Referencia, out DptoCod, out ProvCod, out DistCod, out FlgTieVeh,
-               out FlgTieHij, out carritoHij);
-            if (respuesta == 0)
-            {
-                cliente.PrsApePat = PrsApePat;
-                cliente.PrsNroDoc = PrsNroDoc;
-                cliente.PrsApePat = PrsApePat;
-                cliente.PrsApeMat = PrsApeMat;
-                cliente.PrsPriNom = PrsPriNom;
-                cliente.PrsSegNom = PrsSegNom;
-                cliente.PrsTerNom = PrsTerNom;
-                cliente.TipDocCod = TipDocCod;
-                cliente.PrsSex = PrsSex;
-                cliente.PrsFecNac = PrsFecNac;
-                cliente.Texto1 = Texto1;
-                cliente.Texto2 = Texto2;
-                cliente.Texto3 = Texto3;
-                cliente.Texto4 = Texto4;
-                cliente.Texto5 = Texto5;
-
-                List<CarritoCoEntity> _carritoCo = new List<CarritoCoEntity>();
-                foreach (var item in carritoCo)
-                {
-                    CarritoCoEntity carrito = new CarritoCoEntity();
-                    carrito.PrsMaiCod = item.PrsMaiCod.ToString();
-                    carrito.PrsMai = item.PrsMai;
-                    carrito.PrsFlgMErr = item.PrsFlgMErr;
-                    _carritoCo.Add(carrito);
-                }
-
-                cliente.carritosCo = _carritoCo;
-
-                List<CarritoTeEntity> _carritoTe = new List<CarritoTeEntity>();
-                foreach (var item in carritoTe)
-                {
-                    CarritoTeEntity carrito = new CarritoTeEntity();
-                    carrito.PrsAnxTlf = item.PrsAnxTlf;
-                    carrito.OtfCod = item.OtfCod;
-                    carrito.PrsFlgMov = item.PrsFlgMov.ToString();
-                    carrito.PrsFlgTErr = item.PrsFlgTErr;
-                    carrito.PrsNroTlf = item.PrsNroTlf.ToString();
-                    carrito.PrsPreTlf = item.PrsPreTlf;
-                    carrito.PrsRedPrv = item.PrsRedPrv;
-                    carrito.PrsTlfCod = item.PrsTlfCod.ToString();
-                    carrito.TlfRefCod = item.TlfRefCod;
-                    _carritoTe.Add(carrito);
-                }
-
-                cliente.carritosTe = _carritoTe;
-
-                cliente.Direccion = Direccion;
-                cliente.Referencia = Referencia;
-                cliente.DptoCod = DptoCod;
-                cliente.ProvCod = ProvCod;
-                cliente.DistCod = DistCod;
-                cliente.FlgTieVeh = FlgTieVeh;
-                cliente.FlgTieHij = FlgTieHij;
-
-                List<CarritoHij> _carritoHij = new List<CarritoHij>();
-                foreach (var item in carritoHij)
-                {
-                    CarritoHij carrito = new CarritoHij();
-                    carrito.PrsHijSex = item.PrsHijSex;
-                    carrito.PrsHijEda = item.PrsHijEda;
-                    _carritoHij.Add(carrito);
-                }
-                cliente.carritosHij = _carritoHij;
-            }
-            else {
-                cliente.ResultCode = respuesta;
-            }
-
-            return cliente;
-        }*/
 
         public int ValidarCodigoPromocional(int codProm)
         {
@@ -222,21 +131,23 @@ namespace Bonus.BusinessServices.Providers
             string PrsSex, Texto1, Texto2, Texto3, Texto4, Texto5, Direccion;
             string PrsFecNac, Referencia, DptoCod, ProvCod, DistCod, FlgTieVeh, FlgTieHij, Datcor, Dattel;
             string Ocupacion, Centrolabores, Clientepep, Cargopep, NacPrs, msgError;
-            short TipDocCod, Coderror;
-            string respuesta = ws.Execute(prsCod, out PrsApeMat, out PrsPriNom, out PrsSegNom, out PrsTerNom,
+            short TipDocCod;
+            int respuesta = ws.Execute(prsCod, out msgError, out PrsApePat, out PrsApeMat, out PrsPriNom, out PrsSegNom, out PrsTerNom,
                             out TipDocCod, out PrsNroDoc, out PrsSex, out PrsFecNac, out NacPrs, out Texto1, 
                             out Texto2, out Texto3, out Texto4, out Texto5, out Datcor, out carritoCo, out Dattel,
                             out carritoTe, out Direccion, out Referencia, out DptoCod, out ProvCod, out DistCod,
                             out Ocupacion, out Centrolabores, out Clientepep, out Cargopep, out FlgTieVeh, out FlgTieHij,
-                            out carritoHij, out Coderror, out msgError);
+                            out carritoHij);   
             /*
                 0: Éxito
                 1: Código de persona nula
                 2: Código de persona no existe
             */
-            if (respuesta == "0")
+            if (respuesta == 0)
             {
+                cliente.PrsCod = prsCod;
                 cliente.PrsNroDoc = PrsNroDoc;
+                cliente.PrsApePat = PrsApePat;
                 cliente.PrsApeMat = PrsApeMat;
                 cliente.PrsPriNom = PrsPriNom;
                 cliente.PrsSegNom = PrsSegNom;
@@ -305,7 +216,7 @@ namespace Bonus.BusinessServices.Providers
                 cliente.carritosHij = _carritoHij;
             }
             else {
-                cliente.ResultCode = Coderror;
+                cliente.ResultCode = respuesta;
             }
             return cliente;
         }
