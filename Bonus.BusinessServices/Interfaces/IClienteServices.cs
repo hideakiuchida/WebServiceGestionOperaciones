@@ -20,5 +20,6 @@ namespace Bonus.BusinessServices.Interfaces
                 string prsFirma, string prsFirma2, string tarAlias, string tarAnno);
         int ValidarAfiliacion(string ctaPrsCod, int ctaCod, string pCtaAsoCod);
         int ValidarCodigoPromocional(int codProm);
+        TipoCuentaEntity ObtenerMenuAfiliacion(int cantidadCta, string ctaPrsCod, int ctaCod, string pCtaAsoCod, string pCtatip, string pCtaautcnj);
     }
 }

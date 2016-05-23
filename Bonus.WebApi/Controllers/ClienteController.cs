@@ -91,5 +91,12 @@ namespace Bonus.WebApi.Controllers
         {
             return _services.ValidarCodigoPromocional(codProm);
         }
+
+        [Route("ObtenerMenuAfiliacion")]
+        [HttpGet]
+        public TipoCuentaEntity ObtenerMenuAfiliacion(int cantidadCta, string ctaPrsCod, int ctaCod, string pCtaAsoCod, string pCtatip, string pCtaautcnj)
+        {
+            return _services.ObtenerMenuAfiliacion(cantidadCta, ctaPrsCod, ctaCod, pCtaAsoCod, pCtatip, pCtaautcnj);
+        }
     }
 }

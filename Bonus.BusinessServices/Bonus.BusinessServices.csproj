@@ -155,6 +155,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\WsBonusObtenerMenuAfiliacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bonus.BusinessEntities\Bonus.BusinessEntities.csproj">
@@ -238,6 +243,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusObtenerCountToken\wsobtcotok.wsdl" />
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\Bonus.BusinessServices.WsBonusObtenerMenuAfiliacion.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\Bonus.BusinessServices.WsBonusObtenerMenuAfiliacion.LismenafiLismenafiItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WsBonusObtenerToken\Bonus.BusinessServices.WsBonusObtenerToken.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -282,6 +293,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusValidarAfiliacion\wsconctaad.wsdl" />
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\wsmenafi.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WsBonusAfilicacionCliente\" />
@@ -303,6 +315,7 @@
     <WCFMetadataStorage Include="Service References\WsBonusLogin\" />
     <WCFMetadataStorage Include="Service References\WsBonusProvincias\" />
     <WCFMetadataStorage Include="Service References\WsBonusValidarAfiliacion\" />
+    <WCFMetadataStorage Include="Service References\WsBonusObtenerMenuAfiliacion\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WsBonusLogin\configuration91.svcinfo" />
@@ -528,6 +541,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WsBonusCodigoPromocional\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

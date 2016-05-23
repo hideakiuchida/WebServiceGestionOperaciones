@@ -54,4 +54,5 @@ namespace Bonus.BusinessEntities.DTO
         public int ExistePrs { get; set; }
         public int? ResultCode { get; set; }
     }
+
 }

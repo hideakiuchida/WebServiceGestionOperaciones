@@ -267,5 +267,32 @@ namespace Bonus.BusinessServices.Providers
             int respuesta = ws.Execute(ctaPrsCod, (short)ctaCod, pCtaAsoCod, out msgError);
             return respuesta;
         }
+
+        public TipoCuentaEntity ObtenerMenuAfiliacion(int cantidadCta, string ctaPrsCod, int ctaCod, 
+            string pCtaAsoCod, string pCtatip, string pCtaautcnj)
+        {
+            WsBonusObtenerMenuAfiliacion.wsmenafiSoapPortClient ws = new WsBonusObtenerMenuAfiliacion.wsmenafiSoapPortClient();
+            string msgError;
+            sbyte existePrs;
+            WsBonusObtenerMenuAfiliacion.LismenafiLismenafiItem[] listCarritoMenu;
+            int respuesta = ws.Execute((short)cantidadCta, ctaPrsCod, (short)ctaCod, pCtaAsoCod, pCtatip, pCtaautcnj, 
+                out msgError, out listCarritoMenu, out existePrs);
+
+            TipoCuentaEntity tipoCuenta = new TipoCuentaEntity();
+            if (respuesta == 0)
+            {
+                List<CarritoMen> _carritoMenu = new List<CarritoMen>();
+                foreach (var item in listCarritoMenu)
+                {
+                    CarritoMen carrito = new CarritoMen();
+                    carrito.MenSec = item.mensec;
+                    carrito.MenDes = item.mendes;
+                    _carritoMenu.Add(carrito);
+                }
+                tipoCuenta.CarritoMen = _carritoMenu;
+                tipoCuenta.ExistePrs = existePrs;
+            }
+            return tipoCuenta;
+        }
     }
 }
