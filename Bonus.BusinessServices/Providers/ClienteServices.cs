@@ -55,10 +55,7 @@ namespace Bonus.BusinessServices.Providers
                 cliente.PrsCod = prsCod;
                 cliente.TipoDatCli = tipDatCli;
             }
-            else
-            {
-                cliente.ResultCode = respuesta;
-            }
+            cliente.ResultCode = respuesta;
             return cliente;
         }
 
@@ -111,9 +108,8 @@ namespace Bonus.BusinessServices.Providers
                 cuentaInfo.PrsNroDoc = PrsNroDoc;
                 cuentaInfo.PrsTipdCod = PrsTipdCod;
             }
-            else {
-                cuentaInfo.ResultCode = respuesta;
-            }
+            cuentaInfo.ResultCode = respuesta;
+
             return cuentaInfo;
 
         }
@@ -292,6 +288,7 @@ namespace Bonus.BusinessServices.Providers
                 tipoCuenta.CarritoMen = _carritoMenu;
                 tipoCuenta.ExistePrs = existePrs;
             }
+            tipoCuenta.ResultCode = respuesta;
             return tipoCuenta;
         }
     }

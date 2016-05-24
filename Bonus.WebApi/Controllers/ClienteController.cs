@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace Bonus.WebApi.Controllers
 {
-    [AuthorizationRequired]
+    //[AuthorizationRequired]
     public class ClienteController : ApiController
     {
         #region Private variable.
