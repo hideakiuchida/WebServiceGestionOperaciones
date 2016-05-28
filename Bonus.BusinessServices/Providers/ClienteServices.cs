@@ -17,18 +17,20 @@ namespace Bonus.BusinessServices.Providers
             int datTel, int prsPreTlf1, int prsPreTlf2, int prsPreTlf3, int prsFlgMov1, int prsFlgMov2, int prsFlgMov3, int prsNroTlf1, int prsNroTlf2, 
             int prsNroTlf3, string prsRedPrv1, string prsRedPrv2, string prsRedPrv3, int datCor, string prsMai1, string prsMai2, string prsMai3, 
             string direccion, string referencia, string dptoCod, string probCod, string distCod, string dirnCooY, string dirCooX, string ocupacion, 
-            string centroLabores, string organismoPublico, string cargoPEP, string flgTieVeh, string flgTIeHij, int prsEdadHijo1, int prsEdadHijo2, int prsEdadHijo3, 
-            string prsHijSex1, string prsHijSex2, string prsHijSex3, int tarCod, int modPag, int nroTrns, int codProm, string prsFirma, string prsFirma2, string tarAlias, string tarAnno)
+            string centroLabores, string organismoPublico, string cargoPEP, string flgTieVeh, string flgTIeHij, int prsEdadHijo1, int prsEdadHijo2, int prsEdadHijo3, int prsEdadHijo4, int prsEdadHijo5, int prsEdadHijo6,
+            string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, int tarCod, int modPag, int nroTrns, int codProm, string prsFirma, string prsFirma2, string tarAlias, string tarAnno)
         {
-            WsBonusAfilicacionCliente.wsAfiClinSoapPortClient ws = new WsBonusAfilicacionCliente.wsAfiClinSoapPortClient();
+            WsBonusAfilicacionCliente.wsaficlinSoapPortClient ws = new WsBonusAfilicacionCliente.wsaficlinSoapPortClient();
             string msgError;
             int respuesta = ws.Execute(Convert.ToSByte(tipDoc), userId, idCodEmp, ptcCod, pCnjCod, Convert.ToSByte(tipoDatCli), prsCodIn, ctaPrsCodIn,
                 (short) ctaCodIn, pCtaAsoCodIn, (short) tipoDocCod, prsNroDoc, prsApePat, prsApeMat, prsPriNom, prsSegNom, prsTerNom, prsSex,
                 Convert.ToSByte(estCivCod), oPrsFecNac, nacPrs, Convert.ToSByte(datTel), prsPreTlf1, prsPreTlf2, prsPreTlf3, Convert.ToSByte(prsFlgMov1), Convert.ToSByte(prsFlgMov2), Convert.ToSByte(prsFlgMov3),
                 prsNroTlf1, prsNroTlf2, prsNroTlf3, prsRedPrv1, prsRedPrv2, prsRedPrv3, Convert.ToSByte(datCor), prsMai1, prsMai2, prsMai3,
-                direccion, referencia, dptoCod, null, distCod, dirCooX, dirCooX, ocupacion, centroLabores, organismoPublico,
-                cargoPEP, flgTieVeh, flgTIeHij, Convert.ToSByte(prsEdadHijo1), Convert.ToSByte(prsEdadHijo2), Convert.ToSByte(prsEdadHijo3), 
-                prsHijSex1, prsHijSex2, prsHijSex3, tarCod, Convert.ToSByte(modPag), nroTrns, codProm, prsFirma, prsFirma2, tarAlias, Convert.ToSByte(tarAnno), out msgError);
+                direccion, referencia, dptoCod, null, distCod, dirCooX, dirCooX, ocupacion, centroLabores, organismoPublico, cargoPEP, flgTieVeh, flgTIeHij, 
+                Convert.ToSByte(prsEdadHijo1), Convert.ToSByte(prsEdadHijo2), Convert.ToSByte(prsEdadHijo3), Convert.ToSByte(prsEdadHijo4), Convert.ToSByte(prsEdadHijo5), Convert.ToSByte(prsEdadHijo6),
+                prsHijSex1, prsHijSex2, prsHijSex3, prsHijSex4, prsHijSex5, prsHijSex6, 
+                tarCod, Convert.ToSByte(modPag), nroTrns, codProm, prsFirma, prsFirma2, 
+                tarAlias, Convert.ToSByte(tarAnno), out msgError);
             return respuesta;
         }
 

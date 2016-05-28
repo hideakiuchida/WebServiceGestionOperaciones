@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="AppBonus" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="AppBonus" xmlns:tns1="AppBonus" name="wsAfiClin" targetNamespace="AppBonus" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="AppBonus" xmlns:tns2="http://loyaltyperu.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="AppBonus" xmlns:tns1="AppBonus" name="wsaficlin" targetNamespace="AppBonus" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="AppBonus">
-      <xsd:element name="wsAfiClin.Execute">
+      <xsd:import namespace="http://loyaltyperu.com/" />
+      <xsd:element name="wsaficlin.Execute">
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element minOccurs="1" maxOccurs="1" name="Tipopc" type="xsd:byte" />
@@ -59,9 +60,15 @@
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_1" type="xsd:byte" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_2" type="xsd:byte" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_3" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_4" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_5" type="xsd:byte" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsedadhjo_6" type="xsd:byte" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_1" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_2" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_3" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_4" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_5" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prshijsex_6" type="xsd:string" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Tarcod" type="xsd:long" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Modpag" type="xsd:byte" />
             <xsd:element minOccurs="1" maxOccurs="1" name="Nrotrns" type="xsd:long" />
@@ -73,7 +80,7 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="wsAfiClin.ExecuteResponse">
+      <xsd:element name="wsaficlin.ExecuteResponse">
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
@@ -83,19 +90,19 @@
       </xsd:element>
     </xsd:schema>
   </types>
-  <message name="wsAfiClin.ExecuteSoapIn">
-    <part name="parameters" element="tns1:wsAfiClin.Execute" />
+  <message name="wsaficlin.ExecuteSoapIn">
+    <part name="parameters" element="tns1:wsaficlin.Execute" />
   </message>
-  <message name="wsAfiClin.ExecuteSoapOut">
-    <part name="parameters" element="tns1:wsAfiClin.ExecuteResponse" />
+  <message name="wsaficlin.ExecuteSoapOut">
+    <part name="parameters" element="tns1:wsaficlin.ExecuteResponse" />
   </message>
-  <portType name="wsAfiClinSoapPort">
+  <portType name="wsaficlinSoapPort">
     <operation name="Execute">
-      <input message="tns1:wsAfiClin.ExecuteSoapIn" />
-      <output message="tns1:wsAfiClin.ExecuteSoapOut" />
+      <input message="tns1:wsaficlin.ExecuteSoapIn" />
+      <output message="tns1:wsaficlin.ExecuteSoapOut" />
     </operation>
   </portType>
-  <binding name="wsAfiClinSoapBinding" type="tns1:wsAfiClinSoapPort">
+  <binding name="wsaficlinSoapBinding" type="tns1:wsaficlinSoapPort">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="Execute">
       <soap:operation soapAction="AppBonusaction/AWSAFICLIN.Execute" />
@@ -107,8 +114,8 @@
       </output>
     </operation>
   </binding>
-  <service name="wsAfiClin">
-    <port name="wsAfiClinSoapPort" binding="tns1:wsAfiClinSoapBinding">
+  <service name="wsaficlin">
+    <port name="wsaficlinSoapPort" binding="tns1:wsaficlinSoapBinding">
       <soap:address location="http://200.62.147.155:8080/bonus_des/servlet/awsaficlin" />
     </port>
   </service>

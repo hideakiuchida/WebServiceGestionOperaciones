@@ -12,8 +12,8 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="AppBonus", ConfigurationName="WsBonusAfilicacionCliente.wsAfiClinSoapPort")]
-    public interface wsAfiClinSoapPort {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="AppBonus", ConfigurationName="WsBonusAfilicacionCliente.wsaficlinSoapPort")]
+    public interface wsaficlinSoapPort {
         
         [System.ServiceModel.OperationContractAttribute(Action="AppBonusaction/AWSAFICLIN.Execute", ReplyAction="*")]
         Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponse Execute(Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteRequest request);
@@ -27,7 +27,7 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class ExecuteRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="wsAfiClin.Execute", Namespace="AppBonus", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="wsaficlin.Execute", Namespace="AppBonus", Order=0)]
         public Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteRequestBody Body;
         
         public ExecuteRequest() {
@@ -205,37 +205,55 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
         [System.Runtime.Serialization.DataMemberAttribute(Order=53)]
         public sbyte Prsedadhjo_3;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=54)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=54)]
+        public sbyte Prsedadhjo_4;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=55)]
+        public sbyte Prsedadhjo_5;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=56)]
+        public sbyte Prsedadhjo_6;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=57)]
         public string Prshijsex_1;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=55)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=58)]
         public string Prshijsex_2;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=56)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=59)]
         public string Prshijsex_3;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=57)]
-        public long Tarcod;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=58)]
-        public sbyte Modpag;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=59)]
-        public long Nrotrns;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=60)]
-        public long Codprom;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=60)]
+        public string Prshijsex_4;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=61)]
-        public string Prsfirma;
+        public string Prshijsex_5;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=62)]
-        public string Prsfirma2;
+        public string Prshijsex_6;
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=63)]
-        public string Taralias;
+        [System.Runtime.Serialization.DataMemberAttribute(Order=63)]
+        public long Tarcod;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=64)]
+        public sbyte Modpag;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=65)]
+        public long Nrotrns;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=66)]
+        public long Codprom;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=67)]
+        public string Prsfirma;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=68)]
+        public string Prsfirma2;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=69)]
+        public string Taralias;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=70)]
         public short Taranno;
         
         public ExecuteRequestBody() {
@@ -296,9 +314,15 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
                     sbyte Prsedadhjo_1, 
                     sbyte Prsedadhjo_2, 
                     sbyte Prsedadhjo_3, 
+                    sbyte Prsedadhjo_4, 
+                    sbyte Prsedadhjo_5, 
+                    sbyte Prsedadhjo_6, 
                     string Prshijsex_1, 
                     string Prshijsex_2, 
                     string Prshijsex_3, 
+                    string Prshijsex_4, 
+                    string Prshijsex_5, 
+                    string Prshijsex_6, 
                     long Tarcod, 
                     sbyte Modpag, 
                     long Nrotrns, 
@@ -361,9 +385,15 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
             this.Prsedadhjo_1 = Prsedadhjo_1;
             this.Prsedadhjo_2 = Prsedadhjo_2;
             this.Prsedadhjo_3 = Prsedadhjo_3;
+            this.Prsedadhjo_4 = Prsedadhjo_4;
+            this.Prsedadhjo_5 = Prsedadhjo_5;
+            this.Prsedadhjo_6 = Prsedadhjo_6;
             this.Prshijsex_1 = Prshijsex_1;
             this.Prshijsex_2 = Prshijsex_2;
             this.Prshijsex_3 = Prshijsex_3;
+            this.Prshijsex_4 = Prshijsex_4;
+            this.Prshijsex_5 = Prshijsex_5;
+            this.Prshijsex_6 = Prshijsex_6;
             this.Tarcod = Tarcod;
             this.Modpag = Modpag;
             this.Nrotrns = Nrotrns;
@@ -380,7 +410,7 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class ExecuteResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="wsAfiClin.ExecuteResponse", Namespace="AppBonus", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="wsaficlin.ExecuteResponse", Namespace="AppBonus", Order=0)]
         public Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponseBody Body;
         
         public ExecuteResponse() {
@@ -412,34 +442,34 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface wsAfiClinSoapPortChannel : Bonus.BusinessServices.WsBonusAfilicacionCliente.wsAfiClinSoapPort, System.ServiceModel.IClientChannel {
+    public interface wsaficlinSoapPortChannel : Bonus.BusinessServices.WsBonusAfilicacionCliente.wsaficlinSoapPort, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class wsAfiClinSoapPortClient : System.ServiceModel.ClientBase<Bonus.BusinessServices.WsBonusAfilicacionCliente.wsAfiClinSoapPort>, Bonus.BusinessServices.WsBonusAfilicacionCliente.wsAfiClinSoapPort {
+    public partial class wsaficlinSoapPortClient : System.ServiceModel.ClientBase<Bonus.BusinessServices.WsBonusAfilicacionCliente.wsaficlinSoapPort>, Bonus.BusinessServices.WsBonusAfilicacionCliente.wsaficlinSoapPort {
         
-        public wsAfiClinSoapPortClient() {
+        public wsaficlinSoapPortClient() {
         }
         
-        public wsAfiClinSoapPortClient(string endpointConfigurationName) : 
+        public wsaficlinSoapPortClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public wsAfiClinSoapPortClient(string endpointConfigurationName, string remoteAddress) : 
+        public wsaficlinSoapPortClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public wsAfiClinSoapPortClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public wsaficlinSoapPortClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public wsAfiClinSoapPortClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public wsaficlinSoapPortClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponse Bonus.BusinessServices.WsBonusAfilicacionCliente.wsAfiClinSoapPort.Execute(Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteRequest request) {
+        Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponse Bonus.BusinessServices.WsBonusAfilicacionCliente.wsaficlinSoapPort.Execute(Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteRequest request) {
             return base.Channel.Execute(request);
         }
         
@@ -498,9 +528,15 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
                     sbyte Prsedadhjo_1, 
                     sbyte Prsedadhjo_2, 
                     sbyte Prsedadhjo_3, 
+                    sbyte Prsedadhjo_4, 
+                    sbyte Prsedadhjo_5, 
+                    sbyte Prsedadhjo_6, 
                     string Prshijsex_1, 
                     string Prshijsex_2, 
                     string Prshijsex_3, 
+                    string Prshijsex_4, 
+                    string Prshijsex_5, 
+                    string Prshijsex_6, 
                     long Tarcod, 
                     sbyte Modpag, 
                     long Nrotrns, 
@@ -566,9 +602,15 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
             inValue.Body.Prsedadhjo_1 = Prsedadhjo_1;
             inValue.Body.Prsedadhjo_2 = Prsedadhjo_2;
             inValue.Body.Prsedadhjo_3 = Prsedadhjo_3;
+            inValue.Body.Prsedadhjo_4 = Prsedadhjo_4;
+            inValue.Body.Prsedadhjo_5 = Prsedadhjo_5;
+            inValue.Body.Prsedadhjo_6 = Prsedadhjo_6;
             inValue.Body.Prshijsex_1 = Prshijsex_1;
             inValue.Body.Prshijsex_2 = Prshijsex_2;
             inValue.Body.Prshijsex_3 = Prshijsex_3;
+            inValue.Body.Prshijsex_4 = Prshijsex_4;
+            inValue.Body.Prshijsex_5 = Prshijsex_5;
+            inValue.Body.Prshijsex_6 = Prshijsex_6;
             inValue.Body.Tarcod = Tarcod;
             inValue.Body.Modpag = Modpag;
             inValue.Body.Nrotrns = Nrotrns;
@@ -577,13 +619,13 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
             inValue.Body.Prsfirma2 = Prsfirma2;
             inValue.Body.Taralias = Taralias;
             inValue.Body.Taranno = Taranno;
-            Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponse retVal = ((Bonus.BusinessServices.WsBonusAfilicacionCliente.wsAfiClinSoapPort)(this)).Execute(inValue);
+            Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponse retVal = ((Bonus.BusinessServices.WsBonusAfilicacionCliente.wsaficlinSoapPort)(this)).Execute(inValue);
             Msjerror = retVal.Body.Msjerror;
             return retVal.Body.Coderror;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponse> Bonus.BusinessServices.WsBonusAfilicacionCliente.wsAfiClinSoapPort.ExecuteAsync(Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteRequest request) {
+        System.Threading.Tasks.Task<Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponse> Bonus.BusinessServices.WsBonusAfilicacionCliente.wsaficlinSoapPort.ExecuteAsync(Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteRequest request) {
             return base.Channel.ExecuteAsync(request);
         }
         
@@ -642,9 +684,15 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
                     sbyte Prsedadhjo_1, 
                     sbyte Prsedadhjo_2, 
                     sbyte Prsedadhjo_3, 
+                    sbyte Prsedadhjo_4, 
+                    sbyte Prsedadhjo_5, 
+                    sbyte Prsedadhjo_6, 
                     string Prshijsex_1, 
                     string Prshijsex_2, 
                     string Prshijsex_3, 
+                    string Prshijsex_4, 
+                    string Prshijsex_5, 
+                    string Prshijsex_6, 
                     long Tarcod, 
                     sbyte Modpag, 
                     long Nrotrns, 
@@ -709,9 +757,15 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
             inValue.Body.Prsedadhjo_1 = Prsedadhjo_1;
             inValue.Body.Prsedadhjo_2 = Prsedadhjo_2;
             inValue.Body.Prsedadhjo_3 = Prsedadhjo_3;
+            inValue.Body.Prsedadhjo_4 = Prsedadhjo_4;
+            inValue.Body.Prsedadhjo_5 = Prsedadhjo_5;
+            inValue.Body.Prsedadhjo_6 = Prsedadhjo_6;
             inValue.Body.Prshijsex_1 = Prshijsex_1;
             inValue.Body.Prshijsex_2 = Prshijsex_2;
             inValue.Body.Prshijsex_3 = Prshijsex_3;
+            inValue.Body.Prshijsex_4 = Prshijsex_4;
+            inValue.Body.Prshijsex_5 = Prshijsex_5;
+            inValue.Body.Prshijsex_6 = Prshijsex_6;
             inValue.Body.Tarcod = Tarcod;
             inValue.Body.Modpag = Modpag;
             inValue.Body.Nrotrns = Nrotrns;
@@ -720,7 +774,7 @@ namespace Bonus.BusinessServices.WsBonusAfilicacionCliente {
             inValue.Body.Prsfirma2 = Prsfirma2;
             inValue.Body.Taralias = Taralias;
             inValue.Body.Taranno = Taranno;
-            return ((Bonus.BusinessServices.WsBonusAfilicacionCliente.wsAfiClinSoapPort)(this)).ExecuteAsync(inValue);
+            return ((Bonus.BusinessServices.WsBonusAfilicacionCliente.wsaficlinSoapPort)(this)).ExecuteAsync(inValue);
         }
     }
 }
