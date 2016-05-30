@@ -18,7 +18,7 @@ namespace Bonus.BusinessServices.Interfaces
                 string ocupacion, string centroLabores, string organismoPublico, string cargoPEP, string flgTieVeh, string flgTIeHij,
                 int prsEdadHijo1, int prsEdadHijo2, int prsEdadHijo3, int prsEdadHijo4, int prsEdadHijo5, int prsEdadHijo6,  
                 string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, int tarCod, int modPag, int nroTrns, int codProm, 
-                string prsFirma, string prsFirma2, string tarAlias, string tarAnno);
+                string prsFirma, string prsFirma2, string tarAlias, int tarAnno);
         int ValidarAfiliacion(string ctaPrsCod, int ctaCod, string pCtaAsoCod);
         int ValidarCodigoPromocional(int codProm);
         TipoCuentaEntity ObtenerMenuAfiliacion(int cantidadCta, string ctaPrsCod, int ctaCod, string pCtaAsoCod, string pCtatip, string pCtaautcnj);

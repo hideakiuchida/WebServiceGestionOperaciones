@@ -68,13 +68,13 @@ namespace Bonus.WebApi.Controllers
               string ocupacion, string centroLabores, string organismoPublico, string cargoPEP, string flgTieVeh, string flgTIeHij,
               int prsEdadHijo1, int prsEdadHijo2, int prsEdadHijo3, int prsEdadHijo4, int prsEdadHijo5, int prsEdadHijo6, 
               string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, int tarCod, int modPag, int nroTrns, int codProm,
-              string prsFirma, string prsFirma2, string tarAlias, string tarAnno)
+              string prsFirma, string prsFirma2, string tarAlias, int tarAnno)
         {
             return _services.AfiliarClientes(tipDoc, userId, idCodEmp, ptcCod, pCnjCod, tipoDatCli, prsCodIn, ctaPrsCodIn,
                 (short)ctaCodIn, pCtaAsoCodIn, (short)tipoDocCod, prsNroDoc, prsApePat, prsApeMat, prsPriNom, prsSegNom, prsTerNom, prsSex,
                 estCivCod, oPrsFecNac, nacPrs, datTel, prsPreTlf1, prsPreTlf2, prsPreTlf3, prsFlgMov1, prsFlgMov2, prsFlgMov3,
                 prsNroTlf1, prsNroTlf2, prsNroTlf3, prsRedPrv1, prsRedPrv2, prsRedPrv3, datCor, prsMai1, prsMai2, prsMai3,
-                direccion, referencia, dptoCod, null, distCod, dirCooX, dirCooX, ocupacion, centroLabores, organismoPublico,
+                direccion, referencia, dptoCod, probCod, distCod, dirCooX, dirCooX, ocupacion, centroLabores, organismoPublico,
                 cargoPEP, flgTieVeh, flgTIeHij, prsEdadHijo1, prsEdadHijo2, prsEdadHijo3, prsEdadHijo4, prsEdadHijo5, prsEdadHijo6,
                 prsHijSex1, prsHijSex2, prsHijSex3, prsHijSex4, prsHijSex5, prsHijSex6, tarCod, modPag, nroTrns, codProm, prsFirma, prsFirma2, tarAlias, tarAnno);
         }

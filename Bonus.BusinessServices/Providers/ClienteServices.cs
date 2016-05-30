@@ -10,7 +10,10 @@ namespace Bonus.BusinessServices.Providers
 {
     public class ClienteServices : IClienteServices
     {
-
+        public string getStringParameter(String param)
+        {
+            return (param == null) ? param = "" : param;
+        }
         public int AfiliarClientes(int tipDoc, string userId, long idCodEmp, string ptcCod, string pCnjCod, int tipoDatCli, 
             string prsCodIn, string ctaPrsCodIn, int ctaCodIn, string pCtaAsoCodIn, int tipoDocCod, string prsNroDoc, string prsApePat, 
             string prsApeMat, string prsPriNom, string prsSegNom, string prsTerNom, string prsSex, int estCivCod, string oPrsFecNac, string nacPrs, 
@@ -18,22 +21,148 @@ namespace Bonus.BusinessServices.Providers
             int prsNroTlf3, string prsRedPrv1, string prsRedPrv2, string prsRedPrv3, int datCor, string prsMai1, string prsMai2, string prsMai3, 
             string direccion, string referencia, string dptoCod, string probCod, string distCod, string dirnCooY, string dirCooX, string ocupacion, 
             string centroLabores, string organismoPublico, string cargoPEP, string flgTieVeh, string flgTIeHij, int prsEdadHijo1, int prsEdadHijo2, int prsEdadHijo3, int prsEdadHijo4, int prsEdadHijo5, int prsEdadHijo6,
-            string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, int tarCod, int modPag, int nroTrns, int codProm, string prsFirma, string prsFirma2, string tarAlias, string tarAnno)
+            string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, int tarCod, int modPag, int nroTrns, int codProm, string prsFirma, string prsFirma2, string tarAlias, int tarAnno)
         {
             WsBonusAfilicacionCliente.wsaficlinSoapPortClient ws = new WsBonusAfilicacionCliente.wsaficlinSoapPortClient();
-            string msgError;
-            int respuesta = ws.Execute(Convert.ToSByte(tipDoc), userId, idCodEmp, ptcCod, pCnjCod, Convert.ToSByte(tipoDatCli), prsCodIn, ctaPrsCodIn,
-                (short) ctaCodIn, pCtaAsoCodIn, (short) tipoDocCod, prsNroDoc, prsApePat, prsApeMat, prsPriNom, prsSegNom, prsTerNom, prsSex,
-                Convert.ToSByte(estCivCod), oPrsFecNac, nacPrs, Convert.ToSByte(datTel), prsPreTlf1, prsPreTlf2, prsPreTlf3, Convert.ToSByte(prsFlgMov1), Convert.ToSByte(prsFlgMov2), Convert.ToSByte(prsFlgMov3),
-                prsNroTlf1, prsNroTlf2, prsNroTlf3, prsRedPrv1, prsRedPrv2, prsRedPrv3, Convert.ToSByte(datCor), prsMai1, prsMai2, prsMai3,
-                direccion, referencia, dptoCod, null, distCod, dirCooX, dirCooX, ocupacion, centroLabores, organismoPublico, cargoPEP, flgTieVeh, flgTIeHij, 
-                Convert.ToSByte(prsEdadHijo1), Convert.ToSByte(prsEdadHijo2), Convert.ToSByte(prsEdadHijo3), Convert.ToSByte(prsEdadHijo4), Convert.ToSByte(prsEdadHijo5), Convert.ToSByte(prsEdadHijo6),
-                prsHijSex1, prsHijSex2, prsHijSex3, prsHijSex4, prsHijSex5, prsHijSex6, 
-                tarCod, Convert.ToSByte(modPag), nroTrns, codProm, prsFirma, prsFirma2, 
-                tarAlias, Convert.ToSByte(tarAnno), out msgError);
+           string msgError = "";
+
+            sbyte _tipDoc = Convert.ToSByte(tipDoc);
+            sbyte _tipoDatCli = Convert.ToSByte(tipoDatCli);
+            sbyte _estCivCod = Convert.ToSByte(estCivCod);
+            sbyte _datTel = Convert.ToSByte(datTel);
+            sbyte _prsFlgMov1 = Convert.ToSByte(prsFlgMov1);
+            sbyte _prsFlgMov2 = Convert.ToSByte(prsFlgMov2);
+            sbyte _prsFlgMov3 = Convert.ToSByte(prsFlgMov3);
+            sbyte _datCor = Convert.ToSByte(datCor);
+            sbyte _prsEdadHijo1 = Convert.ToSByte(prsEdadHijo1);
+            sbyte _prsEdadHijo2 = Convert.ToSByte(prsEdadHijo2);
+            sbyte _prsEdadHijo3 = Convert.ToSByte(prsEdadHijo3);
+            sbyte _prsEdadHijo4 = Convert.ToSByte(prsEdadHijo4);
+            sbyte _prsEdadHijo5 = Convert.ToSByte(prsEdadHijo5);
+            sbyte _prsEdadHijo6 = Convert.ToSByte(prsEdadHijo6);
+            sbyte _modPag = Convert.ToSByte(modPag);
+            sbyte _tarAnno = Convert.ToSByte(tarAnno);
+            short _ctaCodIn = short.Parse(ctaCodIn.ToString());
+            short _tipoDocCod = short.Parse(tipoDocCod.ToString());
+
+           userId = getStringParameter(userId);
+
+           ptcCod = getStringParameter(ptcCod);
+           pCnjCod = getStringParameter(pCnjCod);
+           // assign 0 for register a new item
+           prsCodIn = (prsCodIn == null) ? prsCodIn = "0" : prsCodIn;
+           ctaPrsCodIn = getStringParameter(ctaPrsCodIn);       
+           pCtaAsoCodIn = getStringParameter(pCtaAsoCodIn);           
+           prsNroDoc = getStringParameter(prsNroDoc);
+           prsApePat = getStringParameter(prsApePat);
+           prsApeMat = getStringParameter(prsApeMat);
+           prsPriNom = getStringParameter(prsPriNom);
+           prsSegNom = getStringParameter(prsSegNom);
+           prsTerNom = getStringParameter(prsTerNom);
+           prsSex = getStringParameter(prsSex);
+           oPrsFecNac = getStringParameter(oPrsFecNac);
+           nacPrs = getStringParameter(nacPrs);            
+           prsRedPrv1 = getStringParameter(prsRedPrv1);
+           prsRedPrv2 = getStringParameter(prsRedPrv2);
+           prsRedPrv3 = getStringParameter(prsRedPrv3);           
+           prsMai1 = getStringParameter(prsMai1);
+           prsMai2 = getStringParameter(prsMai2);
+           prsMai3 = getStringParameter(prsMai3);
+
+          direccion = getStringParameter(direccion);
+          referencia = getStringParameter(referencia);
+          dptoCod = getStringParameter(dptoCod);
+          probCod = getStringParameter(probCod);
+          distCod = getStringParameter(distCod);
+          dirCooX = getStringParameter(dirCooX);
+          dirnCooY = getStringParameter(dirnCooY);
+          ocupacion = getStringParameter(ocupacion);
+          centroLabores = getStringParameter(centroLabores);
+          organismoPublico = getStringParameter(organismoPublico);
+          cargoPEP = getStringParameter(cargoPEP);
+          flgTieVeh = getStringParameter(flgTieVeh);
+          flgTIeHij = getStringParameter(flgTIeHij);            
+          prsHijSex1 = getStringParameter(prsHijSex1);
+          prsHijSex2 = getStringParameter(prsHijSex2);
+          prsHijSex3 = getStringParameter(prsHijSex3);
+          prsHijSex4 = getStringParameter(prsHijSex4);
+          prsHijSex5 = getStringParameter(prsHijSex5);
+          prsHijSex6 = getStringParameter(prsHijSex6);
+          
+          prsFirma = getStringParameter(prsFirma);
+          prsFirma2 = getStringParameter(prsFirma2);
+          tarAlias = getStringParameter(tarAlias);
+           
+            int respuesta = ws.Execute(_tipDoc,
+                userId, 
+                idCodEmp,
+                ptcCod,
+                pCnjCod,
+                _tipoDatCli,
+                prsCodIn,
+                ctaPrsCodIn,
+                _ctaCodIn,
+                pCtaAsoCodIn, 
+                _tipoDocCod,
+                prsNroDoc,
+                prsApePat,
+                prsApeMat,
+                prsPriNom,
+                prsSegNom,
+                prsTerNom,
+                prsSex,
+                _estCivCod,
+                oPrsFecNac,
+                nacPrs, 
+                _datTel, 
+                prsPreTlf1, prsPreTlf2, prsPreTlf3, 
+                _prsFlgMov1, 
+                _prsFlgMov2, 
+                _prsFlgMov3,
+                prsNroTlf1, prsNroTlf2, prsNroTlf3,
+                prsRedPrv1,
+                prsRedPrv2,
+                prsRedPrv3, 
+                _datCor,
+                prsMai1,
+                prsMai2,
+                prsMai3,
+                direccion,
+                referencia,
+                dptoCod,
+                probCod,
+                distCod,
+                dirCooX,
+                dirCooX,
+                ocupacion,
+                centroLabores,
+                organismoPublico,
+                cargoPEP,
+                flgTieVeh,
+                flgTIeHij,
+                _prsEdadHijo1,
+                _prsEdadHijo2, 
+                _prsEdadHijo3, 
+                _prsEdadHijo4, 
+                _prsEdadHijo5, 
+                _prsEdadHijo6,
+                prsHijSex1,
+                prsHijSex2,
+                prsHijSex3,
+                prsHijSex4,
+                prsHijSex5,
+                prsHijSex6, 
+                tarCod,
+                _modPag, 
+                nroTrns, 
+                codProm,
+                prsFirma,
+                prsFirma2,
+                tarAlias,
+                _tarAnno, 
+                out msgError);
             return respuesta;
         }
-
 
         public ClienteEntity ExisteCliente(short tipodoccod, string prsnrodoc)
         {
