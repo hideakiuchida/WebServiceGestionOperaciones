@@ -48,7 +48,8 @@ namespace Bonus.WebApiServices.Controllers
                     var userId = basicAuthenticationIdentity.UserId;
                     var codPro = basicAuthenticationIdentity.CodPro;
                     var usuNom = basicAuthenticationIdentity.UsuNom;
-                    return GetAuthToken(userId, codPro, usuNom);
+                    var resultCode = basicAuthenticationIdentity.ResultCode;
+                    return GetAuthToken(userId, codPro, usuNom, resultCode);
                 }
             }
             return null;
@@ -59,7 +60,7 @@ namespace Bonus.WebApiServices.Controllers
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        private HttpResponseMessage GetAuthToken(int userId, long? codPro, string usuNom)
+        private HttpResponseMessage GetAuthToken(int userId, long? codPro, string usuNom, int resultCode)
         {
             var token = _tokenServices.GenerateToken(userId);
             var response = Request.CreateResponse(HttpStatusCode.OK, "Authorized");
@@ -67,7 +68,8 @@ namespace Bonus.WebApiServices.Controllers
             response.Headers.Add("TokenExpiry", ConfigurationManager.AppSettings["AuthTokenExpiry"]);
             response.Headers.Add("CodPro", codPro.ToString());
             response.Headers.Add("UsuNom", usuNom.ToString());
-            response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry,CodPro,UsuNom");
+            response.Headers.Add("ResultCode", resultCode.ToString());
+            response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry,CodPro,UsuNom,ResultCode");
             return response;
         }
     }
