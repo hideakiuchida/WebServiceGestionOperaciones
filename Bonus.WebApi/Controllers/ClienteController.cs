@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace Bonus.WebApi.Controllers
 {
-    //[AuthorizationRequired]
+    [AuthorizationRequired]
     public class ClienteController : ApiController
     {
         #region Private variable.
@@ -58,7 +58,7 @@ namespace Bonus.WebApi.Controllers
 
         [Route("AfiliarClientes")]
         [HttpPost]
-        public int AfiliarClientes(int tipDoc, string userId, long idCodEmp, string ptcCod, string pCnjCod, int tipoDatCli, string prsCodIn,
+        public AfiliacionEntity AfiliarClientes(int tipDoc, string userId, long idCodEmp, string ptcCod, string pCnjCod, int tipoDatCli, string prsCodIn,
               string ctaPrsCodIn, int ctaCodIn, string pCtaAsoCodIn, int tipoDocCod, string prsNroDoc, string prsApePat,
               string prsApeMat, string prsPriNom, string prsSegNom, string prsTerNom, string prsSex, int estCivCod,
               string oPrsFecNac, string nacPrs, int datTel, int prsPreTlf1, int prsPreTlf2, int prsPreTlf3,
@@ -67,7 +67,7 @@ namespace Bonus.WebApi.Controllers
               string direccion, string referencia, string dptoCod, string probCod, string distCod, string dirnCooY, string dirCooX,
               string ocupacion, string centroLabores, string organismoPublico, string cargoPEP, string flgTieVeh, string flgTIeHij,
               int prsEdadHijo1, int prsEdadHijo2, int prsEdadHijo3, int prsEdadHijo4, int prsEdadHijo5, int prsEdadHijo6, 
-              string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, int tarCod, int modPag, int nroTrns, int codProm,
+              string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, long tarCod, int modPag, int nroTrns, int codProm,
               string prsFirma, string prsFirma2, string tarAlias, int tarAnno)
         {
             return _services.AfiliarClientes(tipDoc, userId, idCodEmp, ptcCod, pCnjCod, tipoDatCli, prsCodIn, ctaPrsCodIn,

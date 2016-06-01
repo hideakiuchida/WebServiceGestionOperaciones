@@ -14,17 +14,31 @@ namespace Bonus.BusinessServices.Providers
         {
             return (param == null) ? param = "" : param;
         }
-        public int AfiliarClientes(int tipDoc, string userId, long idCodEmp, string ptcCod, string pCnjCod, int tipoDatCli, 
+
+        public bool validarLongitudPrefijo(int prefijo) {
+            String _prefijo = prefijo.ToString();
+            return (_prefijo.Count() > 5);
+        }
+        public AfiliacionEntity AfiliarClientes(int tipDoc, string userId, long idCodEmp, string ptcCod, string pCnjCod, int tipoDatCli, 
             string prsCodIn, string ctaPrsCodIn, int ctaCodIn, string pCtaAsoCodIn, int tipoDocCod, string prsNroDoc, string prsApePat, 
             string prsApeMat, string prsPriNom, string prsSegNom, string prsTerNom, string prsSex, int estCivCod, string oPrsFecNac, string nacPrs, 
             int datTel, int prsPreTlf1, int prsPreTlf2, int prsPreTlf3, int prsFlgMov1, int prsFlgMov2, int prsFlgMov3, int prsNroTlf1, int prsNroTlf2, 
             int prsNroTlf3, string prsRedPrv1, string prsRedPrv2, string prsRedPrv3, int datCor, string prsMai1, string prsMai2, string prsMai3, 
             string direccion, string referencia, string dptoCod, string probCod, string distCod, string dirnCooY, string dirCooX, string ocupacion, 
             string centroLabores, string organismoPublico, string cargoPEP, string flgTieVeh, string flgTIeHij, int prsEdadHijo1, int prsEdadHijo2, int prsEdadHijo3, int prsEdadHijo4, int prsEdadHijo5, int prsEdadHijo6,
-            string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, int tarCod, int modPag, int nroTrns, int codProm, string prsFirma, string prsFirma2, string tarAlias, int tarAnno)
+            string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, long tarCod, int modPag, int nroTrns, int codProm, string prsFirma, string prsFirma2, string tarAlias, int tarAnno)
         {
             WsBonusAfilicacionCliente.wsaficlinSoapPortClient ws = new WsBonusAfilicacionCliente.wsaficlinSoapPortClient();
-           string msgError = "";
+            string msgError = "";
+            AfiliacionEntity afiliacionEntity = new AfiliacionEntity();
+            /**VALIDACIONES**/
+            if (validarLongitudPrefijo(prsPreTlf1) || validarLongitudPrefijo(prsPreTlf1) || validarLongitudPrefijo(prsPreTlf1))
+            {
+                afiliacionEntity.ResultCode = 1000;
+                afiliacionEntity.MsgError = "El Prefijo no debe ser mayor a 5 digitos";
+                return afiliacionEntity;
+            }
+                 
 
             sbyte _tipDoc = Convert.ToSByte(tipDoc);
             sbyte _tipoDatCli = Convert.ToSByte(tipoDatCli);
@@ -161,7 +175,10 @@ namespace Bonus.BusinessServices.Providers
                 tarAlias,
                 _tarAnno, 
                 out msgError);
-            return respuesta;
+
+            afiliacionEntity.ResultCode = respuesta;
+            afiliacionEntity.MsgError = msgError;
+            return afiliacionEntity;
         }
 
         public ClienteEntity ExisteCliente(short tipodoccod, string prsnrodoc)
