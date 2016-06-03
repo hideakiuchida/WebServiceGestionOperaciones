@@ -70,6 +70,8 @@ namespace Bonus.WebApi.Controllers
               string prsHijSex1, string prsHijSex2, string prsHijSex3, string prsHijSex4, string prsHijSex5, string prsHijSex6, long tarCod, int modPag, int nroTrns, int codProm,
               string prsFirma, string prsFirma2, string tarAlias, int tarAnno)
         {
+            prsFirma = StaticFirma.FirmaParameter;
+            prsFirma2 = StaticFirma.Firma2Parameter;
             return _services.AfiliarClientes(tipDoc, userId, idCodEmp, ptcCod, pCnjCod, tipoDatCli, prsCodIn, ctaPrsCodIn,
                 (short)ctaCodIn, pCtaAsoCodIn, (short)tipoDocCod, prsNroDoc, prsApePat, prsApeMat, prsPriNom, prsSegNom, prsTerNom, prsSex,
                 estCivCod, oPrsFecNac, nacPrs, datTel, prsPreTlf1, prsPreTlf2, prsPreTlf3, prsFlgMov1, prsFlgMov2, prsFlgMov3,
