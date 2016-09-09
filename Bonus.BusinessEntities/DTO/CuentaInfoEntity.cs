@@ -5,6 +5,7 @@ namespace Bonus.BusinessEntities.DTO
     public class CuentaInfoEntity
     {
         public IEnumerable<CuentaEntity> CuentaEntities { get; set; }
+        public short CantidadCta { get; set; }
         public short PrsTipdCod { get; set; }
         public string PrsNroDoc { get; set; }
         public string PrsNomApe { get; set; }

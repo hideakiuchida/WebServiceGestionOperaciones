@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="mi4+w+JdJSgnWLRD8rzCY2yX75Q=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="l4aKo6sQ53TfjZE4GxD0h4HamkA=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="wsexicliboSoapBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="wsexicliboSoapPort" contract="WsBonusExisteClienteBonus.wsexicliboSoapPort" bindingType="basicHttpBinding" address="http://200.62.147.188:8080/app/servlet/awsexiclibo" bindingConfiguration="wsexicliboSoapBinding">
+    <endpoint name="wsexicliboSoapPort" contract="WsBonusExisteClienteBonus.wsexicliboSoapPort" bindingType="basicHttpBinding" address="http://190.81.126.75:8080/bonusTabletD/servlet/awsexiclibo" bindingConfiguration="wsexicliboSoapBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://200.62.147.188:8080/app/servlet/awsexiclibo</serializedValue>
+          <serializedValue>http://190.81.126.75:8080/bonusTabletD/servlet/awsexiclibo</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address=" http://200.62.147.188:8080/app/servlet/awslogusugx?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://190.81.126.75:8080/bonusTabletD/servlet/awslogusugx?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wslogusugx.wsdl" MetadataType="Wsdl" ID="0aa3b6c8-4cef-442f-b041-e424ac7cf977" SourceId="1" SourceUrl="http://200.62.147.188:8080/app/servlet/awslogusugx?wsdl" />
+    <MetadataFile FileName="wslogusugx1.wsdl" MetadataType="Wsdl" ID="db308f58-bebe-45ad-af74-6a6247129e50" SourceId="1" SourceUrl="http://190.81.126.75:8080/bonusTabletD/servlet/awslogusugx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

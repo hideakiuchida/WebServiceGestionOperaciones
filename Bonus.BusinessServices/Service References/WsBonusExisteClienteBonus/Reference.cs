@@ -88,13 +88,17 @@ namespace Bonus.BusinessServices.WsBonusExisteClienteBonus {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
         public string Prscod;
         
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public sbyte Tipdatcli;
+        
         public ExecuteResponseBody() {
         }
         
-        public ExecuteResponseBody(short Coderror, string Msjerror, string Prscod) {
+        public ExecuteResponseBody(short Coderror, string Msjerror, string Prscod, sbyte Tipdatcli) {
             this.Coderror = Coderror;
             this.Msjerror = Msjerror;
             this.Prscod = Prscod;
+            this.Tipdatcli = Tipdatcli;
         }
     }
     
@@ -130,7 +134,7 @@ namespace Bonus.BusinessServices.WsBonusExisteClienteBonus {
             return base.Channel.Execute(request);
         }
         
-        public short Execute(short Tipdoccod, string Prsnrodoc, out string Msjerror, out string Prscod) {
+        public short Execute(short Tipdoccod, string Prsnrodoc, out string Msjerror, out string Prscod, out sbyte Tipdatcli) {
             Bonus.BusinessServices.WsBonusExisteClienteBonus.ExecuteRequest inValue = new Bonus.BusinessServices.WsBonusExisteClienteBonus.ExecuteRequest();
             inValue.Body = new Bonus.BusinessServices.WsBonusExisteClienteBonus.ExecuteRequestBody();
             inValue.Body.Tipdoccod = Tipdoccod;
@@ -138,6 +142,7 @@ namespace Bonus.BusinessServices.WsBonusExisteClienteBonus {
             Bonus.BusinessServices.WsBonusExisteClienteBonus.ExecuteResponse retVal = ((Bonus.BusinessServices.WsBonusExisteClienteBonus.wsexicliboSoapPort)(this)).Execute(inValue);
             Msjerror = retVal.Body.Msjerror;
             Prscod = retVal.Body.Prscod;
+            Tipdatcli = retVal.Body.Tipdatcli;
             return retVal.Body.Coderror;
         }
         

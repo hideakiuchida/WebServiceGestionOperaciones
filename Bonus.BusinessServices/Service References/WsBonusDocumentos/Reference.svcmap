@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://200.62.147.188:8080/app/servlet/awslistipdo?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://190.81.126.75:8080/bonusTabletD/servlet/awslistipdo?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wslistipdo.wsdl" MetadataType="Wsdl" ID="ad0bdc13-bc87-460e-a38c-26fd60cbd8a8" SourceId="1" SourceUrl="http://200.62.147.188:8080/app/servlet/awslistipdo?wsdl" />
+    <MetadataFile FileName="wslistipdo1.wsdl" MetadataType="Wsdl" ID="94e970ca-d6f7-42c3-b79e-591ec4479f7c" SourceId="1" SourceUrl="http://190.81.126.75:8080/bonusTabletD/servlet/awslistipdo?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

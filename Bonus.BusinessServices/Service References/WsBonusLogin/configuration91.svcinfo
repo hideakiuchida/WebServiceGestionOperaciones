@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="ukLRvYzEieWy3WNxzHeXVzFmIfE=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Npu1Iz7UGkgWHsRcLdFC0XlfgVA=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="wslogusugxSoapBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="wslogusugxSoapPort" contract="WsBonusLogin.wslogusugxSoapPort" bindingType="basicHttpBinding" address="http://200.62.147.188:8080/app/servlet/awslogusugx" bindingConfiguration="wslogusugxSoapBinding">
+    <endpoint name="wslogusugxSoapPort" contract="WsBonusLogin.wslogusugxSoapPort" bindingType="basicHttpBinding" address="http://190.81.126.75:8080/bonusTabletD/servlet/awslogusugx" bindingConfiguration="wslogusugxSoapBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://200.62.147.188:8080/app/servlet/awslogusugx</serializedValue>
+          <serializedValue>http://190.81.126.75:8080/bonusTabletD/servlet/awslogusugx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

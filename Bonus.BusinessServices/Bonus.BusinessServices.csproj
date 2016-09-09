@@ -60,7 +60,37 @@
     <Compile Include="Providers\ProvinciaServices.cs" />
     <Compile Include="Providers\TokenServices.cs" />
     <Compile Include="Providers\UserServices.cs" />
+    <Compile Include="Service References\WsBonusAfilicacionCliente\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusClientesDatos\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusCodigoPromocional\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusConsultaDetalle\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusConsultaPrincipal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WsBonusExisteClienteBonus\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusGenerarCierre\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -71,6 +101,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\WsBonusMovFidelizacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusNombreCliente\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -96,11 +131,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\WsBonusObtenerCountToken\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\WsBonusObtenerDatosClientes\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -140,6 +170,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\WsBonusValidarAfiliacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WsBonusObtenerMenuAfiliacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bonus.BusinessEntities\Bonus.BusinessEntities.csproj">
@@ -163,18 +203,65 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WsBonusAfilicacionCliente\Bonus.BusinessServices.WsBonusAfilicacionCliente.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusAfilicacionCliente\wsaficlin1.wsdl" />
+    <None Include="Service References\WsBonusClientesDatos\Bonus.BusinessServices.WsBonusClientesDatos.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusClientesDatos\Bonus.BusinessServices.WsBonusClientesDatos.LishijLishijItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusClientesDatos\Bonus.BusinessServices.WsBonusClientesDatos.LismaiLismaiItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusClientesDatos\Bonus.BusinessServices.WsBonusClientesDatos.ListelListelItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusClientesDatos\wsdevdatco1.wsdl" />
+    <None Include="Service References\WsBonusCodigoPromocional\Bonus.BusinessServices.WsBonusCodigoPromocional.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusCodigoPromocional\wsvalprom1.wsdl" />
+    <None Include="Service References\WsBonusConsultaDetalle\Bonus.BusinessServices.WsBonusConsultaDetalle.CarVntDCarVntDItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusConsultaDetalle\Bonus.BusinessServices.WsBonusConsultaDetalle.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusConsultaDetalle\wsvntdett.wsdl" />
+    <None Include="Service References\WsBonusConsultaPrincipal\Bonus.BusinessServices.WsBonusConsultaPrincipal.CarVntCCarVntCItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusConsultaPrincipal\Bonus.BusinessServices.WsBonusConsultaPrincipal.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusConsultaPrincipal\wsvntctrj.wsdl" />
+    <None Include="Service References\WsBonusDepartamentos\wslisdep1.wsdl" />
+    <None Include="Service References\WsBonusDistritos\wslisdis1.wsdl" />
+    <None Include="Service References\WsBonusDocumentos\wslistipdo1.wsdl" />
+    <None Include="Service References\WsBonusEliminarTokenPorUsuario\wselitokus1.wsdl" />
     <None Include="Service References\WsBonusExisteClienteBonus\Bonus.BusinessServices.WsBonusExisteClienteBonus.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusExisteClienteBonus\wsexiclibo.wsdl" />
+    <None Include="Service References\WsBonusGenerarCierre\Bonus.BusinessServices.WsBonusGenerarCierre.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusGenerarCierre\wscievntt.wsdl" />
     <None Include="Service References\WsBonusInfoCuenta\Bonus.BusinessServices.WsBonusInfoCuenta.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusInfoCuenta\Bonus.BusinessServices.WsBonusInfoCuenta.LisctaptoLisctaptoItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusInfoCuenta\wslisctapt.wsdl" />
+    <None Include="Service References\WsBonusInfoCuenta\wslisctapt1.wsdl" />
+    <None Include="Service References\WsBonusInsertarToken\wsinstoken1.wsdl" />
+    <None Include="Service References\WsBonusLogin\wslogusugx1.wsdl" />
     <None Include="Service References\WsBonusMovFidelizacion\Bonus.BusinessServices.WsBonusMovFidelizacion.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -182,6 +269,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusMovFidelizacion\wsultmovpt.wsdl" />
+    <None Include="Service References\WsBonusNombreCliente\Bonus.BusinessServices.WsBonusNombreCliente.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusNombreCliente\wsnomcli.wsdl" />
     <None Include="Service References\WsBonusObtenerCountTokenPorUsuario\Bonus.BusinessServices.WsBonusObtenerCountTokenPorUsuario.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -193,7 +284,6 @@
     <None Include="Service References\WsBonusEliminarTokenPorUsuario\Bonus.BusinessServices.WsBonusEliminarTokenPorUsuario.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusEliminarTokenPorUsuario\wselitokus.wsdl" />
     <None Include="Service References\WsBonusEliminarToken\Bonus.BusinessServices.WsBonusEliminarToken.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -202,19 +292,13 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusObtenerCountToken\wsobtcotok.wsdl" />
-    <None Include="Service References\WsBonusObtenerDatosClientes\Bonus.BusinessServices.WsBonusObtenerDatosClientes.ExecuteResponse.datasource">
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\Bonus.BusinessServices.WsBonusObtenerMenuAfiliacion.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusObtenerDatosClientes\Bonus.BusinessServices.WsBonusObtenerDatosClientes.LishijLishijItem.datasource">
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\Bonus.BusinessServices.WsBonusObtenerMenuAfiliacion.LismenafiLismenafiItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusObtenerDatosClientes\Bonus.BusinessServices.WsBonusObtenerDatosClientes.LismaiLismaiItem.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\WsBonusObtenerDatosClientes\Bonus.BusinessServices.WsBonusObtenerDatosClientes.ListelListelItem.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\WsBonusObtenerDatosClientes\wsdevdatco.wsdl" />
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\wsmenafi1.wsdl" />
     <None Include="Service References\WsBonusObtenerToken\Bonus.BusinessServices.WsBonusObtenerToken.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -225,47 +309,52 @@
     <None Include="Service References\WsBonusDepartamentos\Bonus.BusinessServices.WsBonusDepartamentos.LisdepLisdepItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusDepartamentos\wslisdep.wsdl" />
     <None Include="Service References\WsBonusDistritos\Bonus.BusinessServices.WsBonusDistritos.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusDistritos\Bonus.BusinessServices.WsBonusDistritos.LisdisLisdisItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusDistritos\wslisdis.wsdl" />
     <None Include="Service References\WsBonusDocumentos\Bonus.BusinessServices.WsBonusDocumentos.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusDocumentos\Bonus.BusinessServices.WsBonusDocumentos.ListipdocListipdocItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusDocumentos\wslistipdo.wsdl" />
     <None Include="Service References\WsBonusInsertarToken\Bonus.BusinessServices.WsBonusInsertarToken.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusInsertarToken\wsinstoken.wsdl" />
     <None Include="Service References\WsBonusLogin\Bonus.BusinessServices.WsBonusLogin.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusLogin\wslogusugx.wsdl" />
     <None Include="Service References\WsBonusProvincias\Bonus.BusinessServices.WsBonusProvincias.ExecuteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WsBonusProvincias\Bonus.BusinessServices.WsBonusProvincias.LisproLisproItem.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WsBonusProvincias\wslispro.wsdl" />
+    <None Include="Service References\WsBonusProvincias\wslispro1.wsdl" />
+    <None Include="Service References\WsBonusValidarAfiliacion\Bonus.BusinessServices.WsBonusValidarAfiliacion.ExecuteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WsBonusValidarAfiliacion\wsconctaad1.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WsBonusAfilicacionCliente\" />
+    <WCFMetadataStorage Include="Service References\WsBonusClientesDatos\" />
+    <WCFMetadataStorage Include="Service References\WsBonusCodigoPromocional\" />
+    <WCFMetadataStorage Include="Service References\WsBonusConsultaDetalle\" />
+    <WCFMetadataStorage Include="Service References\WsBonusConsultaPrincipal\" />
     <WCFMetadataStorage Include="Service References\WsBonusExisteClienteBonus\" />
+    <WCFMetadataStorage Include="Service References\WsBonusGenerarCierre\" />
     <WCFMetadataStorage Include="Service References\WsBonusInfoCuenta\" />
     <WCFMetadataStorage Include="Service References\WsBonusMovFidelizacion\" />
+    <WCFMetadataStorage Include="Service References\WsBonusNombreCliente\" />
     <WCFMetadataStorage Include="Service References\WsBonusObtenerCountTokenPorUsuario\" />
     <WCFMetadataStorage Include="Service References\WsBonusActualizarToken\" />
     <WCFMetadataStorage Include="Service References\WsBonusEliminarTokenPorUsuario\" />
     <WCFMetadataStorage Include="Service References\WsBonusEliminarToken\" />
     <WCFMetadataStorage Include="Service References\WsBonusObtenerCountToken\" />
-    <WCFMetadataStorage Include="Service References\WsBonusObtenerDatosClientes\" />
     <WCFMetadataStorage Include="Service References\WsBonusObtenerToken\" />
     <WCFMetadataStorage Include="Service References\WsBonusDepartamentos\" />
     <WCFMetadataStorage Include="Service References\WsBonusDistritos\" />
@@ -273,6 +362,8 @@
     <WCFMetadataStorage Include="Service References\WsBonusInsertarToken\" />
     <WCFMetadataStorage Include="Service References\WsBonusLogin\" />
     <WCFMetadataStorage Include="Service References\WsBonusProvincias\" />
+    <WCFMetadataStorage Include="Service References\WsBonusValidarAfiliacion\" />
+    <WCFMetadataStorage Include="Service References\WsBonusObtenerMenuAfiliacion\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WsBonusLogin\configuration91.svcinfo" />
@@ -431,18 +522,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WsBonusObtenerDatosClientes\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WsBonusObtenerDatosClientes\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WsBonusObtenerDatosClientes\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\WsBonusMovFidelizacion\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -462,6 +541,114 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WsBonusInfoCuenta\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusAfilicacionCliente\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusAfilicacionCliente\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusAfilicacionCliente\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusValidarAfiliacion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusValidarAfiliacion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusValidarAfiliacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusClientesDatos\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusClientesDatos\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusClientesDatos\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusCodigoPromocional\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusCodigoPromocional\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusCodigoPromocional\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusObtenerMenuAfiliacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusNombreCliente\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusNombreCliente\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusNombreCliente\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusGenerarCierre\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusGenerarCierre\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusGenerarCierre\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusConsultaPrincipal\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusConsultaPrincipal\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusConsultaPrincipal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusConsultaDetalle\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusConsultaDetalle\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsBonusConsultaDetalle\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

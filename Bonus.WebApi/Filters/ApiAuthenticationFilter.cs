@@ -45,7 +45,9 @@ namespace Bonus.WebApi.Filters
                 var basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
                 if (basicAuthenticationIdentity != null)
                     basicAuthenticationIdentity.ResultCode = resultCode;
-                    
+                else
+                    throw new System.ArgumentException("Thread.CurrentPrincipal.Identity", "Thread.CurrentPrincipal.Identity Exception");
+
                 if (userId > 0)
                 {
                     basicAuthenticationIdentity.UserId = userId;

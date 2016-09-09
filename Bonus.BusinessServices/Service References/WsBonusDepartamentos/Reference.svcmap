@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://200.62.147.188:8080/app/servlet/awslisdep?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://190.81.126.75:8080/bonusTabletD/servlet/awslisdep?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wslisdep.wsdl" MetadataType="Wsdl" ID="c5ea3014-d580-49e7-87e8-3493dc8038b2" SourceId="1" SourceUrl="http://200.62.147.188:8080/app/servlet/awslisdep?wsdl" />
+    <MetadataFile FileName="wslisdep1.wsdl" MetadataType="Wsdl" ID="9fe2ee74-3644-4c93-83f0-2535fd970e7d" SourceId="1" SourceUrl="http://190.81.126.75:8080/bonusTabletD/servlet/awslisdep?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
