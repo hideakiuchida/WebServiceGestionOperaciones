@@ -12,8 +12,14 @@ namespace Bonus.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class UsuarioEntity
+    public partial class usuario
     {
+        public usuario()
+        {
+            this.token = new HashSet<token>();
+            this.autoridad = new HashSet<autoridad>();
+        }
+    
         public int id { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
@@ -23,5 +29,8 @@ namespace Bonus.DataModel
         public int estado { get; set; }
         public System.DateTime fecha_registro { get; set; }
         public System.DateTime fecha_modificacion { get; set; }
+    
+        public virtual ICollection<token> token { get; set; }
+        public virtual ICollection<autoridad> autoridad { get; set; }
     }
 }

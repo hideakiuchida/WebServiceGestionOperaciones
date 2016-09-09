@@ -1,5 +1,7 @@
-﻿using Bonus.BusinessEntities.DTO;
+﻿using Bonus.BusinessEntities;
 using Bonus.BusinessServices.Interfaces;
+using Bonus.DataModel;
+using Bonus.DataModel.UnitOfWork;
 using System;
 using System.Configuration;
 using System.Globalization;
@@ -8,6 +10,16 @@ namespace Bonus.BusinessServices.Providers
 {
     public class TokenServices : ITokenServices
     {
+        private readonly UnitOfWork _unitOfWork;
+
+        /// <summary>
+        /// Public constructor.
+        /// </summary>
+        public TokenServices(UnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         #region Public member methods.
 
         /// <summary>
@@ -18,28 +30,32 @@ namespace Bonus.BusinessServices.Providers
         /// <returns></returns>
         public TokenEntity GenerateToken(int userId)
         {
-            string token = Guid.NewGuid().ToString();
+            string _token = Guid.NewGuid().ToString();
             DateTime issuedOn = DateTime.Now;
             DateTime expiredOn = DateTime.Now.AddSeconds(
                                               Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
-            string msgError = "";
-           
-            WsBonusInsertarToken.wsinstokenSoapPortClient ws = new WsBonusInsertarToken.wsinstokenSoapPortClient();
-            short respuesta = ws.Execute(userId.ToString(), token, issuedOn, expiredOn, out msgError);
+            usuario _usuario = _unitOfWork.UserRepository.GetByID(userId);
+            var tokenModel = new token()
+            {
+                userId = userId,
+                issuedOn = issuedOn,
+                expiresOn = expiredOn,
+                authToken = _token,
+                usuario = _usuario
+            };
 
-            if(respuesta == 0)
-            { 
-                var tokenModel = new TokenEntity()
-                {
-                    UserId = userId,
-                    IssuedOn = issuedOn,
-                    ExpiresOn = expiredOn,
-                    AuthToken = token
-                };
+            _unitOfWork.TokenRepository.Insert(tokenModel);
+            _unitOfWork.Save();
 
-                return tokenModel;
-            }
-            return null;
+                    var tokenModel2 = new TokenEntity()
+                    {
+                        userId = userId,
+                        issuedOn = issuedOn,
+                        expiresOn = expiredOn,
+                        authToken = _token
+                    };
+
+                    return tokenModel2;
         }
 
         /// <summary>
@@ -49,23 +65,7 @@ namespace Bonus.BusinessServices.Providers
         /// <returns></returns>
         public bool ValidateToken(string tokenId)
         {
-            WsBonusObtenerToken.wsobttokenSoapPortClient ws = new WsBonusObtenerToken.wsobttokenSoapPortClient();
-            WsBonusActualizarToken.wsacttokenSoapPortClient wsActualizar = new WsBonusActualizarToken.wsacttokenSoapPortClient();
-            TokenEntity token = new TokenEntity();
-            string userId, msgError;
-            int _tokenID;
-            string issuedOn;
-            string expiredOn;
-
-            short respuesta = ws.Execute(tokenId, DateTime.Now, out msgError, out _tokenID, out userId, out issuedOn, out expiredOn);
-
-            if (respuesta == 0)
-            {
-                TokenEntity tokenEntity = new TokenEntity();
-                tokenEntity.AuthToken = tokenId;
-                tokenEntity.TokenId = _tokenID;
-                tokenEntity.UserId = int.Parse(userId);
-
+            token _token = _unitOfWork.TokenRepository.GetByID(tokenId);
                 var formats = new[] {
                   "yyyy.MM.dd HH:mm:ss",
                   "yyyy-MM-dd HH:mm:ss",
@@ -81,73 +81,21 @@ namespace Bonus.BusinessServices.Providers
                   "dd/MM/yyyy hh:mm:ss"
                 };
 
-                tokenEntity.IssuedOn = DateTime.ParseExact(issuedOn, formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
-                tokenEntity.ExpiresOn = DateTime.ParseExact(expiredOn, formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
-
-                if (tokenEntity != null && !(DateTime.Now > tokenEntity.ExpiresOn))
+                if (_token != null && !(DateTime.Now > _token.expiresOn))
                 {
-                    tokenEntity.ExpiresOn = tokenEntity.ExpiresOn.AddSeconds(
+                    DateTime expiresOn = (DateTime) _token.expiresOn;
+                    _token.expiresOn = expiresOn.AddSeconds(
                                                   Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
 
-                    short respuestaActualizar = wsActualizar.Execute(tokenEntity.AuthToken, tokenEntity.ExpiresOn, out msgError);
-                    if(respuestaActualizar==0)
-                        return true;
+                    _unitOfWork.TokenRepository.Update(_token);
+                    _unitOfWork.Save();
+                    return true;
                 }
-            }
 
-            return false;
-        }
-
-        /// <summary>
-        /// Method to kill the provided token id.
-        /// </summary>
-        /// <param name="tokenId">true for successful delete</param>
-        public bool Kill(string tokenId)
-        {
-            /*
-            Mapeo de errores:
-            0: Éxito
-            1: AuthToken en blanco
-            2: No se encontró AuthToken ingresado
-            */
-            WsBonusEliminarToken.wselitokenSoapPortClient ws = new WsBonusEliminarToken.wselitokenSoapPortClient();
-            WsBonusObtenerCountToken.wsobtcotokSoapPortClient wsCount = new WsBonusObtenerCountToken.wsobtcotokSoapPortClient();
-            string msgError;
-            short codError;
-            short respuesta = ws.Execute(tokenId, out msgError);
-            if (respuesta == 0)
-                respuesta = wsCount.Execute(tokenId, out codError, out msgError);
-            else
                 return false;
-
-            return (respuesta == 0) ? true : false;
         }
 
-        /// <summary>
-        /// Delete tokens for the specific deleted user
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns>true for successful delete</returns>
-        public bool DeleteByUserId(int userId)
-        {
-            /*
-            0: Éxito
-            1: UserId en blanco
-            2: No se encontró UserId ingresado
-            */
-            WsBonusEliminarTokenPorUsuario.wselitokusSoapPortClient ws = new WsBonusEliminarTokenPorUsuario.wselitokusSoapPortClient();
-            WsBonusObtenerCountTokenPorUsuario.wsobtctousSoapPortClient wsCount = new WsBonusObtenerCountTokenPorUsuario.wsobtctousSoapPortClient();
-            string msgError;
-            short codError;
-            short respuesta = ws.Execute(userId.ToString(), out msgError);
-            if (respuesta == 0)
-                respuesta = wsCount.Execute(userId.ToString(), out codError, out msgError);
-            else
-                return false;
-
-            return (respuesta == 0) ? true : false;
-        }
-
+     
         #endregion
     }
 }

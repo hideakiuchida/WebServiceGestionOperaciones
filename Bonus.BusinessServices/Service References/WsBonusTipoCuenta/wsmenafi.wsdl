@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="AppBonus" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="AppBonus" xmlns:tns1="AppBonus" name="wsmenafi" targetNamespace="AppBonus" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="AppBonus">
+      <xsd:complexType name="Lismenafi">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Lismenafi.LismenafiItem" type="tns1:Lismenafi.LismenafiItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Lismenafi.LismenafiItem">
+        <xsd:all>
+          <xsd:element name="mensec" type="xsd:short" />
+          <xsd:element name="mendes" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="wsmenafi.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Cantidadcta" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ctaprscod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ctacod" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Pctaasocod" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Pctatip" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Pctaautcnj" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="wsmenafi.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Carritomen" type="tns1:Lismenafi" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Existeprs" type="xsd:byte" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="wsmenafi.ExecuteSoapIn">
+    <part name="parameters" element="tns1:wsmenafi.Execute" />
+  </message>
+  <message name="wsmenafi.ExecuteSoapOut">
+    <part name="parameters" element="tns1:wsmenafi.ExecuteResponse" />
+  </message>
+  <portType name="wsmenafiSoapPort">
+    <operation name="Execute">
+      <input message="tns1:wsmenafi.ExecuteSoapIn" />
+      <output message="tns1:wsmenafi.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="wsmenafiSoapBinding" type="tns1:wsmenafiSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="AppBonusaction/AWSMENAFI.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsmenafi">
+    <port name="wsmenafiSoapPort" binding="tns1:wsmenafiSoapBinding">
+      <soap:address location="http://200.62.147.188:8080/app/servlet/awsmenafi" />
+    </port>
+  </service>
+</definitions>

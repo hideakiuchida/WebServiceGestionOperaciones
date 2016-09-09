@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="AppBonus" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlns="AppBonus" xmlns:tns1="AppBonus" name="wsselcta" targetNamespace="AppBonus" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" elementFormDefault="qualified" targetNamespace="AppBonus">
+      <xsd:complexType name="Liscta">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Liscta.LisctaItem" type="tns1:Liscta.LisctaItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Liscta.LisctaItem">
+        <xsd:all>
+          <xsd:element name="CtaPrsCod" type="xsd:string" />
+          <xsd:element name="CtaCod" type="xsd:short" />
+          <xsd:element name="CtaPrsNom" type="xsd:string" />
+          <xsd:element name="PCtaAsoCod" type="xsd:string" />
+          <xsd:element name="CtaAsoNom" type="xsd:string" />
+          <xsd:element name="PCtaTip" type="xsd:string" />
+          <xsd:element name="PCtaTipNom" type="xsd:string" />
+          <xsd:element name="PCtaAutCnj" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:element name="wsselcta.Execute">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Ctaprscod" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="wsselcta.ExecuteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Coderror" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Msjerror" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Cantidadcta" type="xsd:short" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Carritocta" type="tns1:Liscta" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="Prsnomape" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="wsselcta.ExecuteSoapIn">
+    <part name="parameters" element="tns1:wsselcta.Execute" />
+  </message>
+  <message name="wsselcta.ExecuteSoapOut">
+    <part name="parameters" element="tns1:wsselcta.ExecuteResponse" />
+  </message>
+  <portType name="wsselctaSoapPort">
+    <operation name="Execute">
+      <input message="tns1:wsselcta.ExecuteSoapIn" />
+      <output message="tns1:wsselcta.ExecuteSoapOut" />
+    </operation>
+  </portType>
+  <binding name="wsselctaSoapBinding" type="tns1:wsselctaSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Execute">
+      <soap:operation soapAction="AppBonusaction/AWSSELCTA.Execute" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsselcta">
+    <port name="wsselctaSoapPort" binding="tns1:wsselctaSoapBinding">
+      <soap:address location="http://200.62.147.188:8080/app/servlet/awsselcta" />
+    </port>
+  </service>
+</definitions>

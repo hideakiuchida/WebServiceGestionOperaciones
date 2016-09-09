@@ -1,5 +1,5 @@
-﻿using Bonus.BusinessEntities.DTO;
-using Bonus.BusinessServices.Interfaces;
+﻿using Bonus.BusinessServices.Interfaces;
+using Bonus.DataModel;
 using Bonus.DataModel.UnitOfWork;
 
 namespace Bonus.BusinessServices.Providers
@@ -36,18 +36,12 @@ namespace Bonus.BusinessServices.Providers
         /// <returns></returns>
         public UsuarioEntity Authenticate(string userName, string password)
         {
-            string msgError = "";
-            long codPro;
-            string usuNom;
-            WsBonusLogin.wslogusugxSoapPortClient ws = new WsBonusLogin.wslogusugxSoapPortClient();
-            int codError = ws.Execute(userName, password, out msgError, out codPro, out usuNom);
+            usuario _usuario = _unitOfWork.UserRepository.GetSingle(u => u.correo == userName && u.password == password);
+
             UsuarioEntity usuario = new UsuarioEntity();
-            usuario.CodError = codError;
-            if (codError == 0)
-            {
-                usuario.CodPro = codPro;
-                usuario.NomUsu = usuNom;
-            }
+            usuario.id = _usuario.id;
+            usuario.nombre = _usuario.nombre;
+            usuario.password = _usuario.password;
             return usuario;
         }
     }

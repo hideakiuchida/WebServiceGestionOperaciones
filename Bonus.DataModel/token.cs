@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bonus.BusinessEntities
+namespace Bonus.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TokenEntity
+    public partial class token
     {
         public int id { get; set; }
         public string authToken { get; set; }
         public Nullable<System.DateTime> issuedOn { get; set; }
         public Nullable<System.DateTime> expiresOn { get; set; }
         public int userId { get; set; }
+    
+        public virtual usuario usuario { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿
-using Bonus.BusinessEntities.DTO;
+using Bonus.DataModel;
 
 namespace Bonus.BusinessServices.Interfaces
 {

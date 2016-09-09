@@ -1,4 +1,4 @@
-﻿using Bonus.BusinessEntities.DTO;
+﻿using Bonus.BusinessEntities;
 
 namespace Bonus.BusinessServices.Interfaces
 {
@@ -19,19 +19,6 @@ namespace Bonus.BusinessServices.Interfaces
         /// <param name="tokenId"></param>
         /// <returns></returns>
         bool ValidateToken(string tokenId);
-
-        /// <summary>
-        /// Method to kill the provided token id.
-        /// </summary>
-        /// <param name="tokenId"></param>
-        bool Kill(string tokenId);
-
-        /// <summary>
-        /// Delete tokens for the specific deleted user
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        bool DeleteByUserId(int userId);
         #endregion
     }
 }

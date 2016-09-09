@@ -49,34 +49,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="autoridad.cs">
+      <DependentUpon>WebApiDbEntitiesContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="DependencyResolver\DependencyResolver.cs" />
     <Compile Include="GenericRepository\GenericRepository.cs" />
-    <Compile Include="Products.cs">
-      <DependentUpon>WebApiDbContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tokens.cs">
-      <DependentUpon>WebApiDbContext.tt</DependentUpon>
+    <Compile Include="token.cs">
+      <DependentUpon>WebApiDbEntitiesContext.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
-    <Compile Include="User.cs">
-      <DependentUpon>WebApiDbContext.tt</DependentUpon>
+    <Compile Include="usuario.cs">
+      <DependentUpon>WebApiDbEntitiesContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="WebApiDbContext.Context.cs">
+    <Compile Include="WebApiDbEntitiesContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebApiDbContext.Context.tt</DependentUpon>
+      <DependentUpon>WebApiDbEntitiesContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="WebApiDbContext.cs">
+    <Compile Include="WebApiDbEntitiesContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebApiDbContext.tt</DependentUpon>
+      <DependentUpon>WebApiDbEntitiesContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="WebApiDbContext.Designer.cs">
+    <Compile Include="WebApiDbEntitiesContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebApiDbContext.edmx</DependentUpon>
+      <DependentUpon>WebApiDbEntitiesContext.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -89,28 +89,26 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="WebApiDbContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebApiDbContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <None Include="WebApiDbContext.edmx.diagram">
-      <DependentUpon>WebApiDbContext.edmx</DependentUpon>
+    <EntityDeploy Include="WebApiDbEntitiesContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebApiDbEntitiesContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WebApiDbEntitiesContext.edmx.diagram">
+      <DependentUpon>WebApiDbEntitiesContext.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WebApiDbContext.Context.tt">
+    <Content Include="WebApiDbEntitiesContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebApiDbContext.edmx</DependentUpon>
-      <LastGenOutput>WebApiDbContext.Context.cs</LastGenOutput>
+      <DependentUpon>WebApiDbEntitiesContext.edmx</DependentUpon>
+      <LastGenOutput>WebApiDbEntitiesContext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="WebApiDbContext.tt">
+    <Content Include="WebApiDbEntitiesContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebApiDbContext.edmx</DependentUpon>
-      <LastGenOutput>WebApiDbContext.cs</LastGenOutput>
+      <DependentUpon>WebApiDbEntitiesContext.edmx</DependentUpon>
+      <LastGenOutput>WebApiDbEntitiesContext.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

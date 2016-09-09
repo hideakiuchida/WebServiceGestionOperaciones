@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Web.Http.Controllers;
 using Bonus.BusinessServices.Interfaces;
-using Bonus.BusinessEntities.DTO;
+using Bonus.DataModel;
 
 namespace Bonus.WebApi.Filters
 {
@@ -40,19 +40,13 @@ namespace Bonus.WebApi.Filters
             if (provider != null)
             {
                 UsuarioEntity usuario = provider.Authenticate(username, password);
-                var resultCode = usuario.CodError;
-                var userId = resultCode == 0 ? 1 : 0;
                 var basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
-                if (basicAuthenticationIdentity != null)
-                    basicAuthenticationIdentity.ResultCode = resultCode;
-                else
+                if (basicAuthenticationIdentity == null)
                     throw new System.ArgumentException("Thread.CurrentPrincipal.Identity", "Thread.CurrentPrincipal.Identity Exception");
 
-                if (userId > 0)
+                if (usuario !=null)
                 {
-                    basicAuthenticationIdentity.UserId = userId;
-                    basicAuthenticationIdentity.CodPro = usuario.CodPro;
-                    basicAuthenticationIdentity.UsuNom = usuario.NomUsu;
+                    basicAuthenticationIdentity.UserId = usuario.id;
                     return true;
                 }
             }

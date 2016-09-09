@@ -14,11 +14,6 @@ namespace Bonus.BusinessServices.DependecyResolver
             registerComponent.RegisterType<IUserServices, UserServices>();
             registerComponent.RegisterType<ITokenServices, TokenServices>();
             //General Services
-            registerComponent.RegisterType<IDepartamentoServices, DepartamentoServices>();
-            registerComponent.RegisterType<IDistritoServices, DistritoServices>();
-            registerComponent.RegisterType<IDocumentoServices, DocumentoServices>();
-            registerComponent.RegisterType<IProvinciaServices, ProvinciaServices>();
-            registerComponent.RegisterType<IClienteServices, ClienteServices>();
         }
     }
 }

@@ -14,14 +14,14 @@ namespace Bonus.DataModel.UnitOfWork
     {
         #region Private member variables...
 
-        private readonly WebApiDbEntities _context = null;
-        private GenericRepository<User> _userRepository;  
-        private GenericRepository<Tokens> _tokenRepository;
+        private readonly gestion_operaciones_dbEntities _context = null;
+        private GenericRepository<usuario> _userRepository;  
+        private GenericRepository<token> _tokenRepository;
         #endregion
 
         public UnitOfWork()
         {
-            _context = new WebApiDbEntities();
+            _context = new gestion_operaciones_dbEntities();
         }
 
         #region Public Repository Creation properties...
@@ -29,12 +29,12 @@ namespace Bonus.DataModel.UnitOfWork
         /// <summary>
         /// Get/Set Property for user repository.
         /// </summary>
-        public GenericRepository<User> UserRepository
+        public GenericRepository<usuario> UserRepository
         {
             get
             {
                 if (this._userRepository == null)
-                    this._userRepository = new GenericRepository<User>(_context);
+                    this._userRepository = new GenericRepository<usuario>(_context);
                 return _userRepository;
             }
         }
@@ -42,12 +42,12 @@ namespace Bonus.DataModel.UnitOfWork
         /// <summary>
         /// Get/Set Property for token repository.
         /// </summary>
-        public GenericRepository<Tokens> TokenRepository
+        public GenericRepository<token> TokenRepository
         {
             get
             {
                 if (this._tokenRepository == null)
-                    this._tokenRepository = new GenericRepository<Tokens>(_context);
+                    this._tokenRepository = new GenericRepository<token>(_context);
                 return _tokenRepository;
             }
         }
