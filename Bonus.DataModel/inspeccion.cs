@@ -12,27 +12,21 @@ namespace Bonus.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class inspeccion
     {
-        public usuario()
+        public inspeccion()
         {
-            this.token = new HashSet<token>();
+            this.foto = new HashSet<foto>();
             this.usuario_inspeccion = new HashSet<usuario_inspeccion>();
-            this.rol = new HashSet<rol>();
         }
     
         public int id { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string correo { get; set; }
-        public string password { get; set; }
-        public string telefono { get; set; }
-        public int estado { get; set; }
-        public System.DateTime fecha_registro { get; set; }
-        public System.DateTime fecha_modificacion { get; set; }
+        public string descripcion { get; set; }
+        public string cliente { get; set; }
+        public string latitud { get; set; }
+        public string longitud { get; set; }
     
-        public virtual ICollection<token> token { get; set; }
+        public virtual ICollection<foto> foto { get; set; }
         public virtual ICollection<usuario_inspeccion> usuario_inspeccion { get; set; }
-        public virtual ICollection<rol> rol { get; set; }
     }
 }

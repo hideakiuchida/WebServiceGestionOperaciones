@@ -12,9 +12,9 @@ namespace Bonus.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class autoridad
+    public partial class rol
     {
-        public autoridad()
+        public rol()
         {
             this.usuario = new HashSet<usuario>();
         }

@@ -13,7 +13,7 @@ namespace Bonus.DataModel.GenericRepository
     public class GenericRepository<TEntity> where TEntity : class
     {
         #region Private member variables...
-        internal gestion_operaciones_dbEntities Context;
+        internal GestionOperacionDbEntities Context;
         internal DbSet<TEntity> DbSet;
         #endregion
 
@@ -22,7 +22,7 @@ namespace Bonus.DataModel.GenericRepository
         /// Public Constructor,initializes privately declared local variables.
         /// </summary>
         /// <param name="context"></param>
-        public GenericRepository(gestion_operaciones_dbEntities context)
+        public GenericRepository(GestionOperacionDbEntities context)
         {
             this.Context = context;
             this.DbSet = context.Set<TEntity>();

@@ -5,22 +5,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema CMS_VALMAR_DB
+-- Schema gestion_operaciones_db
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `GESTION_OPERACIONES_DB` ;
+DROP SCHEMA IF EXISTS `gestion_operaciones_db` ;
 
 -- -----------------------------------------------------
--- Schema CMS_VALMAR_DB
+-- Schema gestion_operaciones_db
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `GESTION_OPERACIONES_DB` DEFAULT CHARACTER SET latin1 ;
-USE `GESTION_OPERACIONES_DB` ;
+CREATE SCHEMA IF NOT EXISTS `gestion_operaciones_db` DEFAULT CHARACTER SET latin1 ;
+USE `gestion_operaciones_db` ;
 
 -- -----------------------------------------------------
--- Table `CMS_VALMAR_DB`.`autoridad`
+-- Table `gestion_operaciones_db`.`Rol`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `GESTION_OPERACIONES_DB`.`autoridad` ;
+DROP TABLE IF EXISTS `gestion_operaciones_db`.`Rol` ;
 
-CREATE TABLE IF NOT EXISTS `GESTION_OPERACIONES_DB`.`autoridad` (
+CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Rol` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
@@ -28,18 +28,19 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = latin1;
 
--- -----------------------------------------------------
--- Table `CMS_VALMAR_DB`.`usuario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `GESTION_OPERACIONES_DB`.`usuario` ;
 
-CREATE TABLE IF NOT EXISTS `GESTION_OPERACIONES_DB`.`usuario` (
+-- -----------------------------------------------------
+-- Table `gestion_operaciones_db`.`Usuario`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `gestion_operaciones_db`.`Usuario` ;
+
+CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Usuario` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NULL DEFAULT NULL,
   `apellido` VARCHAR(200) NULL DEFAULT NULL,
   `correo` VARCHAR(200) NULL DEFAULT NULL,
   `password` VARCHAR(250) NULL DEFAULT NULL,
-  `telefono` VARCHAR(45) NULL,
+  `telefono` VARCHAR(45) NULL DEFAULT NULL,
   `estado` INT(1) NOT NULL,
   `fecha_registro` DATETIME NOT NULL,
   `fecha_modificacion` DATETIME NOT NULL,
@@ -50,11 +51,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `CMS_VALMAR_DB`.`token`
+-- Table `gestion_operaciones_db`.`Token`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `GESTION_OPERACIONES_DB`.`token` ;
+DROP TABLE IF EXISTS `gestion_operaciones_db`.`Token` ;
 
-CREATE TABLE IF NOT EXISTS `GESTION_OPERACIONES_DB`.`token` (
+CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Token` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `authToken` VARCHAR(500) NULL DEFAULT NULL,
   `issuedOn` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -64,22 +65,93 @@ CREATE TABLE IF NOT EXISTS `GESTION_OPERACIONES_DB`.`token` (
   INDEX `FK_TOKENXUSUARIO` (`userId` ASC),
   CONSTRAINT `FK_TOKENXUSUARIO`
     FOREIGN KEY (`userId`)
-    REFERENCES `GESTION_OPERACIONES_DB`.`usuario` (`id`))
+    REFERENCES `gestion_operaciones_db`.`Usuario` (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = latin1;
 
-DROP TABLE IF EXISTS `GESTION_OPERACIONES_DB`.`usuario_autoridad` ;
 
-CREATE TABLE IF NOT EXISTS `GESTION_OPERACIONES_DB`.`usuario_autoridad` (
+-- -----------------------------------------------------
+-- Table `gestion_operaciones_db`.`Usuario_Rol`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `gestion_operaciones_db`.`Usuario_Rol` ;
+
+CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Usuario_Rol` (
   `id_usuario` INT(11) NOT NULL,
-  `id_autoridad` INT(11) NOT NULL,
+  `id_rol` INT(11) NOT NULL,
   INDEX `usuario_id` (`id_usuario` ASC),
-  INDEX `autoridad_id` (`id_autoridad` ASC),
+  INDEX `autoridad_id` (`id_rol` ASC),
   CONSTRAINT `usuario_autoridad_ibfk_1`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `GESTION_OPERACIONES_DB`.`usuario` (`id`),
+    REFERENCES `gestion_operaciones_db`.`Usuario` (`id`),
   CONSTRAINT `usuario_autoridad_ibfk_2`
-    FOREIGN KEY (`id_autoridad`)
-    REFERENCES `GESTION_OPERACIONES_DB`.`autoridad` (`id`))
+    FOREIGN KEY (`id_rol`)
+    REFERENCES `gestion_operaciones_db`.`Rol` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `gestion_operaciones_db`.`Inspeccion`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `gestion_operaciones_db`.`Inspeccion` ;
+
+CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Inspeccion` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(200) NULL,
+  `cliente` VARCHAR(200) NULL,
+  `latitud` VARCHAR(100) NULL,
+  `longitud` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gestion_operaciones_db`.`Usuario_Inspeccion`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `gestion_operaciones_db`.`Usuario_Inspeccion` ;
+
+CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Usuario_Inspeccion` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_usuario` INT NOT NULL,
+  `id_inspeccion` INT NOT NULL,
+  `fecha_entrada` TIMESTAMP NULL,
+  `estado` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_ui_usuario_idx` (`id_usuario` ASC),
+  INDEX `fk_ui_inspeccion_idx` (`id_inspeccion` ASC),
+  CONSTRAINT `fk_ui_usuario`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `gestion_operaciones_db`.`Usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ui_inspeccion`
+    FOREIGN KEY (`id_inspeccion`)
+    REFERENCES `gestion_operaciones_db`.`Inspeccion` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gestion_operaciones_db`.`Foto`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `gestion_operaciones_db`.`Foto` ;
+
+CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Foto` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `foto` LONGTEXT NULL,
+  `id_inspeccion` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_fi_inspeccion_idx` (`id_inspeccion` ASC),
+  CONSTRAINT `fk_fi_inspeccion`
+    FOREIGN KEY (`id_inspeccion`)
+    REFERENCES `gestion_operaciones_db`.`Inspeccion` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

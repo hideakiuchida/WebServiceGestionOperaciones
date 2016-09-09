@@ -14,14 +14,14 @@ namespace Bonus.DataModel.UnitOfWork
     {
         #region Private member variables...
 
-        private readonly gestion_operaciones_dbEntities _context = null;
+        private readonly GestionOperacionDbEntities _context = null;
         private GenericRepository<usuario> _userRepository;  
         private GenericRepository<token> _tokenRepository;
         #endregion
 
         public UnitOfWork()
         {
-            _context = new gestion_operaciones_dbEntities();
+            _context = new GestionOperacionDbEntities();
         }
 
         #region Public Repository Creation properties...

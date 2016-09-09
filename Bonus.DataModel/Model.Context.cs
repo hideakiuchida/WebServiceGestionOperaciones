@@ -13,10 +13,10 @@ namespace Bonus.DataModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class gestion_operaciones_dbEntities : DbContext
+    public partial class GestionOperacionDbEntities : DbContext
     {
-        public gestion_operaciones_dbEntities()
-            : base("name=gestion_operaciones_dbEntities")
+        public GestionOperacionDbEntities()
+            : base("name=GestionOperacionDbEntities")
         {
         }
     
@@ -25,8 +25,11 @@ namespace Bonus.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<autoridad> autoridad { get; set; }
+        public DbSet<foto> foto { get; set; }
+        public DbSet<inspeccion> inspeccion { get; set; }
+        public DbSet<rol> rol { get; set; }
         public DbSet<token> token { get; set; }
         public DbSet<usuario> usuario { get; set; }
+        public DbSet<usuario_inspeccion> usuario_inspeccion { get; set; }
     }
 }

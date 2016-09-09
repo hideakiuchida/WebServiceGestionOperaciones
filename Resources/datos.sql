@@ -3,7 +3,7 @@ INSERT INTO `usuario` VALUES (1, 'ALONSO', 'UCHIDA', 'javier.uchida@valmar.com.p
 -- Records of autoridad
 -- ----------------------------
 
-INSERT INTO `autoridad` VALUES (1, 'INSPECTOR');
-INSERT INTO `autoridad` VALUES (2, 'SUPERVISOR');
+INSERT INTO `rol` VALUES (1, 'INSPECTOR');
+INSERT INTO `rol` VALUES (2, 'SUPERVISOR');
 
-INSERT INTO `usuario_autoridad` VALUES (1, 1)
+INSERT INTO `usuario_rol` VALUES (1, 1)
