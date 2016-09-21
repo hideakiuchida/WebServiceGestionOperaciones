@@ -17,16 +17,18 @@ namespace Bonus.DataModel
         public inspeccion()
         {
             this.foto = new HashSet<foto>();
-            this.usuario_inspeccion = new HashSet<usuario_inspeccion>();
         }
     
         public int id { get; set; }
-        public string descripcion { get; set; }
-        public string cliente { get; set; }
+        public string nro_orden { get; set; }
+        public Nullable<System.DateTime> fecha { get; set; }
+        public Nullable<int> cantida_muestra { get; set; }
+        public string lugar { get; set; }
         public string latitud { get; set; }
         public string longitud { get; set; }
+        public int id_orden { get; set; }
     
         public virtual ICollection<foto> foto { get; set; }
-        public virtual ICollection<usuario_inspeccion> usuario_inspeccion { get; set; }
+        public virtual orden orden { get; set; }
     }
 }

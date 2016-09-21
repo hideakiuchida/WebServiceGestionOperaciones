@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0d18ab27d222408987d1ef68632d512f" Name="Diagram1">
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.foto" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.inspeccion" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.rol" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.token" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.usuario" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.usuario_inspeccion" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="bc01f26c66124cb984ef21814ec5e809" Name="Diagram1">
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.foto" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.inspeccion" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.orden" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.rol" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.token" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.usuario" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="gestion_operaciones_dbModel.fk_fi_inspeccion" ManuallyRouted="false" />
-        <AssociationConnector Association="gestion_operaciones_dbModel.fk_ui_inspeccion" ManuallyRouted="false" />
+        <AssociationConnector Association="gestion_operaciones_dbModel.fk_io_id" ManuallyRouted="false" />
+        <AssociationConnector Association="gestion_operaciones_dbModel.fk_ou_id" ManuallyRouted="false" />
         <AssociationConnector Association="gestion_operaciones_dbModel.FK_TOKENXUSUARIO" ManuallyRouted="false" />
-        <AssociationConnector Association="gestion_operaciones_dbModel.fk_ui_usuario" ManuallyRouted="false" />
         <AssociationConnector Association="gestion_operaciones_dbModel.usuario_rol" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

@@ -42,8 +42,6 @@ CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Usuario` (
   `password` VARCHAR(250) NULL DEFAULT NULL,
   `telefono` VARCHAR(45) NULL DEFAULT NULL,
   `estado` INT(1) NOT NULL,
-  `fecha_registro` DATETIME NOT NULL,
-  `fecha_modificacion` DATETIME NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 6
@@ -92,42 +90,47 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
+-- Table `gestion_operaciones_db`.`Orden`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `gestion_operaciones_db`.`Orden` ;
+
+CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Orden` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(200) NULL,
+  `cliente` VARCHAR(200) NULL,
+  `latitud` VARCHAR(100) NULL,
+  `longitud` VARCHAR(100) NULL,
+  `estado_pendiente` INT NULL,
+  `id_usuario` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_ou_id_idx` (`id_usuario` ASC),
+  CONSTRAINT `fk_ou_id`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `gestion_operaciones_db`.`Usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `gestion_operaciones_db`.`Inspeccion`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `gestion_operaciones_db`.`Inspeccion` ;
 
 CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Inspeccion` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `descripcion` VARCHAR(200) NULL,
-  `cliente` VARCHAR(200) NULL,
+  `nro_orden` VARCHAR(45) NULL,
+  `fecha` DATETIME NULL,
+  `cantida_muestra` INT NULL,
+  `lugar` VARCHAR(200) NULL,
   `latitud` VARCHAR(100) NULL,
   `longitud` VARCHAR(100) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `gestion_operaciones_db`.`Usuario_Inspeccion`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `gestion_operaciones_db`.`Usuario_Inspeccion` ;
-
-CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Usuario_Inspeccion` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `id_usuario` INT NOT NULL,
-  `id_inspeccion` INT NOT NULL,
-  `fecha_entrada` TIMESTAMP NULL,
-  `estado` INT NULL,
+  `id_orden` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_ui_usuario_idx` (`id_usuario` ASC),
-  INDEX `fk_ui_inspeccion_idx` (`id_inspeccion` ASC),
-  CONSTRAINT `fk_ui_usuario`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `gestion_operaciones_db`.`Usuario` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ui_inspeccion`
-    FOREIGN KEY (`id_inspeccion`)
-    REFERENCES `gestion_operaciones_db`.`Inspeccion` (`id`)
+  INDEX `fk_io_id_idx` (`id_orden` ASC),
+  CONSTRAINT `fk_io_id`
+    FOREIGN KEY (`id_orden`)
+    REFERENCES `gestion_operaciones_db`.`Orden` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -141,7 +144,7 @@ DROP TABLE IF EXISTS `gestion_operaciones_db`.`Foto` ;
 CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Foto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `foto` LONGTEXT NULL,
-  `id_inspeccion` INT NULL,
+  `id_inspeccion` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_fi_inspeccion_idx` (`id_inspeccion` ASC),
   CONSTRAINT `fk_fi_inspeccion`

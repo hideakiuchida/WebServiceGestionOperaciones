@@ -12,7 +12,7 @@ namespace Bonus.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class AutoridadEntity
+    public class AutoridadEntity
     {
         public int id { get; set; }
         public string nombre { get; set; }    

@@ -45,11 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyResolver\DependencyResolver.cs" />
+    <Compile Include="Interfaces\IFotoServices.cs" />
+    <Compile Include="Interfaces\IInspeccionServices.cs" />
+    <Compile Include="Interfaces\IOrdenServices.cs" />
     <Compile Include="Interfaces\ITokenServices.cs" />
-    <Compile Include="Interfaces\IUserServices.cs" />
+    <Compile Include="Interfaces\IUsuarioServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\FotoServices.cs" />
+    <Compile Include="Providers\InspeccionServices.cs" />
+    <Compile Include="Providers\OrdenServices.cs" />
     <Compile Include="Providers\TokenServices.cs" />
-    <Compile Include="Providers\UserServices.cs" />
+    <Compile Include="Providers\UsuarioServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bonus.BusinessEntities\Bonus.BusinessEntities.csproj">

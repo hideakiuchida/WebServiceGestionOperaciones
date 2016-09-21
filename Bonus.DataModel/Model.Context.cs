@@ -27,9 +27,9 @@ namespace Bonus.DataModel
     
         public DbSet<foto> foto { get; set; }
         public DbSet<inspeccion> inspeccion { get; set; }
+        public DbSet<orden> orden { get; set; }
         public DbSet<rol> rol { get; set; }
         public DbSet<token> token { get; set; }
         public DbSet<usuario> usuario { get; set; }
-        public DbSet<usuario_inspeccion> usuario_inspeccion { get; set; }
     }
 }

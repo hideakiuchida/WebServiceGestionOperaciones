@@ -16,7 +16,7 @@ namespace Bonus.DataModel
     {
         public int id { get; set; }
         public string foto1 { get; set; }
-        public Nullable<int> id_inspeccion { get; set; }
+        public int id_inspeccion { get; set; }
     
         public virtual inspeccion inspeccion { get; set; }
     }

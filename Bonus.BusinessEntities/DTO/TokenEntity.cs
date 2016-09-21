@@ -10,9 +10,8 @@
 namespace Bonus.BusinessEntities
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TokenEntity
+    public class TokenEntity
     {
         public int id { get; set; }
         public string authToken { get; set; }

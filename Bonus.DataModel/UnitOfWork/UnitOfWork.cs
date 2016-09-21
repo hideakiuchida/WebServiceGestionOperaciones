@@ -17,6 +17,9 @@ namespace Bonus.DataModel.UnitOfWork
         private readonly GestionOperacionDbEntities _context = null;
         private GenericRepository<usuario> _userRepository;  
         private GenericRepository<token> _tokenRepository;
+        private GenericRepository<foto> _fotoRepository;
+        private GenericRepository<inspeccion> _inspeccionRepository;
+        private GenericRepository<orden> _ordenRepository;
         #endregion
 
         public UnitOfWork()
@@ -25,6 +28,32 @@ namespace Bonus.DataModel.UnitOfWork
         }
 
         #region Public Repository Creation properties...
+
+        /// <summary>
+        /// Get/Set Property for user repository.
+        /// </summary>
+        public GenericRepository<inspeccion> InspeccionRepository
+        {
+            get
+            {
+                if (this._inspeccionRepository == null)
+                    this._inspeccionRepository = new GenericRepository<inspeccion>(_context);
+                return _inspeccionRepository;
+            }
+        }
+
+        /// <summary>
+        /// Get/Set Property for user repository.
+        /// </summary>
+        public GenericRepository<foto> FotoRepository
+        {
+            get
+            {
+                if (this._fotoRepository == null)
+                    this._fotoRepository = new GenericRepository<foto>(_context);
+                return _fotoRepository;
+            }
+        }
 
         /// <summary>
         /// Get/Set Property for user repository.
@@ -49,6 +78,19 @@ namespace Bonus.DataModel.UnitOfWork
                 if (this._tokenRepository == null)
                     this._tokenRepository = new GenericRepository<token>(_context);
                 return _tokenRepository;
+            }
+        }
+
+        /// <summary>
+        /// Get/Set Property for token repository.
+        /// </summary>
+        public GenericRepository<orden> OrdenRepository
+        {
+            get
+            {
+                if (this._ordenRepository == null)
+                    this._ordenRepository = new GenericRepository<orden>(_context);
+                return _ordenRepository;
             }
         }
         #endregion

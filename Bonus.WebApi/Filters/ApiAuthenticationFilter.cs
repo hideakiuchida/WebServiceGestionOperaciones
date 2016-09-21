@@ -36,7 +36,7 @@ namespace Bonus.WebApi.Filters
         protected override bool OnAuthorizeUser(string username, string password, HttpActionContext actionContext)
         {
             var provider = actionContext.ControllerContext.Configuration
-                               .DependencyResolver.GetService(typeof(IUserServices)) as IUserServices;
+                               .DependencyResolver.GetService(typeof(IUsuarioServices)) as IUsuarioServices;
             if (provider != null)
             {
                 UsuarioEntity usuario = provider.Authenticate(username, password);
@@ -47,6 +47,7 @@ namespace Bonus.WebApi.Filters
                 if (usuario !=null)
                 {
                     basicAuthenticationIdentity.UserId = usuario.id;
+                    basicAuthenticationIdentity.Tipo = usuario.tipo;
                     return true;
                 }
             }

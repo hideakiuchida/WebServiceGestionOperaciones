@@ -8,11 +8,8 @@
 //------------------------------------------------------------------------------
 
 namespace Bonus.DataModel
-{
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class UsuarioEntity
+{   
+    public class UsuarioEntity
     {
         public int id { get; set; }
         public string nombre { get; set; }
@@ -23,5 +20,6 @@ namespace Bonus.DataModel
         public int estado { get; set; }
         public System.DateTime fecha_registro { get; set; }
         public System.DateTime fecha_modificacion { get; set; }
+        public int tipo { get; set; }
     }
 }

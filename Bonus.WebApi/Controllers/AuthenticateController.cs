@@ -46,7 +46,8 @@ namespace Bonus.WebApiServices.Controllers
                 if (basicAuthenticationIdentity != null)
                 {
                     var userId = basicAuthenticationIdentity.UserId;
-                    return GetAuthToken(userId);
+                    var tipo = basicAuthenticationIdentity.Tipo;
+                    return GetAuthToken(userId, tipo);
                 }
             }
             return null;
@@ -57,13 +58,14 @@ namespace Bonus.WebApiServices.Controllers
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        private HttpResponseMessage GetAuthToken(int userId)
+        private HttpResponseMessage GetAuthToken(int userId, int tipo)
         {
             var token = _tokenServices.GenerateToken(userId);
             var response = Request.CreateResponse(HttpStatusCode.OK, "Authorized");
             response.Headers.Add("Token", token.authToken);
+            response.Headers.Add("Tipo", tipo.ToString());
             response.Headers.Add("TokenExpiry", ConfigurationManager.AppSettings["AuthTokenExpiry"]);
-            response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry");
+            response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry,Tipo");
             return response;
         }
     }

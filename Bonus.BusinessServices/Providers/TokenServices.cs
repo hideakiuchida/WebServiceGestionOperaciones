@@ -65,7 +65,7 @@ namespace Bonus.BusinessServices.Providers
         /// <returns></returns>
         public bool ValidateToken(string tokenId)
         {
-            token _token = _unitOfWork.TokenRepository.GetByID(tokenId);
+            token _token = _unitOfWork.TokenRepository.GetSingle(t => t.authToken == tokenId);
                 var formats = new[] {
                   "yyyy.MM.dd HH:mm:ss",
                   "yyyy-MM-dd HH:mm:ss",

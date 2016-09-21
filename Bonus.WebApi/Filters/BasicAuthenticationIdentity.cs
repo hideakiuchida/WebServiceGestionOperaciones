@@ -28,9 +28,9 @@ namespace Bonus.WebApi.Filters
         /// </summary>
         public long? CodPro { get; set; }
         /// <summary>
-        /// ■ ■ ■ ■ ■ Get/Set for UsuNom for Bonus ■ ■ ■ ■ ■
+        /// ■ ■ ■ ■ ■ Get/Set for Tipo for Bonus ■ ■ ■ ■ ■
         /// </summary>
-        public string UsuNom { get; set; }
+        public int Tipo { get; set; }
         /// <summary>
         /// Basic Authentication Identity Constructor
         /// </summary>

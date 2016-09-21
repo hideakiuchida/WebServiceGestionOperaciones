@@ -16,8 +16,8 @@ namespace Bonus.DataModel
     {
         public usuario()
         {
+            this.orden = new HashSet<orden>();
             this.token = new HashSet<token>();
-            this.usuario_inspeccion = new HashSet<usuario_inspeccion>();
             this.rol = new HashSet<rol>();
         }
     
@@ -28,11 +28,9 @@ namespace Bonus.DataModel
         public string password { get; set; }
         public string telefono { get; set; }
         public int estado { get; set; }
-        public System.DateTime fecha_registro { get; set; }
-        public System.DateTime fecha_modificacion { get; set; }
     
+        public virtual ICollection<orden> orden { get; set; }
         public virtual ICollection<token> token { get; set; }
-        public virtual ICollection<usuario_inspeccion> usuario_inspeccion { get; set; }
         public virtual ICollection<rol> rol { get; set; }
     }
 }
