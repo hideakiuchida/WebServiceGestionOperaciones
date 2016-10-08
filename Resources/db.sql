@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Orden` (
   `cliente` VARCHAR(200) NULL,
   `latitud` VARCHAR(100) NULL,
   `longitud` VARCHAR(100) NULL,
-  `estado_pendiente` INT NULL,
+  `nro_orden` VARCHAR(45) NOT NULL,
   `id_usuario` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_ou_id_idx` (`id_usuario` ASC),
@@ -119,12 +119,10 @@ DROP TABLE IF EXISTS `gestion_operaciones_db`.`Inspeccion` ;
 
 CREATE TABLE IF NOT EXISTS `gestion_operaciones_db`.`Inspeccion` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `nro_orden` VARCHAR(45) NULL,
+  `nro_inspeccion` VARCHAR(45) NOT NULL,
   `fecha` DATETIME NULL,
   `cantida_muestra` INT NULL,
   `lugar` VARCHAR(200) NULL,
-  `latitud` VARCHAR(100) NULL,
-  `longitud` VARCHAR(100) NULL,
   `id_orden` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_io_id_idx` (`id_orden` ASC),
