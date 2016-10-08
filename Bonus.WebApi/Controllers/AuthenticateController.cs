@@ -64,8 +64,9 @@ namespace Bonus.WebApiServices.Controllers
             var response = Request.CreateResponse(HttpStatusCode.OK, "Authorized");
             response.Headers.Add("Token", token.authToken);
             response.Headers.Add("Tipo", tipo.ToString());
+            response.Headers.Add("UserId", userId.ToString());
             response.Headers.Add("TokenExpiry", ConfigurationManager.AppSettings["AuthTokenExpiry"]);
-            response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry,Tipo");
+            response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry,Tipo,UserId");
             return response;
         }
     }
