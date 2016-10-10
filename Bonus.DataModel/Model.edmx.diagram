@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc01f26c66124cb984ef21814ec5e809" Name="Diagram1">
+      <Diagram DiagramId="d2a529af7b1c44f3b27c8349fd21547d" Name="Diagram1">
         <EntityTypeShape EntityType="gestion_operaciones_dbModel.foto" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.inspeccion" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.orden" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.rol" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.token" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_operaciones_dbModel.usuario" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.inspeccion" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.orden" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.rol" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.token" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_operaciones_dbModel.usuario" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="gestion_operaciones_dbModel.fk_fi_inspeccion" ManuallyRouted="false" />
         <AssociationConnector Association="gestion_operaciones_dbModel.fk_io_id" ManuallyRouted="false" />
         <AssociationConnector Association="gestion_operaciones_dbModel.fk_ou_id" ManuallyRouted="false" />

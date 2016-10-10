@@ -20,12 +20,10 @@ namespace Bonus.DataModel
         }
     
         public int id { get; set; }
-        public string nro_orden { get; set; }
+        public string nro_inspeccion { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
         public Nullable<int> cantida_muestra { get; set; }
         public string lugar { get; set; }
-        public string latitud { get; set; }
-        public string longitud { get; set; }
         public int id_orden { get; set; }
     
         public virtual ICollection<foto> foto { get; set; }
